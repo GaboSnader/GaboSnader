@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="wizard_picking_code">
+            <field name="name">picking.code.form</field>
+            <field name="model">stock.move.code</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Transferencias Internas">
+                    <header>
+                    </header>
+                    <sheet>
+                        <separator string="Transferencias Internas" />
+                        <group colspan="4">
+                            <group>
+                                <field name="picking_type_id" domain="[('code','=','internal')]"/>
+                            </group>
+                            <group>
+                                <field name="location_id" />
+                                <field name="location_dest_id" />
+                            </group>
+                        </group>
+                        <separator string="Lectura Codigo de Barras" />
+                        <div>
+                            <h1>
+                                <field name="product_on_read" placeholder="C0D300+5" default_focus="1" />
+                            </h1>
+                        </div>
+                        <field name="code_lines">
+                            <tree>
+                                <field name="product_id"/>
+                                <field name="name"/>
+                                <field name="qty"/>
+                                <field name="product_uom_id"/>
+                            </tree>
+                        </field>
+                    </sheet>
+                    <footer>
+                        <div align="right">
+                            <button name="generate_stock" string="Procesar" type="object" class="oe_highlight" />
+                            <button special="cancel" string="Descartar" type="object" />
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window
+            name="Transferencias Internas"
+            res_model="stock.move.code"
+            src_model="stock.move.code"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="stock_picking_code_id" />
+
+        <menuitem id="stock_picking_code" action="stock_picking_code_id" name="Transferencias Internas" parent="stock.menu_stock_warehouse_mgmt" sequence="2" groups="base.group_no_one"/>
+
+    </data>
+</openerp>

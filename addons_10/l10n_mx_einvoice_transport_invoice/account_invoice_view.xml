@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+     <record model="ir.ui.view" id="account_invoice_form_inherit_cfdi_33_filter_transport">
+            <field name="name">account.invoice.cfdi.33.filter</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.view_account_invoice_filter"/>
+            <field name="arch" type="xml">
+                <filter name="refunds" position="after">
+                    <filter string="Factura Traslado" domain="[('transport_document_cfdi','=',True)]"/>
+
+                </filter>
+            </field>
+        </record>
+
+     <record model="ir.ui.view" id="account_invoice_form_inherit_cfdi_33_tree_transport">
+            <field name="name">account.invoice.cfdi.33.tree</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="account.invoice_tree"/>
+            <field name="arch" type="xml">
+                <field name="state" position="before">
+                    <field name="transport_document_cfdi" />
+                </field>
+            </field>
+        </record>
+
+     <record model="ir.ui.view" id="account_invoice_form_inherit_cfdi_33_transport">
+            <field name="name">account.invoice.cfdi.33</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="l10n_mx_sat_models.account_invoice_form_inherit_cfdi_33"/>
+            <field name="arch" type="xml">
+                
+                <field name="uso_cfdi_id"  position="after">
+                    <field name="transport_document_cfdi" attrs="{'readonly':[('state','!=','draft')]}"/>
+                </field>
+                <field name="metodo_pago_id"  position="replace">
+                    <field name="metodo_pago_id" attrs="{'readonly':[('state','!=','draft')],'required':[('transport_document_cfdi','=',False)]}" options="{'no_create_edit': True,'no_create': True}"/>
+                </field>
+                </field>
+            </record>
+
+     <record model="ir.ui.view" id="account_invoice_form_l10n_mx_einvoice_transport">
+            <field name="name">account.invoice.cfdi.33</field>
+            <field name="model">account.invoice</field>
+            <field name="inherit_id" ref="l10n_mx_einvoice.account_invoice_form_l10n_mx_einvoice"/>
+            <field name="arch" type="xml">
+
+                <field name="pay_method_ids"  position="replace">
+                    <field name="pay_method_ids" colspan="2" widget="many2many_tags"  attrs="{'readonly':[('state','!=','draft')],'required':[('transport_document_cfdi','=',False)]}" options="{'no_create_edit': True,'no_create': True}"/>
+                </field>
+                <field name="type_document_id" position="after">
+                        <field name="rfcprovcertif" attrs="{'invisible':[('transport_document_cfdi','=',False)]}"/>
+                </field>
+                </field>
+            </record>
+
+
+</data>
+</openerp>

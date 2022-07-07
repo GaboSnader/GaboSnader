@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+        
+  
+<template id="invoice_cfdi_33_report_transport" inherit_id="account.report_invoice_document">
+    <xpath expr="//tr[@name='folio_fiscal']" position="after"> 
+        <tr name="rfcprovcertif">
+			<td style="padding:2px;padding-right:9px;">
+				<strong>RfcProvCertif</strong>
+			</td>
+            <td style="padding:2px;">
+            	<span t-field="o.rfcprovcertif"/>
+            </td>
+
+        </tr>
+    </xpath>
+</template>
+
+
+
+</data>
+</openerp>

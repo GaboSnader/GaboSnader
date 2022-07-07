@@ -1,0 +1,164 @@
+<openerp>
+<data>
+
+        <!-- Pickings -->
+
+        <!-- Account invoice -->
+        <record model="ir.ui.view" id="invoice_easy_content_form">
+            <field name="name">inherit.account.invoice.form.counter</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+            <data>
+                <notebook position="inside" >
+                    <page string="Pedidos"  attrs="{'invisible':[('type','!=','out_invoice')]}">
+                            <field name="sale_ids" />
+                        </page>
+                    </notebook>
+                    <field name="state" position="before">
+                        <button name="reconcile_payments_sale_order" type="object" string="Conciliar Pagos Ventas" icon="fa-money" class="oe_highlight" attrs="{'invisible':[('state','!=','open')]}"/>
+                    </field>
+                </data>
+            </field>
+        </record>
+
+
+        <record model="ir.ui.view" id="inhrt_sale_order_form_view_counter">
+            <field name="name">inherit.sale.order.form.counter</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+            <data>
+                <notebook position="before">
+                    <group attrs="{'invisible':[('state','in',('draft','sent','cancel'))]}">
+                        <group></group>
+                        <group>
+                            <field name="total_payment" readonly="1" />
+                            <field name="payment_exception" groups="account.group_account_manager"/>
+                            <field name="re_invoiced" invisible="1" />
+                        </group>
+                    </group>
+                    <separator string="Lectura Codigo Barras" attrs="{'invisible':[('state','in',('sale','done','cancel'))]}"/>
+                    <div class="oe_title">
+                            <h1>
+                                <field name="product_on_read" placeholder="COD000+4" default_focus="1" attrs="{'invisible':[('state','in',('sale','done','cancel'))]}"/>
+                            </h1>
+                        </div>
+                    <!-- <group col="4">
+                        <field name="product_qty" />
+                        <field name="product_on_id" options="{'no_create': True,'no_create_edit':True}" />      
+                    </group> -->
+                </notebook>
+                <field name="state" position="before">
+                    <button name="%(account.action_account_invoice_payment)d" type="action" string="Registrar Pago" class="oe_highlight" attrs="{'invisible':[('state','!=','sale')]}"/>
+                    <!-- <button name="re_inviced_public" string="Refacturar" type="object" icon="fa-cogs" attrs="{'invisible':['|',('invoice_status','!=','invoiced'),('re_invoiced','=',True)]}" /> -->
+                    <button name="re_inviced_public" string="Refacturar" type="object" icon="fa-cogs" attrs="{'invisible':[('invoice_status','!=','invoiced')]}" confirm="Este pedido ya fue facturado, este proceso creara una nueva Factura, quieres continuar ?"/>
+                </field>
+                <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                    <field name="image_medium" widget="image" height="64"/>
+                </xpath>
+                <xpath expr="//field[@name='order_line']/form/group/group/field[@name='product_id']" position="after">
+                    <field name="image_medium" widget="image" readonly="1" />
+                </xpath>
+            </data>
+            </field>
+        </record>
+
+
+        <record id="recalculate_view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <div name="button_box" position="inside">
+                    <button name="action_view_payments"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-pencil-square-o"
+                        attrs="{'invisible': [('payment_count', '=', 0)]}">
+                        <field name="payment_count" widget="statinfo" string="Pagos"/>
+                    </button>
+
+                    <button name="recalculate_prices" string="(Recalcular Precios)" type="object" colspan="4" icon="fa-cogs" attrs="{'invisible':[('state','in',('sale','done'))]}"/>
+                    
+                </div>
+                
+                    
+            </field>
+        </record>
+
+        <record id="recalculate_view_order_tree" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <field name="amount_total" position="after">
+                    <field name="amount_payment" invisible="1"/>
+                    <field name="total_payment" />
+                    <field name="payment_exception" groups="account.group_account_manager"/>
+                </field>
+                <field name="user_id" position="after">
+                    <field name="user_payment_register_id" />
+                </field>
+            </field>
+        </record>
+
+        <record id="account_payment_inherit_counter" model="ir.ui.view">
+            <field name="name">account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_form"/>
+            <field name="arch" type="xml">
+                <field name="communication" position="after">
+                    <field name="sale_order_id" readonly="1"/>
+                
+                </field>
+            </field>
+        </record>
+
+        <record id="account_payment_inherit_counter_wizard" model="ir.ui.view">
+            <field name="name">account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="communication" position="after">
+                    <field name="sale_order_id" invisible="1"/>
+                    
+                </field>
+                <div name="amount_div" position="after">
+                        <field name="easy_refund" attrs="{'invisible':[('sale_order_id','=',False)]}" readonly="1"/>
+                </div>
+            </field>
+        </record>
+
+        <record id="account_payment_inherit_counter_tree" model="ir.ui.view">
+            <field name="name">account.payment.form</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_tree"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="sale_order_id" readonly="1"/>
+                </field>
+            </field>
+        </record>
+
+
+        <record id="invoice_refund_extended_easy" model="ir.ui.view">
+            <field name="name">account.invoice.refund.form</field>
+            <field name="model">account.invoice.refund</field>
+            <field name="inherit_id" ref="account.view_account_invoice_refund"/>
+            <field name="arch" type="xml">
+               
+                <group position="inside">
+                    <group attrs="{'invisible':[('filter_refund','!=','refund')]}">
+                        <field name="order_id" domain="[('invoice_status','=','invoiced')]" options="{'no_create':True,'no_create_edit':True}"/>
+                        <field name="refund_clean" />
+                    </group>
+                </group>
+
+            </field>
+        </record>
+
+</data>
+</openerp>

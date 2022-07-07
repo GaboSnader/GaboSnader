@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="wizard_import_module">
+            <field name="name">import.module.form</field>
+            <field name="model">import.module</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Asistente para Generacion de Factura">
+                    <header>
+                    </header>
+                    <sheet>
+                        <separator string="Introduce El Modulo a Importar" />
+                        <group>
+                            <field name="datas_fname" invisible="1" />
+                            <field name="file" required="1" filename="datas_fname"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <div align="center">
+                            <button name="module_import" string="Actualizar" type="object" icon="fa-eye" />
+                            <button special="cancel" string="Cerrar" type="object" icon="fa-times" />
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window
+            name="Importar Modulo"
+            res_model="import.module"
+            src_model="import.module"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="modules_import_id" />
+
+        <menuitem id="menu_modules_import" action="modules_import_id" name="Actualizar Aplicaciones" parent="base.menu_management" sequence="5"/>
+
+    </data>
+</openerp>

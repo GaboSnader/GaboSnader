@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="res.groups" id="grupo_prueba">
+            <field name="name">Grupo prueba</field>
+        </record>
+
+        <record model="ir.ui.view" id="account_invoice_prueba_id">
+            <field name="name">account.invoice.prueba.form</field>
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="account.invoice_form"/>
+            <field name="arch" type="xml">
+                <field name="date_invoice" position="after">
+                    <div groups="prueba.grupo_prueba">
+                        <field name="campo_prueba" readonly="1"/>
+                    </div>
+                    <div groups="not prueba.grupo_prueba">
+                        <field name="campo_prueba" />
+                    </div>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

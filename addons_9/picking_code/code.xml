@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="stock_picking_inherit_form">
+            <field name="name">stock.picking.inherit.form</field>
+            <field name="model">stock.picking</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="stock.view_picking_form" />
+            <field name="arch" type="xml">
+                <button name="action_cancel" position="before">
+                    <button name="generate_move" string="Procesar" type="object" />
+                </button>
+                <notebook position="before">
+                    <h1 attrs="{'invisible': [('picking_type_code', '!=', 'internal')]}">
+                        <separator string="Lectura Codigo de Barras" attrs="{'invisible':[('state','in',('confirmed','done','cancel'))]}" />
+                    </h1>
+                    <div class="oe_title">
+                        <h1 attrs="{'invisible': [('picking_type_code', '!=', 'internal')]}">
+                            <field name="product_on_read" placeholder="C0D300+5" default_focus="1" attrs="{'invisible':[('state','in',('confirmed','done','cancel'))]}">
+                            </field>
+                        </h1>
+                    </div>
+                </notebook>
+            </field>
+        </record>
+
+    </data>	
+</openerp>

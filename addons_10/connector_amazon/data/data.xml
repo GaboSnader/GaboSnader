@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data noupdate="1">
+
+    <record id="amazon_main_backend" model="amazon.backend">
+        <field name="name">Amazon EU</field>
+        <field name="sale_prefix">AmzEU</field>
+        <field name="host">mws-eu.amazonservices.com</field>
+        <field name="marketplace">Your key</field>
+        <field name="merchant">Your key</field>
+        <field name="encoding">ISO-8859-15</field>
+        <field name="accesskey">Your key</field>
+        <field name="password">Your key</field>
+        <field name="workflow_process_id"
+               ref="sale_automatic_workflow.manual_validation"/>
+        <field name="shipping_product" ref="product.product_product_consultant"/>
+        <field name="pricelist_id" ref="product.list0"/>
+    </record>
+
+    <record id="amazon_fba_cron" model="ir.cron">
+        <field name="name">Amazon FBA sale import</field>
+        <field name="interval_number">2</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model">amazon.backend</field>
+        <field name="function">_import_fba_sales</field>
+        <field name="args">()</field>
+        <field name="active" eval="False"/>
+    </record>
+
+    <record id="amazon_cron" model="ir.cron">
+        <field name="name">Amazon report import</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">hours</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="model">amazon.backend</field>
+        <field name="function">import_all_report</field>
+        <field name="args">()</field>
+        <field name="active" eval="False"/>
+    </record>
+
+</data>
+</openerp>

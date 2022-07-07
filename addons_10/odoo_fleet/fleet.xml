@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <record model="ir.ui.view" id="au_fleet">
+        <field name="name">auto.fleet.form</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form" />
+        <field name="arch" type="xml">
+            <sheet>
+                <group col="2" string="Informacion Adicional">
+                    <group>
+                        <field name="tip_vehicle" />
+                    </group>
+                </group>
+                <group col="2" attrs="{'invisible':[('tip_vehicle','!=','plat')]}">
+                    <group>
+                        <field name="num_int" />
+                        <field name="num_ser_equi" />
+                        <field name="hor" />
+                        <field name="tip" />
+                        <field name="num_fac" />
+                        <field name="func" />
+                    </group>
+                    <group>
+                        <field name="alt_t"/>
+                        <field name="alt_p"/>
+                        <field name="cap_car"/>
+                        <field name="anch" />
+                        <field name="peso" />
+                        <field name="fich_tec" />
+                    </group>
+                </group>
+                <group col="2"  attrs="{'invisible':[('tip_vehicle','!=','mont')]}">
+                    <group>
+                        <field name="num_int" />
+                        <field name="num_ser_equi" />
+                        <field name="tip" />
+                        <field name="car_max" />
+                        <field name="alt_max_mas" />
+                        <field name="anch_equi" />
+                        <field name="larg_equi" />
+                    </group>
+                    <group>
+                        <field name="alt_equi" />
+                        <field name="larg_orq" />
+                        <field name="rad_equi" />
+                        <field name="tip_llan" />
+                        <field name="desp_lat" />
+                        <field name="pes_total" />
+                        <field name="caract" />
+                    </group>
+                </group>
+                <group col="2"  attrs="{'invisible':[('tip_vehicle','!=','mani')]}">
+                    <group>
+                        <field name="num_int" />
+                        <field name="num_ser_equi" />
+                        <field name="hor" />
+                        <field name="tip" />
+                        <field name="num_fac" />
+                    </group>
+                    <group>
+                        <field name="max_cap_alt" />
+                        <field name="alt_max_el" />
+                        <field name="alt_veh" />
+                        <field name="long_veh" />
+                        <field name="anch_veh" />
+                    </group>
+                </group>
+                <group col="2"  attrs="{'invisible':[('tip_vehicle','!=','tor_ilum')]}">
+                    <group>
+                        <field name="num_int" />
+                        <field name="num_ser_equi" />
+                        <field name="hor" />
+                        <field name="num_fac" />
+                        <field name="ilum" />
+                        <field name="alt_ret" />
+                        <field name="alt_ele" />
+                        <field name="longitud" />
+                        <field name="ancho" />
+                    </group>
+                    <group>
+                        <field name="pes" />
+                        <field name="fich_tec" />
+                        <field name="tip" />
+                        <field name="dia" />
+                        <field name="sem" />
+                        <field name="mes" />
+                        <field name="mon" />
+                        <field name="obser" />
+                    </group>
+                </group>
+            </sheet>
+        </field>
+    </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="res.groups" id="group_partner_discount">
+            <field name="name">Categoria de Descuentos Clientes</field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_order_discount_id">
+            <field name="name">sale.order.discount</field>
+            <field name="model">sale.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <field name="validity_date" position="before">
+                    <field name="skip_discount" groups="partner_discount.group_partner_discount"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="res_partner_discount_id">
+            <field name="name">res.partner.discount</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form" />
+            <field name="arch" type="xml">
+                <field name="ref" position="after">
+                    <field name="categ_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="partner_discount_form_id">
+            <field name="name">partner.discount.form</field>
+            <field name="model">category.discount</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Categoria de Descuentos">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group colspan="4">
+                            <group>
+                                <field name="name" required="1" />
+                            </group>
+                            <group>
+                                <field name="max_discount" required="1" />
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="partner_discount_tree_id">
+            <field name="name">partner.discount.tree</field>
+            <field name="model">category.discount</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Categorias de Descuentos">
+                    <field name="name"/>
+                    <field name="max_discount"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_partner_discount_id">
+            <field name="name">Categoria Descuentos</field>
+            <field name="res_model">category.discount</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="menu_partner_discount" action="action_partner_discount_id" name="Categoria Descuentos" parent="base.menu_sale_config" sequence="5"/>
+
+    </data>
+</openerp>

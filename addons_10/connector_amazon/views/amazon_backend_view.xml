@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+<data>
+
+<record id="amazon_backend_view_tree" model="ir.ui.view">
+    <field name="model">amazon.backend</field>
+    <field name="arch" type="xml">
+        <tree string="Amazon">
+            <field name="name"/>
+        </tree>
+    </field>
+</record>
+
+<record id="amazon_backend_view_form" model="ir.ui.view">
+    <field name="model">amazon.backend</field>
+    <field name="arch" type="xml">
+        <form string="Amazon">
+            <sheet>
+                <label for="name" class="oe_edit_only"/>
+                <h1>
+                    <field name="name" class="oe_inline"/>
+                </h1>
+                <group string="Configuration" name="config">
+                    <group>
+                        <field name="host"/>
+                        <field name="pricelist_id"/>
+                        <field name="sale_prefix"/>
+                        <field name="shipping_product"/>
+                        <field name="workflow_process_id" widget="selection"/>
+                        <field name="sale_journal_id" />
+                        <field name="receivable_account_id"/>
+                        <field name="bank_journal_id"/>
+                        <field name="encoding" widget="selection"/>
+                    </group>
+                    <group>
+                        <field name="marketplace"/>
+                        <field name="merchant"/>
+                        <field name="accesskey"/>
+                        <field name="password" String="Secret Key"/>
+                        <field name="fba"/>
+                    </group>
+                </group>
+                <group string="Fulfillment By Amazon: specific settings" name="fba" col="4"
+                       attrs="{'invisible': [('fba', '=', False)]}">
+                    <field name="fba_warehouse_id" attrs="{'required': [('fba', '=', True)]}"/>
+                    <field name="elapsed_time" required="True" widget="selection"/>
+                    <field name="fba_workflow_process_id" required="True"/>
+                    <field name="fba_sale_journal_id"/>
+                    <field name="fba_receivable_account_id"/>
+                </group>
+                <group string="Actions" name="action" col="4">
+                    <group>
+                        <span><u>Sales to deliver:</u></span>
+                        <button name="import_report" type="object" string="Import"/>
+                        <field name="import_report_from" string="From"/>
+                        </group>
+                    <group attrs="{'invisible': [('fba', '=', False)]}">
+                        <span><u>Delivered sales (FBA):</u></span>
+                        <button name="import_fba_delivered_sales" type="object" string="Import"/>
+                        <field name="import_fba_from" string="From"/>
+                    </group>
+                </group>
+            </sheet>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+        </form>
+    </field>
+</record>
+
+<record id="amazon_backend_view_search" model="ir.ui.view">
+    <field name="model">amazon.backend</field>
+    <field name="arch" type="xml">
+        <search string="Amazon">
+            <field name="name"/>
+        </search>
+    </field>
+</record>
+
+<record model="ir.actions.act_window" id="act_open_amazon_backend_view">
+    <field name="name">Backends</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">amazon.backend</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="search_view_id" ref="amazon_backend_view_search"/>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+</record>
+
+<record model="ir.actions.act_window.view" id="act_open_amazon_backend_view_form">
+    <field name="act_window_id" ref="act_open_amazon_backend_view"/>
+    <field name="sequence" eval="20"/>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="amazon_backend_view_form"/>
+</record>
+
+<record model="ir.actions.act_window.view" id="act_open_amazon_backend_view_tree">
+    <field name="act_window_id" ref="act_open_amazon_backend_view"/>
+    <field name="sequence" eval="10"/>
+    <field name="view_mode">tree</field>
+    <field name="view_id" ref="amazon_backend_view_tree"/>
+</record>
+
+<record model="ir.actions.act_window" id="act_open_amazon_file_view">
+    <field name="name">Files</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">ir.attachment.metadata</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">tree,form</field>
+    <field name="search_view_id"
+           ref="attachment_base_synchronize.view_external_attachment_search"/>
+    <field name="domain">[('amazon_backend_id', '!=', False)]</field>
+</record>
+
+<menuitem id="menu_amazon_root"
+    name="Amazon"
+    parent="connector.menu_connector_root"
+    sequence="20"/>
+
+<menuitem id="menu_amazon_backend"
+    parent="menu_amazon_root"
+    sequence="20"
+    action="act_open_amazon_backend_view"/>
+
+<menuitem id="menu_amazon_file"
+    parent="menu_amazon_root"
+    sequence="30"
+    action="act_open_amazon_file_view"/>
+
+</data>
+</openerp>

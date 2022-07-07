@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="extend_date_assistant_form_id">
+            <field name="name">extend.date.assistant.form</field>
+            <field name="model">extend.date</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Solicitud de Abastecimiento">
+                    <notebook>
+                        <page>
+                            <group>
+                                <field name="line_ids" string="Apuntes Contables">
+                                    <tree>
+                                        <field name="account_id" required="1" />
+                                        <field name="name" readonly='False'/>
+                                        <field name="date" readonly='False'/>
+                                        <field name='date_maturity' readonly='False' />
+                                    </tree>
+                                </field>
+                                <field name="new_date" />
+                            </group>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <div>
+                            <button name="new_account_date" string="Guardar" type="object" />
+                            <button special="cancel" string="Descartar" type="object" />
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window
+            name="Extender Vencimineto"
+            res_model="extend.date"
+            src_model="account.move"
+            view_mode="form" target="new"
+            key2="client_action_multi"
+            id="ext_date_id" />
+
+    </data>
+</openerp>

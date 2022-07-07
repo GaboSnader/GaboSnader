@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="partner_modify_form_id">
+            <field name="name">partner.modify.form</field>
+            <field name="model">partner.modify</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Partners">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" default_focus="1" placeholder="Nombre"/>
+                            </h1>
+                            <div class="o_row">
+                                <field name="parent_id" placeholder="Compañia"/>
+                            </div>
+                        </div>
+                        <group colspan="4">
+                            <group>
+                                <field name="country_id"/>
+                                <field name="zip"/>
+                                <field name="vat"/>
+                                <field name="ref_id"/>
+                            </group>
+                            <group>
+                                <field name="ref"/>
+                                <field name="email"/>
+                                <field name="phone"/>
+                                <field name="modify" attrs="{'invisible' : [('ref_id', '=', False)]}"/>
+                                <field name="delete" attrs="{'invisible' : [('ref_id', '=', False)]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="partner_modify_tree_id">
+            <field name="name">partner.modify.tree</field>
+            <field name="model">partner.modify</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Clientes">
+                    <field name="name"/>
+                    <field name="parent_id"/>
+                    <field name="country_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="partner_modify_id">
+            <field name="name">Partners</field>
+            <field name="res_model">partner.modify</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem id="partner_modify_act" parent="base.menu_users" action="partner_modify_id" sequence="0"/>
+        
+        <record forcecreate="True" id="" model="ir.cron">
+            <field name="name">Modificacion Automatica de Clientes</field>
+            <field eval="True" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">10</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="model">partner.modify</field>
+            <field name="function">_cron_partner_modify</field>
+        </record>
+
+    </data>
+</openerp>

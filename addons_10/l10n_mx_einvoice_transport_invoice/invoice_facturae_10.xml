@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    
+<!-- <template id="invoice_cfdi_33_report_transport" inherit_id="account.report_invoice_document">
+    <xpath expr="//td[@name='property_payment']" position="inside"> 
+        <strong>RfcProvCertif: </strong><span t-field="o.rfcprovcertif"/><BR/>
+    </xpath>
+</template>
+-->
+
+</data>
+</openerp>

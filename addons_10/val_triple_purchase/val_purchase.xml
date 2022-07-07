@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record model="res.groups" id="validation_group">
+            <field name="name">Permisos Triple Validacion de Compras</field>
+        </record>
+
+        <record model="ir.ui.view" id="val_purchase_order_validation_id">
+            <field name="name">val.purchase.order.validation.form</field>
+            <field name="model">purchase.order</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+                <header>
+                    <button name="button_validation" states="tri_approve" string="Autorizar" type="object" class="oe_highlight" groups="val_triple_purchase.validation_group" />
+                    <button name="button_cancel" states="tri_approve" string="Cancelar" type="object" />
+                </header>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="val_purchase_validation_id">
+            <field name="name">val.purchase.validation.form</field>
+            <field name="model">purchase.config.settings</field>
+            <field name="inherit_id" ref="purchase.view_purchase_configuration" />
+            <field name="arch" type="xml">
+                <field name="po_double_validation_amount" position="after">
+                    <field name="po_triple_validation_amount" attrs="{'invisible': [('po_double_validation', '!=', 'tree_step')]}" /> 
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

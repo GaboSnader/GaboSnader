@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+   <data>
+       <record model="ir.ui.view" id="asistent_download">
+           <field name="name">download</field>
+           <field name="model">download.sat</field>
+           <field name="type">form</field>
+           <field name="arch" type="xml">
+               <form string="Asistente para la Descarga de Facturas">
+                   <header>
+                   </header>
+                   <sheet>
+                       <separator string="Introduce El Captcha" />
+                       <group>
+                           <field name="captcha"/>
+                           <!--<field name="photo" widget="image" class="oe_avatar"/> -->
+                       </group>
+                   </sheet>
+                   <footer>
+                       <div align="center">
+                           <button name="connection" string="Obtener Captcha" type="object" icon="fa-plug" />
+                           <button name="download" string="descarga" type="object" icon="fa-download" />
+                           <button special="cancel" string="Cerrar" type="object" icon="fa-times" />
+                       </div>
+                   </footer>
+               </form>
+           </field>
+       </record>
+
+       <act_window
+           name="Descarga masiva de documentos del sat"
+           res_model="download.sat"
+           src_model="download.sat"
+           view_mode="form" target="new"
+           key2="client_action_multi"
+           id="act_download" />
+
+       <menuitem id="menu_modules_download" action="act_download" name="Descarga del SAT" parent="base.menu_management" sequence="5"/>
+
+   </data>
+</openerp>
