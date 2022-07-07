@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    
+    <record id="account_move_view_form_inherit_cost_center" model="ir.ui.view">
+      <field name="name">account.move.view.form.inherit.cost_center</field>
+      <field name="model">account.move</field>
+      <field name="inherit_id" ref="account.view_move_form"/>
+      <field name="arch" type="xml">
+	
+        <xpath expr="//page[last()]" position="after">
+          <page string="Cost Center"
+		attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}">
+            <group>
+	      <field name="warehouse_id"/>
+	      <field name="area_id" />
+              <field name="business_id"/>
+              <field name="preference_department_id"/>
+              <field name="equipment_id"/>
+              <field name="type_of_operation_id" />
+            </group>
+          </page>
+        </xpath>
+
+        <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']"
+	       position="after">
+	  <field name="warehouse_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>	
+	  <field name="area_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+          <field name="business_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+          <field name="preference_department_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+          <field name="equipment_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+          <field name="type_of_operation_id"  force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+        </xpath>
+
+	<xpath expr="//field[@name='line_ids']//tree//field[@name='name']"
+	       position="after">
+	  <field name="warehouse_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>	
+	  <field name="area_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+          <field name="business_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+          <field name="preference_department_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+          <field name="equipment_id" force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+          <field name="type_of_operation_id"  force_save="1"
+		 attrs="{'column_invisible': [('parent.move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt', 'entry'))]}"/>
+	</xpath>
+		
+      </field>
+    </record>
+
+  </data>
+</odoo>

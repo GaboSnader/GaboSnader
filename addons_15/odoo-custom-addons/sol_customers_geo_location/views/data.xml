@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="sol_map_customer_integration_view">
+        <field name="model">res.partner</field>
+        <field name="mode">primary</field>
+        <!--<field name="sequence">18</field>-->
+        <field name="arch" type="xml">
+            <!--geofield="map_form"-->
+            <solmap longitude="partner_longitude" latitude="partner_latitude">
+                <field name="image_1920"/>
+                <field name="name"/>
+                <field name="partner_longitude"/>
+                <field name="partner_latitude"/>
+                <field name="map_form"/>
+                 <field name="invoice_ids" projection="id,name,display_name"/>
+                <field name="total_invoiced" widget='monetary'/>
+                <field name="currency_id" />
+                <field name="sale_order_ids" projection="id,name,display_name"/>
+                <field name="sale_order_count" />
+            </solmap>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="account.res_partner_action_customer">
+            <field name="view_mode">kanban,tree,form,solmap</field>
+    </record>
+
+    <record id="action_sol_map_customer_integration" model="ir.actions.act_window.view">
+        <field eval="3" name="sequence"/>
+        <field name="view_mode">solmap</field>
+        <field name="view_id" ref="sol_map_customer_integration_view"/>
+        <field name="act_window_id" ref="account.res_partner_action_customer"/>
+    </record>
+</odoo>

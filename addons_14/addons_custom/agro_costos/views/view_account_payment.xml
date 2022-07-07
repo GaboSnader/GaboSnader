@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record model="ir.ui.view" id="pago_contable_form_view">
+      <field name="name">account.payment</field>
+      <field name="model">account.payment</field>
+      <field name="inherit_id" ref="account.view_account_payment_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='payment_type']" position="before">
+                <field name="sucursal" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" 
+                    attrs="{'readonly' : [('costos_heredados', '=', True)]}"/>
+        </xpath>
+        <xpath expr="/form/sheet" position="inside">
+            <notebook>
+                <page  name="costos" string="Costos">
+                    <group string="Costos">
+                        <group>
+                            <field name="costos_heredados" invisible="1"/>
+                            <field name="negocio" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]" attrs="{'readonly' : [('costos_heredados', '=', True)]}"/>
+                            <field name="area" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]" attrs="{'readonly' : [('costos_heredados', '=', True)]}"/>
+                            <field name="department" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]" attrs="{'readonly' : [('costos_heredados', '=', True)]}"/>
+                            <field name="equipo" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]" attrs="{'readonly' : [('costos_heredados', '=', True)]}"/>
+                            <field name="tipo_operacion" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]" attrs="{'readonly' : [('costos_heredados', '=', True)]}"/>
+                        </group>
+                    </group>
+                </page>
+            </notebook>
+        </xpath>
+    </field>
+    </record>
+    <record model="ir.ui.view" id="costos_pagos_searchview">
+            <field name="name">costos_account_payment_search</field>
+            <field name="model">account.payment</field>
+            <field name="inherit_id" ref="account.view_account_payment_search"/>
+            <field name="arch" type="xml">
+            <xpath expr="//filter[@name='outbound_filter']" position="before">
+                    <field name="sucursal"/>
+                    <field name="negocio" />
+                    <field name="area" />
+                    <field name="department" />
+                    <field name="equipo"  />
+                    <field name="tipo_operacion" />
+                    <separator/>
+            </xpath>
+            </field>
+    </record>
+
+  </data>
+</odoo>

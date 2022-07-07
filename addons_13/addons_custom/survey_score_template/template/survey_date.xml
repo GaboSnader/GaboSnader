@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- template for date -->
+        <template id="survey_date" name="No disponible">
+            <t t-call="survey.layout">
+                <div class="container pt-4 pb-4">
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h2 class="text-center">Opss! Esta encuesta aun no se encuestra disponible</h2>
+                    <br/>
+                    <br/>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

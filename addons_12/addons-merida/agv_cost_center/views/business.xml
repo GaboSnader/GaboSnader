@@ -1,0 +1,63 @@
+<odoo>
+  <data>
+    
+    <record id="cost_center_business_view_form" model="ir.ui.view">
+      <field name="name">cost_center.business.view.form</field>
+      <field name="model">cost_center.business</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+            <!-- <div class="oe_button_box" name="button_box"> -->
+            <!--     <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive"> -->
+            <!--         <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/> -->
+            <!--     </button> -->
+            <!-- </div> -->
+            <group>
+	      <group>
+		<field name="code"/>
+		<field name="name"/>
+		<field name="description"/>
+	      </group>
+	      <group>
+		<field name="company_id" options="{'no_create': True}"
+		       groups="base.group_multi_company"/>
+		
+		<field name="warehouse_ids"
+		       options="{'no_create': True}"
+		       widget="many2many_tags"
+		       groups="stock.group_stock_multi_warehouses" force_save="1"/>
+	      </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    
+    <record id="cost_center_business_view_tree" model="ir.ui.view">
+      <field name="name">cost_center.business.view.tree</field>
+      <field name="model">cost_center.business</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="code"/>
+          <field name="name"/>
+          <!-- <field name="sucursal" widget="many2many_tags"/> -->
+          <!-- <field name="company_id"/> -->
+          <!-- <field name="description"/> -->
+          <!-- <field name="active"/> -->
+        </tree>
+      </field>
+    </record>
+    
+    <record id="action_cost_center_business" model="ir.actions.act_window">
+      <field name="name">Business</field>
+      <field name="res_model">cost_center.business</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    
+    <menuitem id="cost_center_business"
+              name="Business"
+              parent="cost_center_data"
+              action="action_cost_center_business"/>
+    
+  </data>
+</odoo>

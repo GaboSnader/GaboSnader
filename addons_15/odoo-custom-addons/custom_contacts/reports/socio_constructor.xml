@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="custom_contact_socio_constructor_template">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="custom_contacts.custom_contact_socio_constructor_template_translate" t-lang="doc.partner_id.lang"/>
+        </t>
+      </t>
+    </template>
+
+    <template id="custom_contact_socio_constructor_template_translate">
+      <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+        <t t-call="web.report_layout">
+        <div align="justify">
+        <span style="text-align: justify;font-family:arial;font-size:90%;line-height: 150%">
+          <span style="font-weight: bold;">CONTRATO DE ASOCIACIÓN EN PARTICIPACIÓN</span> <span>, que celebran el/la </span>
+          <span style="font-weight: bold;">C. <t t-esc="doc.owner_id.display_name"/></span><span> a quien en lo sucesivo se le </span>
+          <span>denominará como</span> <span style="font-weight: bold;"> &quot;LA ASOCIADA&quot;;</span><span> y, por otra parte la empresa</span>
+          <span style="font-weight: bold;"> <t t-esc="doc.partner_id.display_name"/></span><span> representada por el <span style="font-weight: bold;"> C. <t t-esc="doc.partner_id.display_name"/></span> quien es el ******* a quienen  lo sucesivo y tambien para los efectos del presente contrato se le denominara como &quot;LA ASOCIANTE&quot;.</span>
+
+          <center><span>---------------------------</span><span style="font-weight: bold;"> D E C L A R A C I O N E S</span><span>---------------------------</span></center><br/>
+          <span><span style="font-weight: bold;">PRIMERA.- </span>Declara <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>, comparecer por su propio y personal derecho:----------</span><br/>
+          <span>I. Que cuenta con plena capacidad legal para celebrar el presente contrato. -------------------------------</span><br/>
+          <span>II. ser propietaria de los bienes inmuebles que a continuación se relacionan:  ----------------------------</span><br/>
+          <!-- FOR de TERRENOS -->
+          <ol type="a">
+            <li>********FOR para DATOS de Terrenos********------------</li>
+          </ol>
+          <span>Que dichos predios provienen compraventa que hizo en su favor Bertha Elena López Gual, sobre el cincuenta por ciento de la propiedad que le correspondía, constituyéndose la propiedad plena, según consta en escritura pública número ciento treinta y nueve de fecha veintiocho de marzo de dos mil trece, otorgada en esta ciudad, ante la fe del Licenciado en Derecho Bernardo Martín Rivadeneyra Pérez, Titular de la Notaría Pública Número Veinticinco del municipio de Mérida, Yucatán, misma que quedó inscrita bajo el número 1992850 (un millón novecientos noventa y dos mil ochocientos cincuenta) a folio electrónico 1070353 (un millón setenta mil trescientos cincuenta y tres) del Registro Público de la Propiedad del Estado de Yucatán. ------------------------------------------</span><br/>
+          <span><span style="font-weight: bold;">SEGUNDA.- </span>DECLARA <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>, ser una persona moral <span style="font-weight: bold;"><t t-esc="doc.partner_id.display_name"/></span> a través de su representante, que es una sociedad mercantil de nacionalidad mexicana, con duración indefinida, constituida el **** de *** del ******, segun consta en escritura pública número *** otorgada ante la fé del Abogado *******, Titular de la Notaría Pública Número ***.-----</span><br/>
+          <span>I. Que cuenta con plena capacidad legal para celebrar el presente contrato. -------------------------------</span><br/>
+          <span>II. Que desarrolla actividades mercantiles consistentes en compraventa, construcción, promoción y arrendamiento de bienes inmuebles principalmente. ---------------------------------------------------------------</span><br/>
+          <span>III. Que cuenta con conocimientos y elementos técnicos profesionales, así como apoyo financiero necesario para llevar a cabo el objeto del presente contrato. ----------------------------------------------------</span><br/>
+          <span>IV. Que tiene capacidad jurídica para contratar y obligarse a la ejecución de la obra objeto de este contrato y, que dispone de la organización, elementos y recursos técnicos y económicos propios y suficientes para ello. --------------------------------------------------------------------------------------------------------</span><br/>
+          <span>V. Que cuenta con las especificaciones de las obras y el proyecto, habiendo inspeccionado debidamente el sitio mismo de las obras, por lo que conoce las características del predio donde se realizan las obras, a fin de considerar todos los factores que intervienen en su ejecución. --------------</span><br/>
+          <span>VI. Asimismo, señala como domicilio para ser notificado el predio ubicado en *******</span><br/>
+          <span>VII. Se obliga a ejecutar las obras de este contrato con sus propios recursos humanos y materiales y, como consecuencia no será considerado como intermediario sino como patrón respecto de sus trabajadores o destajistas. -------------------------------------------------------------------------------------------------</span><br/>
+          <span>VIII. Cumplirá con todas las disposiciones que se establecen en la Ley Federal del Trabajo en vigor, así como el pago oportuno de las cuotas del seguro social mensual, así como las cuotas de retiro, cesantía, vejez e INFONAVIT, respecto de todos y cada uno de los trabajadores que en forma directa o bajo relación obrero patronal le presten sus servicios en las obras de referencia, de acuerdo al alcance de los trabajadores de este contrato.  ----------------------------------------------------------------------</span><br/>
+          <span>IX. Será responsable de las obligaciones que contraiga con las personas que le suministren material para las obras, materia de este contrato en el entendido que ninguna de ellas podrá ejercer acción alguna en contra de <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>. --------------------------------------------------------------------------------</span><br/>
+          <span>X. Se obliga a cumplir con todas las normas y especificaciones vigentes en el domicilio en que se realicen las obras, tanto federales como estatales y municipales. ----------------------------------------------</span><br/>
+          <span>XI. Será responsable de que las instalaciones se encuentren en buen estado al momento de entrega-recepción. ---------------------------------------------------------------------------------------------------------------------</span><br/>
+          <span><span style="font-weight: bold;">TERCERA.- </span> Declaran ambas partes---------------------------------------------------------------------</span><br/>
+          <span>I. Declaran reconocerse mutuamente la personalidad con que se ostentan para la celebración del presente contrato, para todos los efectos que haya lugar. --------------------------------------------------------</span><br/>
+          <span>II. Que no existe error, dolo o violencia, mala fe o cualquier otro vicio del consentimiento que pudiera llegar a invalidar la presente operación, en virtud de lo cual, se obligan a no invocar la nulidad del presente documento, por falta de personalidad de cualesquiera de las partes y/o por la existencia de los vicios del consentimiento expresado por las mismas. ---------------------------------------------------------</span><br/>
+          <span>III. Acorde con las declaraciones que anteceden, las partes contratantes manifiestan su conformidad en celebrar el presente contrato de asociación en participación, el cual sujetan a las disposiciones contenidas en la Ley General de Sociedades Mercantiles y en las siguientes: -----------------------------</span><br/>
+
+          <center><span>---------------------------</span><span style="font-weight: bold;"> D E C L A R A C I O N E S</span><span>---------------------------</span></center><br/>
+          <span><span style="font-weight: bold;">PRIMERA.- <span style="text-decoration: underline;">OBJETO DEL CONTRATO.</span> &quot;LA ASOCIADA&quot; y &quot;LA ASOCIANTE&quot;</span>”, convienen celebrar el presente</span><br/>
+          <span><span style="font-weight: bold;">CONTRATO DE ASOCIACIÓN EN PARTICIPACIÓN</span>, en lo sucesivo <span style="font-weight: bold;">&quot;EL CONTRATO&quot;</span>, con el propósito de combinar sus esfuerzos y recursos para optimizar en forma conjunta, el negocio consistente en la construcción y comercialización de las casas-habitación en los predios de <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span> descritos en la declaración primera.-----------</span><br/>
+
+          <span><span style="font-weight: bold;">SEGUNDA.- <span style="text-decoration: underline;">OBLIGACIONES DE LAS PARTES.</span></span>------------------------</span><br/>
+          <span><![CDATA[&emsp;]]>I. Obligaciones de <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>---------------------------------</span><br/>
+          <ol type="a">
+            <li><span>Permitir a <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span> y sus trabajadores, la entrada a los predios mencionados en la declaración primera, a fin de que <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span> y/o sus trabajadores, puedan realizar todos y cada uno de los actos necesarios para poder dar cumplimiento al objeto del presente contrato. No obstante, lo anterior, <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span> conservará la propiedad y posesión física de los inmuebles, hasta en tanto se verifica su enajenación a favor de terceros. -------- </span></li>
+            <li><span>A no interferir en las acciones y/o actos de construcción que realice <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>, con el fin de poder dar cumplimiento al objeto del presente contrato. ------------------------------------</span></li>
+            <li><span>Se obliga a apoyar en todo lo solicitado por <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>, a fin de que ambas partes puedan cumplir cabalmente con cada una de las cláusulas y obligaciones contraídas en el presente contrato. -------------------------------------------------------------------------------------------------</span></li>
+            <li><span>A no tener ninguna relación jurídica, laboral o comercial con los trabajadores, proveedores y prestadores de servicios de <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>, respecto de las operaciones de construcción y venta sobre los predios mencionado en la declaración primera del presente contrato.  -----</span></li>
+            <li><span>A firmar conjuntamente con <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>  las escrituras de enajenación de las casas que se construyan en los inmuebles, siempre y cuando haya recibido las contraprestaciones pactadas en el presente contrato. ----------------------------------------------------------------------------</span></li>
+          </ol>
+          <span><![CDATA[&emsp;]]>I. Obligaciones de <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>---------------------------------</span><br/>
+          <ol type="a">
+            <li><span><span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>, se obliga a actuar siempre a nombre propio, por lo que <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span> no tendrá ninguna relación jurídica o laboral con los trabajadores, proveedores y prestadores de servicios de <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>. --------------------------------------------------------------------------</span></li>
+            <li><span>A tramitar ante cualquier dependencia los permisos, licencias, autorizaciones, estudios y trabajos necesarios para la construcción y comercialización de las casas habitaciones que se construyan en los predios mencionados en la declaración primera, relacionados en la cláusula primera del presente contrato. ---------------------------------------------------------------------</span></li>
+            <li><span>A pagar cualquier multa que pudiera suscitarse durante la realización o a consecuencia del proyecto en los predios mencionados, deslindando a <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span> de las consecuencias que pudiera tener. ----------------------------------------------------------------------------</span></li>
+            <li><span>A celebrar con cualquier empresa o subsidiarias los subcontratos necesarios para la ejecución física de las obras de construcción en los predios mencionados en la declaración primera, en el entendido de que con motivo de dicho subcontrato se garantiza el debido cumplimiento del objeto del presente contrato. -----------------------------------------------------------</span></li>
+            <li><span>A entregar trimestralmente a <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span> la relación detallada de las operaciones realizadas en los predios mencionados en la declaración primera del presente contrato, así como toda la información necesaria que demuestre y requiera <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>, para conocer y revisar la situación del negocio. -----------------------------------------------------------------</span></li>
+            <li><span>A realizar todos y cada uno de los actos relativos a la comercialización de las casas habitación que se construya sobre los inmuebles. -------------------------------------------------------</span></li>
+          </ol>
+
+          <span><span style="font-weight: bold;">TERCERA.- <span style="text-decoration: underline;">EL PRECIO.</span>&quot;LA ASOCIADA&quot; y &quot;LA ASOCIANTE&quot;</span> pactan que <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span> recibirá como contraprestación las siguientes cantidades; -------------------------------------------------------</span><br/>
+          <span>I. La cantidad global es por la cantidad de <span style="font-weight: bold;">$ ****** M.N.</span> (SON: ******* MONEDA NACIONAL) por los ** predios, descritos en la declaración primera, desglosado de la siguiente manera y la cual, la suma por cada uno por la cantidad de <span style="font-weight: bold;">$ ****** M.N.</span> (SON: ****** MONEDA NACIONAL).----------------------------------------------------------------------------------------------------</span><br/>
+          <span><span style="font-weight: bold;">CUARTA.- <span style="text-decoration: underline;">FORMA DE PAGO.-</span></span>La cantidad total que <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span> se obliga y compromete a pagar a <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>, se hará de la siguiente manera: --------------------------------------------------</span><br/>
+          <span>I. La cantidad de <span style="font-weight: bold;">$ ****** M.N.</span> (SON: **** MONEDA NACIONAL), por concepto de apartado, en efectivo, el *** de *** del ****</span><br/>
+          <span>II. La cantidad de <span style="font-weight: bold;">$ ****** M.N.</span> (SON: **** MONEDA NACIONAL), por concepto de saldo de enganche, en efectivo, el *** de*** del ****</span><br/>
+          <span>III. La cantidad restante por pagar <span style="font-weight: bold;">$ ****** M.N.</span> (SON **** MONEDA NACIONAL), establecido en la tabla de pagos denominada Anexo I, adjunto al presente contrato; dicha cantidad, contiene el incremento del 4% en el supuesto de que cada una de las casas habitación que se vendan, se pacten por un precio de <span style="font-weight: bold;">$ ****** M.N.</span> (SON: **** MONEDA NACIONAL).--------------------------------------------------------------------------------------------------</span><br/>
+          <span><span style="font-weight: bold;">QUINTA.-</span> Ambas partes acuerdan que los pagos se realizarán de la siguiente manera: <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>, pagará a <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span> a la firma del presente contrato, el 20% del total de la contraprestación establecida con anterioridad por apartación de los predios antes mencionados y el 80% a la venta de los predios conforme a los siguientes acuerdos: -------------------------------------------</span><br/>
+          <span>I. <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>, construirá <span style="font-weight: bold;">*****</span> casas-habitación y las comercializará en un plazo máximo de <span style="font-weight: bold;">*** MESES </span>a partir de la firma del presente contrato, dentro de los cuales, en el <span style="font-weight: bold;">MES NUMERO *** </span>, deberá contar con un avance del <span style="font-weight: bold;">30% POR CIENTO DE CONTRUCCIÓN</span>. Si transcurridos los 24 meses, y <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span> le faltare vender algún predio en construcción, contará con un término de gracia de <span style="font-weight: bold;">UN MES </span>para liquidar el saldo más el porcentaje sobre el valor de la venta total a <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>, como lo establece la presente cláusula, para adquirirlos directamente; de no ser así, tendrá que renunciar a su derecho de comercialización y de construcción para ser devueltos a <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>, sin mediar pago alguno al respecto de las construcciones realizadas en los predios, las cuales quedarán en beneficio de <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>, en concepto de pena convencional, todo ello sin necesidad de juicio ni resolución judicial alguna. ---------------------------------------------------</span><br/>
+          <span>II. <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span>, se obliga a firmar la escritura pública mediante la cual, se transmita, ya sea a <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>, o a cualquier adquirente de las casas-habitación, siempre y cuando se hayan cubierto los pagos establecidos en el presente contrato y, si fuera el caso de que se niegue a firmar dichas escrituras, previo requerimiento por escrito vía judicial, se hará acreedor a una pena convencional equivalente a la diferencia entre el valor de venta y el costo del terreno en favor de <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>. ---------------------------------------------------------------------------------------------------------------</span><br/>
+          <span><span style="font-weight: bold;">SEXTA.- DE LOS SERVICIOS DEL PREDIO. &quot;LA ASOCIADA&quot;</span>, se obliga y compromete a proveer, a los predios en referencia en este contrato, los servicios urbanos de calle asfaltada con banquetas, servicios hidráulicos y eléctricos subterráneos a pie de casa y estructura para la instalación del alumbrado público, a más tardar en el <span style="text-decoration: underline;">en el mes de *** del *****</span>, término que podrá ser prorrogado hasta por un plazo máximo de <span style="font-weight: bold;">DOS MESES</span>, para casos fortuitos o de fuerza mayor. La prórroga quedará sujeta a los tiempos y condiciones que en ese momento afecten la realización de los diversos servicios anteriormente mencionados. ------------------------------------------------------------</span><br/>
+          <span>De igual manera, una vez iniciados los trabajos físicos de los servicios mencionados en esta cláusula, <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span> será responsable de no dañar, ni afectar las obras físicas realizadas, y, en caso de hacerlo, quedará obligada a pagar a <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span> el total de la reparación de dichas obras afectadas. ----------------------------------------------------------------------------------------------------------------------</span><br/>
+          <span><span style="font-weight: bold;">SÉPTIMA.- &quot;LA ASOCIANTE&quot;</span> acepta los acuerdos con <span style="font-weight: bold;">&quot;LA ASOCIADA&quot;</span> y, ambas partes se obligan a cumplir con el objeto mencionado en la cláusula primera y demás relativas del presente contrato. ------------------------------------------------------------------------------------------------------------------------</span><br/>
+          <span><span style="font-weight: bold;">OCTAVA.- </span>Ambas partes acuerdan estar sujetas a lo manifestado por el Artículo 254 de la Ley General de Sociedades Mercantiles, mismo artículo que se inserta a la letra: ------------------------------</span><br/>
+          <ol>
+            <li>Artículo 254.- El contrato de asociación en participación debe constar por escrito y no estará sujeto a registro. ---------------------------------------------------------------------------------------------------</li>
+          </ol>
+          <span><span style="font-weight: bold;">NOVENA.- </span>El presente contrato entrará en vigor a partir de la fecha de su firma y las partes convienen en que estará vigente en los plazos convenidos. -----------------------------------------------------</span><br/>
+          <span><span style="font-weight: bold;">DÉCIMA.- <span style="text-decoration: underline;">RESCISIÓN.-</span></span> El presente contrato podrá concluir anticipadamente, por: </span><br/>
+          <ol>
+            <li>Que el objeto de la asociación se vuelva imposible.  ----------------------------------------------------</li>
+            <li>La quiebra de <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>. ----------------------------------------------------------------------------</li>
+            <li>La inhabilitación para ejercer el comercio de cualquiera de las partes; -----------------------------</li>
+            <li>El mutuo acuerdo de los contratantes. ----------------------------------------------------------------------</li>
+            <li>El incumplimiento de alguna de las partes a sus obligaciones. ---------------------------------------</li>
+            <li>La comisión de actos dolosos o fraudulentos de cualquiera de las partes. ------------------------</li>
+            <li>Muerte de alguna de las partes. -------------------------------------------------------------------------------</li>
+            <li>Por alguna causa de fuerza mayor no imputable a alguna de las partes. --------------------------</li>
+          </ol>
+          <span><span style="font-weight: bold;">DÉCIMA PRIMERA.- <span style="text-decoration: underline;">DE LA TERMINACIÓN ANTICIPADA.-</span></span>En caso de terminación anticipada del presente contrato, las partes acuerdan cubrir el pago de los daños y perjuicios que se causaren por la parte que dé lugar a la causa de terminación a la otra parte contratante. ---------------------------</span><br/>
+          <span>I. Si el incumplimiento fuera por parte de <span style="font-weight: bold;">&quot;LA ASOCIANTE&quot;</span>, y los inmuebles estuviesen ya en construcción, este perderá el 20% aportado y toda la inversión realizada en el inmueble aportado. </span><br/>
+          <span><span style="font-weight: bold;">DÉCIMA SEGUNDA.- <span style="text-decoration: underline;">DE LAS NOTIFICACIONES.-</span></span> Las partes acuerdan, que para el caso de rescisión o terminación anticipada de contrato, la notificación podrá ser mediante correo electrónico, escrito libre o carta, en donde se manifieste la razón de la rescisión o terminación anticipada del presente contrato. -----------------------------------------------------------------------------------------------------------</span><br/>
+          <span><span style="font-weight: bold;">DÉCIMA TERCERA.- <span style="text-decoration: underline;">JURISDICCIÓN Y COMPETENCIA.-</span></span> Para los efectos de interpretación y cumplimiento del presente documento, los contratantes se sujetan expresamente a la jurisdicción y competencia de los Tribunales de la Ciudad de Mérida, Yucatán, renunciando en consecuencia a cualquier otro fuero que tuvieren o llegaren a tener por motivo de su domicilio actual o futuro. --------</span><br/>
+
+          <center><span>---------------------------</span><span style="font-weight: bold;"> G E N E R A L E S</span><span>---------------------------</span></center>
+
+          <span>I. El/La <span style="font-weight: bold;">C. <t t-esc="doc.owner_id.display_name"/></span>, ****DATOS DEL OWNER***</span><br/>
+          <span>II. El/La <span style="font-weight: bold;">C. <t t-esc="doc.owner_id.display_name"/></span>, ****DATOS DEL PARTNER***</span><br/>
+          <span>III. El presente contaro se firma a los ** días del mes de **** del año *****, por los contratantes, manifestando que su voluntad ha sido libremente expresada y que su consentimiento no se encuentra viciado por dolo, error, mala fe, o cualquier otro vicio del consentimiento, y constancia de lo anterior, lo firman al margen y alcance para constancia.  ----------</span><br/><br/><br/>
+          <center>
+          <span style="font-weight: bold;text-align:left;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><![CDATA[&emsp;&emsp;&emsp;]]><span style="font-weight: bold;text-align:right;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span><br/><br/><br/><br/><br/><br/>
+          <span style="font-weight: bold;">____________________________</span><![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;]]><span style="font-weight: bold;">____________________________</span><br/><br/>
+          <span style="font-weight: bold;"><t t-esc="doc.owner_id.display_name"/></span><![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;]]><span style="font-weight: bold;"><t t-esc="doc.partner_id.display_name"/></span>
+          </center>
+        </span>
+       </div>
+       </t>
+    </template>
+    <report id="custom_contacts_socio_constructor_report" 
+         string="Socio Constructor" 
+         model="custom_contacts.get_contracts"
+         report_type="qweb-pdf" 
+         file="custom_contacts.custom_contact_socio_constructor_template" 
+         name="custom_contacts.custom_contact_socio_constructor_template"
+         paperformat="custom_contacts.paperformat_contracts"/>
+<!--    <report
+        id="custom_contacts_promesa_compraventa_report"
+        name="custom_contacts.promesa_compraventa_report"
+        string="Promesa de compraventa"
+        report_type="qweb-pdf"
+        paperformat="custom_contacts.paperformat_contracts"
+        multi="False" />-->
+  </data>
+</odoo>
+
+
+
+

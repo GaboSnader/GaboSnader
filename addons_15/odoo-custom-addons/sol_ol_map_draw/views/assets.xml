@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="sol map" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/sol_ol_map_draw/static/src/js/solmap_common.js"/>
+            <script type="text/javascript" src="/sol_ol_map_draw/static/src/js/main_view.js"/>
+             <script type="text/javascript" src="/sol_ol_map_draw/static/src/js/map_form.js" />
+            <link rel="stylesheet" type="text/scss" href="/sol_ol_map_draw/static/src/scss/main_view.scss"/>
+            <link rel="stylesheet" type="text/scss" href="/sol_ol_map_draw/static/src/scss/map_form.scss" />
+        </xpath>
+    </template>
+</odoo>

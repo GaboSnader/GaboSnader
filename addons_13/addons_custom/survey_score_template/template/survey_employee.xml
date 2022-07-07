@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="survey_employee_assets" inherit_id="web.assets_frontend">
+          <xpath expr="." position="inside"> 
+            <script type="text/javascript" src="/survey_score_template/static/src/js/survey_employee.js"/>
+          </xpath>
+        </template>
+        <!-- template for employee -->
+        <template id="survey_employee" name="Datos del trabajador">
+            <t t-call="survey.layout">
+                <div class="container pt-4 pb-4">
+                    <br/>
+                    <br/>
+                    <h2 class="text-center">Datos del trabajador</h2>
+                    <form t-att-action="url" method="POST" id="form_employee">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><b>Número de cuestionario:</b> <span t-esc="survey_number"/></p>
+                          <p><b>Fecha de aplicación:</b> <span t-esc="today"/></p>
+                          <p><b>Nombre del empleado:</b> <span t-esc="name"/></p>
+                          <br/>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Datos laborales</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Ocupación/profesión/puesto:</td>
+                                <td colspan="3"><span t-esc="job"></span></td>
+                              </tr>
+                              <tr>
+                                <td>Departamento/Sección/Área:</td>
+                                <td colspan="3"><span t-esc="department"></span></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Sexo</th>
+                              </tr>
+                            </thead>
+                            <tbody class="sex">
+                              <tr>
+                                <td>Masculino</td>
+                                <t t-if="sex == 'male'">
+                                    <td><input type="radio" name="sex" checked="" value="male"/></td>
+                                </t>
+                                <t t-if="not sex == 'male'">
+                                    <td><input type="radio" name="sex"  value="male"/></td>
+                                </t>
+                                <td>Femenino</td>
+                                <t t-if="sex == 'female'">
+                                    <td><input type="radio" name="sex" checked="" value="female"/></td>
+                                </t>
+                                <t t-if="not sex == 'female'">
+                                    <td><input type="radio" name="sex"  value="female"/></td>
+                                </t>
+                              </tr>
+                              <tr>
+                                <td>Otro</td>
+                                <t t-if="sex == 'other'">
+                                    <td><input type="radio" name="sex" checked="" value="other"/></td>
+                                </t>
+                                <t t-if="not sex == 'other'">
+                                    <td><input type="radio" name="sex"  value="other"/></td>
+                                </t>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Edad en años</th>
+                              </tr>
+                            </thead>
+                            <tbody class="year">
+                              <tr>
+                                <td>15 - 19</td>
+                                <t t-if="15 &lt;= age &lt;= 19">
+                                    <td><input type="radio" name="year" checked="" value="15-19"/></td>
+                                </t>
+                                <t t-if="not 15 &lt;= age &lt;= 19">
+                                    <td><input type="radio" name="year" value="15-19"/></td>
+                                </t>
+                                <td>45 - 49</td>
+                                <t t-if="45 &lt;= age &lt;= 49">
+                                    <td><input type="radio" name="year" checked="" value="45-49"/></td>
+                                </t>
+                                <t t-if="not 45 &lt;= age &lt;= 49">
+                                    <td><input type="radio" name="year" value="45-49"/></td>
+                                </t>
+                              </tr>
+                              <tr>
+                                <td>20 - 24</td>
+                                <t t-if="20 &lt;= age &lt;= 24">
+                                    <td><input type="radio" name="year" checked="" value="20-24"/></td>
+                                </t>
+                                <t t-if="not 20 &lt;= age &lt;= 24">
+                                    <td><input type="radio" name="year"  value="20-24"/></td>
+                                </t>
+                                <td>50 - 54</td>
+                                <t t-if="50 &lt;= age &lt;= 54">
+                                    <td><input type="radio" name="year" checked="" value="50-54"/></td>
+                                </t>
+                                <t t-if="not 50 &lt;= age &lt;= 54">
+                                    <td><input type="radio" name="year"  value="50-54"/></td>
+                                </t>
+                              </tr>
+                              <tr>
+                                <td>25 - 29</td>
+                                <t t-if="25 &lt;= age &lt;= 29">
+                                    <td><input type="radio" name="year" checked="" value="25-29"/></td>
+                                </t>
+                                <t t-if="not 25 &lt;= age &lt;= 29">
+                                    <td><input type="radio" name="year"  value="25-29"/></td>
+                                </t>
+                                <td>55 - 59</td>
+                                <t t-if="55 &lt;= age &lt;= 59">
+                                    <td><input type="radio" name="year" checked="" value="55-59"/></td>
+                                </t>
+                                <t t-if="not 55 &lt;= age &lt;= 59">
+                                    <td><input type="radio" name="year"  value="55-59"/></td>
+                                </t>
+                              </tr>
+                              <tr>
+                                <td>30 - 34</td>
+                                <t t-if="30 &lt;= age &lt;= 34">
+                                    <td><input type="radio" name="year" checked="" value="30-34"/></td>
+                                </t>
+                                <t t-if="not 30 &lt;= age &lt;= 34">
+                                    <td><input type="radio" name="year"  value="30-34"/></td>
+                                </t>
+                                <td>60 - 64</td>
+                                <t t-if="60 &lt;= age &lt;= 64">
+                                    <td><input type="radio" name="year" checked="" value="60-64"/></td>
+                                </t>
+                                <t t-if="not 60 &lt;= age &lt;= 64">
+                                    <td><input type="radio" name="year"  value="60-64"/></td>
+                                </t>
+                              </tr>
+                              <tr>
+                                <td>35 - 39</td>
+                                <t t-if="35 &lt;= age &lt;= 39">
+                                    <td><input type="radio" name="year" checked="" value="35-39"/></td>
+                                </t>
+                                <t t-if="not 35 &lt;= age &lt;= 39">
+                                    <td><input type="radio" name="year"  value="35-39"/></td>
+                                </t>
+                                <td>65 - 69</td>
+                                <t t-if="65 &lt;= age &lt;= 69">
+                                    <td><input type="radio" name="year" checked="" value="65-69"/></td>
+                                </t>
+                                <t t-if="not 65 &lt;= age &lt;= 69">
+                                    <td><input type="radio" name="year"  value="65-69"/></td>
+                                </t>
+                              </tr>
+                              <tr>
+                                <td>40 - 44</td>
+                                <t t-if="40 &lt;= age &lt;= 44">
+                                    <td><input type="radio" name="year" checked="" value="40-44"/></td>
+                                </t>
+                                <t t-if="not 40 &lt;= age &lt;= 44">
+                                    <td><input type="radio" name="year"  value="40-44"/></td>
+                                </t>
+                                <td>70 o más</td>
+                                <t t-if="age &gt;= 70">
+                                    <td><input type="radio" name="year" checked="" value="70 o mas"/></td>
+                                </t>
+                                <t t-if="not age &gt;= 70">
+                                    <td><input type="radio" name="year"  value="70"/></td>
+                                </t>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Nivel de estudios</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr>
+                                <td>Sin formación</td>
+                                <td><input type="checkbox" name="level-sf" value="Sin formación"/></td>
+                              </tr>
+                              <tr>
+                                <td>Primaria</td>
+                                <td><input type="radio" name="level-primary" value="Terminada"/> Terminada</td>
+                                <td><input type="radio" name="level-primary" value="Incompleta"/> Incompleta</td>
+                              </tr>
+                              <tr>
+                                <td>Secundaria</td>
+                                <td><input type="radio" name="level-secondary" value="Terminada"/> Terminada</td>
+                                <td><input type="radio" name="level-secondary" value="Incompleta"/> Incompleta</td>
+                              </tr>
+                              <tr>
+                                <td>Preparatoria o Bachillerato</td>
+                                <td><input type="radio" name="level-preparatory" value="Terminada"/> Terminada</td>
+                                <td><input type="radio" name="level-preparatory" value="Incompleta"/> Incompleta</td>
+                              </tr>
+                              <tr>
+                                <td>Técnico Superior</td>
+                                <td><input type="radio" name="level-technical" value="Terminada"/> Terminada</td>
+                                <td><input type="radio" name="level-technical" value="Incompleta"/> Incompleta</td>
+                              </tr>
+                              <tr>
+                                <td>Licenciatura</td>
+                                <td><input type="radio" name="level-degree" value="Terminada"/> Terminada</td>
+                                <td><input type="radio" name="level-degree" value="Incompleta"/> Incompleta</td>
+                              </tr>
+                              <tr>
+                                <td>Maestría</td>
+                                <td><input type="radio" name="level-mastery" value="Terminada"/> Terminada</td>
+                                <td><input type="radio" name="level-mastery" value="Incompleta"/> Incompleta</td>
+                              </tr>
+                              <tr>
+                                <td>Doctorado</td>
+                                <td><input type="radio" name="level-doctorate" value="Terminada"/> Terminada</td>
+                                <td><input type="radio" name="level-doctorate" value="Incompleta"/> Incompleta</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Tipo de puesto</th>
+                              </tr>
+                            </thead>
+                            <tbody class="job_type">
+                              <tr>
+                                <td>Operativo</td>
+                                <td><input type="radio" name="job_type" value="Operativo"/></td>
+                                <td>Supervisor</td>
+                                <td><input type="radio" name="job_type" value="Supervisor"/></td>
+                              </tr>
+                              <tr>
+                                <td>Profesional o técnico</td>
+                                <td><input type="radio" name="job_type" value="Profesional o técnico"/></td>
+                                <td>Gerente</td>
+                                <td><input type="radio" name="job_type" value="Gerente"/></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Tipo de contratación</th>
+                              </tr>
+                            </thead>
+                            <tbody class="contract_type">
+                              <tr>
+                                <td>Por obra o proyecto</td>
+                                <td><input type="radio" name="contract_type" value="Por obra o proyecto"/></td>
+                                <td>Tiempo indeterminado </td>
+                                <td><input type="radio" name="contract_type" value="Tiempo indeterminado"/></td>
+                              </tr>
+                              <tr>
+                                <td>Por tiempo determinado (temporal)</td>
+                                <td><input type="radio" name="contract_type" value="Por tiempo determinado (temporal)"/></td>
+                                <td>Honorarios</td>
+                                <td><input type="radio" name="contract_type" value="Honorarios"/></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Tipo de personal</th>
+                              </tr>
+                            </thead>
+                            <tbody class="personal_type">
+                              <tr>
+                                <td>Sindicalizado</td>
+                                <td><input type="radio" name="personal_type" value="Sindicalizado"/></td>
+                                <td>Confianza</td>
+                                <td><input type="radio" name="personal_type" value="Confianza"/></td>
+                              </tr>
+                              <tr>
+                                <td>Ninguno</td>
+                                <td><input type="radio" name="personal_type" value="Ninguno"/></td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Tipo de jornada de trabajo</th>
+                              </tr>
+                            </thead>
+                            <tbody class="jornal_type">
+                              <tr>
+                                <td>Fijo nocturno (entre las 20:00 y 6:00 hrs)</td>
+                                <td><input type="radio" name="jornal_type" value="Fijo nocturno (entre las 20:00 y 6:00 hrs)" /></td>
+                                <td>Fijo mixto (combinación de nocturno y diurno)</td>
+                                <td><input type="radio" name="jornal_type" value="Fijo mixto (combinación de nocturno y diurno)" /></td>
+                              </tr>
+                              <tr>
+                                <td>Fijo diurno (entre las 6:00 y 20:00 hrs)</td>
+                                <td><input type="radio" name="jornal_type" value="Fijo diurno (entre las 6:00 y 20:00 hrs)"/></td>
+                                <td></td>
+                                <td></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Realiza rotación de turnos</th>
+                              </tr>
+                            </thead>
+                            <tbody class="turn">
+                              <tr>
+                                <td>Sí</td>
+                                <td><input type="radio" name="turn" value="Sí" /></td>
+                                <td>No</td>
+                                <td><input type="radio" name="turn" value="No" /></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Experiencia (años) <br/> Tiempo en el puesto actual</th>
+                              </tr>
+                            </thead>
+                            <tbody class="experience_job">
+                              <tr>
+                                <td>Menos de 6 meses</td>
+                                <td><input type="radio" name="experience_job" value="Menos de 6 meses" /></td>
+                                <td>Entre 10 a 14 años</td>
+                                <td><input type="radio" name="experience_job" value="Entre 10 a 14 años" /></td>
+                              </tr>
+                              <tr>
+                                <td>Entre 6 meses y  1 año</td>
+                                <td><input type="radio" name="experience_job" value="Entre 6 meses y  1 año" /></td>
+                                <td>Entre 15 a 19 años</td>
+                                <td><input type="radio" name="experience_job" value="Entre 15 a 19 años" /></td>
+                              </tr>
+                              <tr>
+                                <td>Entre 1 a 4 años</td>
+                                <td><input type="radio" name="experience_job" value="Entre 1 a 4 años" /></td>
+                                <td>Entre 20 a 24 años</td>
+                                <td><input type="radio" name="experience_job" value="Entre 20 a 24 años" /></td>
+                              </tr>
+                              <tr>
+                                <td>Entre 5 a 9 años</td>
+                                <td><input type="radio" name="experience_job" value="Entre 5 a 9 años" /></td>
+                                <td>25 años o más</td>
+                                <td><input type="radio" name="experience_job" value="25 años o más" /></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <table class="table">
+                            <thead class="thead-dark">
+                              <tr>
+                                <th scope="col" colspan="4" class="text-center">Tiempo experiencia laboral</th>
+                              </tr>
+                            </thead>
+                            <tbody class="experience_work">
+                              <tr>
+                                <td>Menos de 6 meses</td>
+                                <td><input type="radio" name="experience_work" value="Menos de 6 meses" /></td>
+                                <td>Entre 10 a 14 años</td>
+                                <td><input type="radio" name="experience_work" value="Entre 10 a 14 años" /></td>
+                              </tr>
+                              <tr>
+                                <td>Entre 6 meses y  1 año</td>
+                                <td><input type="radio" name="experience_work" value="Entre 6 meses y  1 año" /></td>
+                                <td>Entre 15 a 19 años</td>
+                                <td><input type="radio" name="experience_work" value="Entre 15 a 19 años" /></td>
+                              </tr>
+                              <tr>
+                                <td>Entre 1 a 4 años</td>
+                                <td><input type="radio" name="experience_work" value="Entre 1 a 4 años" /></td>
+                                <td>Entre 20 a 24 años</td>
+                                <td><input type="radio" name="experience_work" value="Entre 20 a 24 años" /></td>
+                              </tr>
+                              <tr>
+                                <td>Entre 5 a 9 años</td>
+                                <td><input type="radio" name="experience_work" value="Entre 5 a 9 años" /></td>
+                                <td>25 años o más</td>
+                                <td><input type="radio" name="experience_work" value="25 años o más" /></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                            <input type="hidden" t-att-value="survey_number" name="survey_number"/>
+                            <input type="hidden" t-att-value="today" name="today"/>
+                            <input type="hidden" t-att-value="job_id" name="job_id"/>
+                            <input type="hidden" t-att-value="department_id" name="department_id"/>
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="col-md text-center continue">
+                              <button class="btn btn-primary" type="submit">Continuar</button>
+                            </div>
+                      </div>
+                    </form>
+                    <br/>
+                    <br/>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

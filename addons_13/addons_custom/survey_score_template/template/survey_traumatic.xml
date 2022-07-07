@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="survey_traumatic_assets" inherit_id="web.assets_frontend">
+          <xpath expr="." position="inside"> 
+            <script type="text/javascript" src="/survey_score_template/static/src/js/survey_traumatic.js"/>
+          </xpath>
+        </template>
+        <template id="survey_traumatic">
+            <t t-call="survey.layout">
+                <div class="container pt-4 pb-4">
+                  <br/>
+                  <h2>CUESTIONARIO PARA IDENTIFICAR A LOS TRABAJADORES QUE FUERON SUJETOS A ACONTECIMIENTOS TRAUMÁTICOS SEVEROS</h2>
+                  <br/>
+                <form t-att-action="url_traumatic" method="POST" id="form_traumatic">
+                <table class="table">
+                    <thead class="thead-dark text-center">
+                      <tr>
+                        <th scope="col" colspan="3">Sección / Pregunta</th>
+                        <th scope="col" colspan="2">Respuesta</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <div class="section-one">
+                      <tr>
+                        <th scope="row" colspan="3">I.- Acontecimiento traumático severo <br/>
+                        ¿Ha presenciado o sufrido alguna vez, durante o con motivo del trabajo un acontecimiento como los siguientes:</th>
+                        <th>Si</th>
+                        <th>No</th>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          ¿Accidente que tenga como consecuencia la muerte, la pérdida de un miembro o una lesión grave?
+                        </td>
+                        <td><input type="radio" name="s1-1" value="Si" class="first"/></td>
+                        <td><input type="radio" name="s1-1" value="No" class="first"/></td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          ¿Asaltos?
+                        </td>
+                        <td><input type="radio" name="s1-2" value="Si" class="first"/></td>
+                        <td><input type="radio" name="s1-2" value="No" class="first"/></td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          ¿Actos violentos que derivaron en lesiones graves?
+                        </td>
+                        <td><input type="radio" name="s1-3" value="Si" class="first"/></td>
+                        <td><input type="radio" name="s1-3" value="No" class="first"/></td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          ¿Secuestro?
+                        </td>
+                        <td><input type="radio" name="s1-4" value="Si" class="first"/></td>
+                        <td><input type="radio" name="s1-4" value="No" class="first"/></td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          ¿Amenazas?
+                        </td>
+                        <td><input type="radio" name="s1-5" value="Si" class="first"/></td>
+                        <td><input type="radio" name="s1-5" value="No" class="first"/></td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          ¿Cualquier otro que ponga en riesgo su vida o salud, y/o la de otras personas?
+                        </td>
+                        <td><input type="radio" name="s1-6" value="Si" class="first"/></td>
+                        <td><input type="radio" name="s1-6" value="No" class="first"/></td>
+                      </tr>
+                      </div>
+
+                      <div class="section-two">
+                      <tr class="section-two">
+                        <td colspan="5"></td>
+                      </tr>
+                      <tr class="section-two">
+                        <th scope="row" colspan="3">II.- Recuerdos persistentes sobre el acontecimiento (durante el último mes):
+                        </th>
+                        <th>Si</th>
+                        <th>No</th>
+                      </tr>
+                      <tr class="section-two">
+                        <td colspan="3">
+                          ¿Ha tenido recuerdos recurrentes sobre el acontecimiento que le provocan malestares?
+                        </td>
+                        <td><input type="radio" name="s2-1" value="Si" class="second"/></td>
+                        <td><input type="radio" name="s2-1" value="No" class="second"/></td>
+                      </tr>
+                      <tr class="section-two">
+                        <td colspan="3">
+                          ¿Ha tenido sueños de carácter recurrente sobre el acontecimiento, que le producen malestar?
+                        </td>
+                        <td><input type="radio" name="s2-2" value="Si" class="second"/></td>
+                        <td><input type="radio" name="s2-2" value="No" class="second"/></td>
+                      </tr>
+                      </div>
+
+                      <div class="section-tree">
+                      <tr class="section-tree">
+                        <td colspan="5"></td>
+                      </tr>
+                      <tr class="section-tree">
+                        <th scope="row" colspan="3">III.- Esfuerzo por evitar circunstancias parecidas o asociadas al acontecimiento (durante el último mes):
+                        </th>
+                        <th>Si</th>
+                        <th>No</th>
+                      </tr>
+                      <tr class="section-tree">
+                        <td colspan="3">
+                          ¿Se ha esforzado por evitar todo tipo de sentimientos, conversaciones o situaciones que le puedan recordar el acontecimiento?
+                        </td>
+                        <td><input type="radio" name="s3-1" value="Si" class="tree"/></td>
+                        <td><input type="radio" name="s3-1" value="No" class="tree"/></td>
+                      </tr>
+                      <tr class="section-tree">
+                        <td colspan="3">
+                          ¿Se ha esforzado por evitar todo tipo de actividades, lugares o personas que motivan recuerdos del acontecimiento?
+                        </td>
+                        <td><input type="radio" name="s3-2" value="Si" class="tree" /></td>
+                        <td><input type="radio" name="s3-2" value="No" class="tree" /></td>
+                      </tr>
+                      <tr class="section-tree">
+                        <td colspan="3">
+                          ¿Ha tenido dificultad para recordar alguna parte importante del evento?
+                        </td>
+                        <td><input type="radio" name="s3-3" value="Si" class="tree"/></td>
+                        <td><input type="radio" name="s3-3" value="No" class="tree"/></td>
+                      </tr>
+                      <tr class="section-tree">
+                        <td colspan="3">
+                          ¿Ha disminuido su interés en sus actividades cotidianas?
+                        </td>
+                        <td><input type="radio" name="s3-4" value="Si" class="tree"/></td>
+                        <td><input type="radio" name="s3-4" value="No" class="tree"/></td>
+                      </tr>
+                      <tr class="section-tree">
+                        <td colspan="3">
+                          ¿Se ha sentido usted alejado o distante de los demás?
+                        </td>
+                        <td><input type="radio" name="s3-5" value="Si" class="tree"/></td>
+                        <td><input type="radio" name="s3-5" value="No" class="tree"/></td>
+                      </tr>
+                      <tr class="section-tree">
+                        <td colspan="3">
+                          ¿Ha notado que tiene dificultad para expresar sus sentimientos?
+                        </td>
+                        <td><input type="radio" name="s3-6" value="Si" class="tree"/></td>
+                        <td><input type="radio" name="s3-6" value="No" class="tree"/></td>
+                      </tr>
+                      <tr class="section-tree">
+                        <td colspan="3">
+                          ¿Ha tenido la impresión de que su vida se va a acortar, que va a morir antes que otras personas o que tiene un futuro limitado?
+                        </td>
+                        <td><input type="radio" name="s3-7" value="Si" class="tree"/></td>
+                        <td><input type="radio" name="s3-7" value="No" class="tree"/></td>
+                      </tr>
+                      </div>
+
+                      <div class="section-four">
+                      <tr class="section-four">
+                        <td colspan="5"></td>
+                      </tr>
+                      <tr class="section-four">
+                        <th scope="row" colspan="3">IV.- Afectación (durante el último mes):</th>
+                        <th>Si</th>
+                        <th>No</th>
+                      </tr>
+                      <tr class="section-four">
+                        <td colspan="3">
+                          ¿Ha tenido usted dificultades para dormir?
+                        </td>
+                        <td><input type="radio" name="s4-1" value="Si" class="four"/></td>
+                        <td><input type="radio" name="s4-1" value="No" class="four"/></td>
+                      </tr>
+                      <tr class="section-four">
+                        <td colspan="3">
+                          ¿Ha estado particularmente irritable o le han dado arranques de coraje?
+                        </td>
+                        <td><input type="radio" name="s4-2" value="Si" class="four"/></td>
+                        <td><input type="radio" name="s4-2" value="No" class="four"/></td>
+                      </tr>
+                      <tr class="section-four">
+                        <td colspan="3">
+                          ¿Ha tenido dificultad para concentrarse?
+                        </td>
+                        <td><input type="radio" name="s4-3" value="Si" class="four"/></td>
+                        <td><input type="radio" name="s4-3" value="No" class="four"/></td>
+                      </tr>
+                      <tr class="section-four">
+                        <td colspan="3">
+                          ¿Ha estado nervioso o constantemente en alerta?
+                        </td>
+                        <td><input type="radio" name="s4-4" value="Si" class="four"/></td>
+                        <td><input type="radio" name="s4-4" value="No" class="four"/></td>
+                      </tr>
+                      <tr class="section-four">
+                        <td colspan="3">
+                          ¿Se ha sobresaltado fácilmente por cualquier cosa?
+                        </td>
+                        <td><input type="radio" name="s4-5" value="Si" class="four"/></td>
+                        <td><input type="radio" name="s4-5" value="No" class="four"/></td>
+                      </tr>
+                      </div>
+
+                    </tbody>
+                </table>
+                    <div class="row">
+                        <div class="col text-center">
+                            <button class="btn btn-primary">Continuar</button>
+                        </div>
+                    </div>
+                    <input type="hidden" t-att-value="url_traumatic" id="url_traumatic" />
+                    <input type="hidden" t-att-value="url_traumatic" id="url_not_traumatic" />
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                </form>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

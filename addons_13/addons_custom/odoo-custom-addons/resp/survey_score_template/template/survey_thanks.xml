@@ -1,0 +1,14 @@
+<odoo>
+    <template id="survey_thanks" name="Gracias">
+        <t t-call="survey.layout">
+            <div class="wrap">
+                <div class="container">
+                    <div class="jumbotron mt32">
+                        <h1>Gracias!</h1>
+                        <p>Por responder la encuesta.</p>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

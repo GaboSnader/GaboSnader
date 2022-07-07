@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="costos_menu" name="Costos" sequence="0"/>
+        <menuitem 
+            id="menu_costos" 
+            name="Costos"
+            web_icon="costos,static/description/icon.png" 
+            sequence="1" 
+        />
+        <!-- Sub Menu Catálogos -->
+        <menuitem 
+            id="costos_catalogos"
+            name="Catálogos"
+            parent="menu_costos"
+            sequence="2"
+        />
+        <menuitem
+            id="costos_catalogos_equipo"
+            name="Equipos"
+            parent="costos_catalogos"
+            action="costos_equipo_action"
+            sequence="3"
+        />
+        <menuitem
+            id="costos_catalogos_negocio"
+            name="Negocios"
+            parent="costos_catalogos"
+            action="costos_negocio_action"
+            sequence="4"
+        />
+        <menuitem
+            id="costos_catalogos_area"
+            name="Áreas"
+            parent="costos_catalogos"
+            action="costos_area_action"
+            sequence="5"
+        />
+        <menuitem
+            id="costos_catalogos_tipo_operacion"
+            name="Tipos de Operación"
+            parent="costos_catalogos"
+            action="costos_tipo_operacion_action"
+            sequence="6"
+        />
+
+       <menuitem
+            id="costos_catalogos_department"
+            name="Departamentos"
+            parent="costos_catalogos"
+            action="costos_departamento_action"
+            sequence="8"
+        />
+
+    </data>
+</odoo>

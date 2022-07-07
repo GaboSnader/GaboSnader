@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="custom_contact_traslativo_dominio_template">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="custom_contacts.custom_contact_traslativo_dominio_template_translate" t-lang="doc.partner_id.lang"/>
+        </t>
+      </t>
+    </template>
+
+    <template id="custom_contact_traslativo_dominio_template_translate">
+      <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+        <t t-call="web.report_layout">
+        <div align="justify">
+        <span style="text-align: justify;font-family:arial;font-size:90%;line-height: 150%">
+          <span style="font-weight: bold;">CONTRATO DE PROMESA DE COMPRAVENTA O DE CONSTITUIR UN CONTRATO IRREVOCABLE TRASLATIVO DE DOMINIO</span> <span>, que realiza por una parte </span>
+          <t t-esc="doc.owner_id.display_name"/><span> a quien en lo sucesivo, y para los efectos del presente contrato, se le </span>
+          <span>denominará como</span> <span style="font-weight: bold;"> &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;;</span><span> y, por otra parte </span>
+          <t t-esc="doc.partner_id.display_name"/><span> y, a quien en lo sucesivo y tambien para los efectos del presente contrato se le denominara como &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;.</span>
+          <span>-------------------------------------------------</span><br/>
+          <span>Tanto</span><span style="font-weight: bold;"> &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span> como</span><span style="font-weight: bold;"> &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> 
+          <span>, están de acuerdo en realizar el presente contrato de promesa de compraventa, al tenor literal de las siguientes declaraciones y posteriores
+            cláusulas:---------------------------</span><br/> 
+          <center><span>---------------------------</span><span style="font-weight: bold;"> D E C L A R A C I O N E S</span><span>---------------------------</span></center><br/>
+          <span style="font-weight: bold;">PRIMERA.- &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span> declara, que es legítima propietaria, en pleno dominio y posesión, del predio urbano que se describe a continuación:</span>
+          <span>---------------------------*******FALTA PONER LOS DATOS DEL TERRENO********</span><br/>
+          <span>---------------------------</span><br/>
+          <span>Que dicho predio lo adquirió por compraventa que hizo en su favor Bertha Elena López Gual, sobre el cincuenta por ciento de la propiedad que le correspondía, constituyéndose la propiedad plena, según consta en escritura pública número ciento treinta y nueve de fecha veintiocho de marzo de dos mil trece, otorgada en esta ciudad, ante la fe del Licenciado en Derecho Bernardo Martín Rivadeneyra Pérez, Titular de la Notaría Pública Número Veinticinco del municipio de Mérida, Yucatán, misma que quedó inscrita bajo el número 1992850 (un millón novecientos noventa y dos mil ochocientos cincuenta) a folio electrónico 1070353 (un millón setenta mil trescientos cincuenta y tres) del Registro Público de la Propiedad del Estado de Yucatán. ------------------------------------------</span><br/>
+          <span style="font-weight: bold;">SEGUNDA.- &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span> Y <span style="font-weight: bold;">SEGUNDA.- &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> declaran:<br/>
+          <span>Que la primera nombrada está en disposición de vender por traslación de dominio a fideicomiso, y la última nombrada de comprar por traslación de dominio a fideicomiso, el predio identificado en la declaración primera, en las condiciones de las siguientes cláusulas: -----------------------------------------</span><br/>
+          <span>Expuesto lo anterior las partes proceden a acordar las siguientes: -------------------------------------------</span><br/>
+          <center><span>---------------------------</span><span style="font-weight: bold;"> C L A U S U L A S</span><span>---------------------------</span></center><br/>
+
+          <span style="font-weight: bold;">PRIMERA.-&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span>, declara y otorga, que se obliga y compromete a firmar un contrato de compraventa traslativo de dominio a fideicomiso, de una manera real, definitiva e irrevocable a </span><span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>
+          <span>, el predio referido en la declaración primera del presente contrato, que se encuentra libre de gravamen, sin deuda de contribuciones, comprendiendo todo cuanto de hecho y por derecho  le corresponda, quedando obligada </span><span style="font-weight: bold;"> &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>
+          <span>al saneamiento respectivo para el caso de evicción conforme a derecho, y a no gravar ni enajenar en forma alguna, el predio motivo de esta promesa. -----------------</span><br/>
+          <span>Ambas partes están de acuerdo de que en caso de que por razones de ubicación del inmueble prometido en venta y la nacionalidad del comprador no fuera jurídicamente posible realizar la compraventa que se promete, </span><span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span><span> podrá solicitar que en vez del otorgamiento del contrato de compraventa, se constituya un fideicomiso irrevocable traslativo de dominio sobre ese mismo inmueble, en los términos que la misma promitente compradora solicite, siempre y cuando haya cumplido con todas las obligaciones y contraprestaciones que el promitente comprador adquiere en este contrato.  En este caso cada vez que esta promesa se refiera al contrato de compraventa se entenderá como el contrato de fideicomiso irrevocable traslativo de dominio. ----</span><br/>
+
+          <span style="font-weight: bold;">SEGUNDA.-<span style="text-decoration: underline;">PRECIO.- </span></span>
+          <span>El precio convenido para el contrato definitivo de compraventa se hará por la cantidad global de <span style="font-weight: bold;">$****** M.N. (SON: ***************** MONEDA NACIONAL)</span>, misma que será pagada de la siguiente manera:-------------------------------------------------------------------------------------------------------------</span><br/>
+          <span>I.- La cantidad de <span style="font-weight: bold;">$<t t-esc="doc.sales_ids.amount_total"/> M.N.</span> (SON: <t t-esc="doc._num_to_text(doc.sales_ids.amount_total)"/> MONEDA NACIONAL) por concepto de enganche,********; y la cantidad restante de <span style="font-weight: bold;">$****** M.N.</span> (SON: **** MONEDA NACIONAL)por concepto de saldo al enganche, en efectivo el dia ** de *** de ****.----------------------------------------------------------------------------------------------</span><br/>
+          <span>II.- La cantidad restante de <span style="font-weight: bold;">$****** M.N.</span> (SON: ************** MONEDA NACIONAL), será pagada en *** mensualidades a partir del *** de **** del **** y que serán cubiertas de la siguiente manera: <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>pagará del mes uno al veinticuatro, la cantidad de <span style="font-weight: bold;">$****** M.N.</span> (DON: ***** MONEDA NACIONAL) de acuerdo al Anexo I, adjunto al presente contrato----------------------------------------------------------------------------------------------</span><br/>
+
+          <span style="font-weight: bold;">TERCERA.-<span style="text-decoration: underline;">FINANCIAMIENTO.- </span></span>
+          <span>Asimismo, las partes acuerdan que en cualquier momento de la vigencia del presente contrato que <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> podrá abonar a capital; Si llegase a realizar algún abono dentro de los primeros veinticuatro meses dará como resultado la disminución de la cantidad a pagar en las mensualidades subsecuentes a partir del mes veinticinco, ajustes los cuales se enterarán de manera directa, dándose enterado de esta situación en este mismo acto.</span>
+          <span>De igual manera, <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> podrá disminuir el plazo a financiar únicamente cuando realice abonos a partir del mes veinticinco y cuando la cantidad aportada sea mayor al pago que corresponda al abono a capital, tal y como se establece en el Anexo I adjunto al presente contrato, aplicándose dicha cantidad directamente al saldo del capital. ----------</span><br/>
+          <span>I. En el supusto de que <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>, abone a capital durante el plazo de las ciento veinte mensualidades, a partir del mes veinticinco, deberá realizarlo dentro de los diez días naturales siguientes a la fecha del vencimiento de su ultimo pago, en caso contrario, se tomará a cuenta de la próxima mensualidad, y la cantidad restante será abonada al capital. --------------------</span><br/>
+          <span>II. Las partes acuerdan que, en cualquier momento y durante la vigencia del presente contrato, no existirá penalización alguna si <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>, decidiera liquidar la cantidad pendiente por pagar hasta ese momento. ---------------------------------------------------------------------------- </span><br/>
+          <span style="font-weight: bold;">CUARTA.- &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span>manifiesta que la posesión de los predios se entregará contra la firma de la escritura pública de compraventa ante Notario Público, en favor de <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>, sin embargo en este acto <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span> autoriza el acceso al inmueble a <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> al igual que a sus trabajadores, con el único fin de realizar el mantenimiento del mismo, o bien, realizar construcción u obra alguna, siempre y cuando <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> se encuente al corriente con sus pagos descritos en el Anexo I. ------------------------------------------------------------</span><br/>
+
+          <span style="font-weight: bold;">QUINTA.-<span style="text-decoration: underline;">PENA POR INCUMPLIMIENTO.- </span></span>
+          <span>Tanto <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span> como <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>, están de acuerdo en las siguientes penalizaciones por incumplimiento, misma que incurrirá cuando por algunas de las causas mencionadas en las fracciones subsecuentes no se llegaré a realizar el contrato de compraventa definitivo o bien, se genere algún perjuicio en contra de <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDORA(A)&quot;</span>.------------------------------------</span><br/>
+          <span>I. En el supuesto que, <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADORA(A)&quot;</span> incumplan con las fechas de pago establecidos en el Anexo I, adjunto al presente contrato, se cobrará una pena moratoria equivalente al 5% (cinco por ciento) sobre la mensualidad vencida, así como la no pagada, dando <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>, un término de gracia de cinco días hábiles siguientes a la fecha del vencimiento mensual correspondiente, también establecida en el Anexo I. ---------------------------------</span><br/>
+          <span>II.- Si <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>  fuera la culpable o negligente, pagarán por concepto de pena el 50% (cincuenta por ciento) de la totalidad abonada en razón del predio a <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> , en un plazo de diez días hábiles contados a partir del incumplimiento, aunado a lo anterior devolverá todas las cantidades que, en su caso, hubiera recibido a cuenta del predio motivo del presente Contrato. --------------------------------------------------------------------------------------------</span><br/>
+          <span>III.- Igualmente, si <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADORA(A)&quot;</span>, fueran la culpable o negligente, pagará por concepto de pena el 50% (cincuenta por ciento) de la totalidad abonada en razón del predio a <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>, por lo que en este acto <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> autoriza a <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span> a retener dicha cantidad restante a <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> en un plazo de diez días hábiles contados a partir del incumplimiento del presente contrato. ------------------------------------------------------------------------------------------------------------------------</span><br/>
+          <span>Igual manera, <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span> devolverá la cantidad restante a <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADORA(A)&quot;</span> en un plazo de diez días hábiles contados a partir del incumplimiento del presente contrato. ----------------------------------------------------------------------------------.</span><br/>
+
+          <span style="font-weight: bold;">SEXTA.-<span style="text-decoration: underline;">DE LOS SERVICIOS DEL PREDIO.- </span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>
+          <span>, se obliga y compromete a proveer <span style="text-decoration: underline;">al predio objeto de la presente</span>, los servicios urbanos de calle asfaltada con banquetas, servicios hidráulicos y eléctricos, subterráneos a pie de casa y estructura para la instalación del alumbrado público, a más tardar en el mes de <span style="text-decoration: underline;">******** del ********</span>, término que podrá ser prorrogado hasta por noventa días hábiles por razones propias de la empresa, y en casos fortuitos o de fuerza mayor, dicha prorroga quedará sujeta a los tiempos y condiciones que en ese momento afecten la realización de los diversos servicios anteriormente mencionados. --</span>
+          <span>De igual manera, cabe aclarar que, una vez iniciados los trabajos físicos de los servicios mencionados en esta cláusula, <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> será responsable de no dañar, ni afectar las obras físicas realizadas, y, en caso de hacerlo, quedará obligada a pagar a <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span> el total de la reparación de dichas afectaciones. --------------------------</span><br/>
+
+          <span style="font-weight: bold;">SÉPTIMA.-<span style="text-decoration: underline;">DE LA RESCISIÓN.- </span></span>
+          <span>Las partes convienen que el presente contrato de promesa de compraventa únicamente puede rescindirse por las causas que a continuación se mencionan: ------</span><br/>
+          <span>I. Por la falta de dos pagos seguidos a causa de <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADORA(A)&quot;</span>--------------</span><br/>
+          <span>II.- Cuando no se realizare la celebración del contrato de compraventa, por alguna de las causas referidas en las fracciones de la cláusula quinta del presente contrato. --------------------------------------</span><br/>
+          <span>III.- Por mutuo consentimiento de las partes. ------------------------------------------------------------------------</span><br/>
+          <span>IV.- Cuando <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>, no reclame por más de un año, el cumplimiento de la promesa de compraventa una vez liquidada la deuda. ----------------------------------------------------</span><br/>
+          <span>V. Por el incumplimiento de cualquiera de las cláusulas que conforman el presente contrato. --------</span><br/>
+
+          <span style="font-weight: bold;">OCTAVA.-<span style="text-decoration: underline;">IMPUESTOS Y GASTOS.- </span></span>
+          <span>Todos los gastos, impuestos, derechos y honorarios, incluyendo el ISR por adquisición si los causase, que se originen con motivo de esta promesa de compraventa, los de la escritura de compraventa definitiva, y su inscripción en el Registro Público de la Propiedad del Estado de Yucatán, serán por cuenta única y exclusiva de <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>, salvo por el Impuesto Sobre la Renta, y el impuesto cedular, en caso de causarse, mismo que corre a cargo de <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>. --------------------------------------------</span><br/>
+
+          <span style="font-weight: bold;">NOVENA.-<span style="text-decoration: underline;">DOMICILIO JUDICIAL.- </span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>
+          <span>señala como domicilio judicial para el cumplimiento de las obligaciones consignadas en el presente contrato, así como por las controversias que se susciten con motivo del mismo, el ubicado en *********-------------</span><br/>
+          <span>I. <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADORA(A)&quot;</span>, señalan como domicilio judicial para el cumplimiento de las obligaciones consignadas en el presente contrato, así como por las controversias que se susciten con motivo del mismo, el ubicado en ************* ---------------------</span><br/>
+
+          <span style="font-weight: bold;">DÉCIMA.-&quot;EL/LA PROMITENTE VENDEDOR(A)&quot; y &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>
+          <span>, están de acuerdo y es su expresa voluntad que este contrato pueda ser certificado ante Notario Público del Estado de Yucatán, designado por las partes, para lo cual se autorizan y se dan mutuamente su consentimiento, para que cualquiera de las partes ocurra ante el fedatario designado a solicitar y obtener la certificación de este contrato en los términos de la Ley del Notariado del Estado de Yucatán en vigor. ----------------------------------------------------------------------</span><br/>
+
+          <span style="font-weight: bold;">DÉCIMO PRIMERA.-<span style="text-decoration: underline;">JURISDICCIÓN.- </span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot; y &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>
+          <span>se someten de una manera formal y expresa a la Jurisdicción de los Jueces y Tribunales competentes de esta ciudad de Mérida, Estado de Yucatán, Estados Unidos Mexicanos, para todo lo relativo al presente contrato y su cumplimiento, renunciando al fuero del domicilio o vecindad que tuvieren o pudieren llegar a tener. --------------------------------------------------------------------</span><br/>
+
+          <center><span>---------------------------</span><span style="font-weight: bold;"> G E N E R A L E S</span><span>---------------------------</span></center><br/>
+          <span style="font-weight: bold;">PRIMERA. -</span><span>El/La C. <span style="font-weight: bold;"><t t-esc="doc.owner_id.display_name"/></span>, ***********</span><br/>
+          <span style="font-weight: bold;">SEGUNDA. -</span><span>El/La C. <span style="font-weight: bold;"><t t-esc="doc.partner_id.display_name"/></span>, ***********</span><br/>
+          <span style="font-weight: bold;">TERCERA. -</span><span> Y para constancia, se firma el presente documento en dos tantos en la ciudad de Mérida, Estado de Yucatán, Estados Unidos Mexicanos, a los ** dias del mes de *** del año ****** </span><br/><br/><br/>
+          <center>
+          <span style="font-weight: bold;text-align:left;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><![CDATA[&emsp;&emsp;&emsp;]]><span style="font-weight: bold;text-align:right;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span><br/><br/><br/><br/><br/><br/>
+          <span style="font-weight: bold;">____________________________</span><![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;]]><span style="font-weight: bold;">____________________________</span><br/><br/>
+          <span style="font-weight: bold;"><t t-esc="doc.owner_id.display_name"/></span><![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;]]><span style="font-weight: bold;"><t t-esc="doc.partner_id.display_name"/></span>
+          </center>
+        </span>
+        </div>
+       </t>
+    </template>
+    <report id="custom_contacts_traslativo_dominio_report" 
+         string="Traslativo de dominio" 
+         model="custom_contacts.get_contracts"
+         report_type="qweb-pdf" 
+         file="custom_contacts.custom_contact_traslativo_dominio_template" 
+         name="custom_contacts.custom_contact_traslativo_dominio_template"
+         paperformat="custom_contacts.paperformat_contracts"/>
+  </data>
+</odoo>
+
+
+
+

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record model="ir.ui.view" id="costos_invoice_form_view">
+            <field name="name">account.move.costos.invoice</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+                 <!--Se agrega Sucursal pero si viene de herencia es solo lectura-->
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="sucursal"  required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                </xpath>
+                <xpath expr="//page[last()]" position="after">
+                    <page  string="Costos" attrs="{'invisible': [('move_type', 'not in', ('in_invoice', 'in_refund', 'in_receipt'))]}">
+                        <group string="Costos" >
+                            <group >
+                                <field name="negocio"   options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                                <field name="area"   options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                                <field name="department"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                                <field name="equipo"   options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                                <field name="tipo_operacion"   options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+
+                <!--Se simplifica porque si no se borran -->
+               <xpath expr="//field[@name='invoice_line_ids']//tree//field[@name='name']" position="after">
+                    <field name="sucursal" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}"/>
+                    <field name="negocio" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]" />
+                    <field name="area" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]" />
+                    <field name="department" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]" />
+                    <field name="equipo" force_save="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]" />
+                    <field name="tipo_operacion" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                </xpath>
+                <!-- <xpath expr="//field[@name='invoice_line_ids']" position="attributes">
+                    <attribute name="context">{'default_sucursal': sucursal,'default_negocio': negocio,'default_area': area,'default_department': department,'default_equipo': equipo,'default_tipo_operacion': tipo_operacion}</attribute>
+                </xpath>   -->             
+            </field>
+        </record>
+
+  </data>
+</odoo>

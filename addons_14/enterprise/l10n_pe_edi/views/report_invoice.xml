@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+
+        <template id="report_invoice_document"  inherit_id="account.report_invoice_document">
+            <!-- Global variables -->
+            <xpath expr="//h2[1]" position="before">
+                <t t-set="extra_edi_vals" t-value="o._l10n_pe_edi_get_extra_report_values()"/>
+            </xpath>
+
+            <xpath expr="//p[@t-if='o.narration']" position="before">
+                <p>
+                    <span><b>SON:</b> <t t-esc="extra_edi_vals.get('amount_to_text')"/></span>
+                </p>
+            </xpath>
+
+            <!-- QR-code -->
+            <xpath expr="//div[@id='qrcode']" position="after">
+                <t t-if="extra_edi_vals.get('qr_str')">
+                    <p>
+                        <img class="border border-dark rounded"
+                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s' % ('QR', extra_edi_vals['qr_str'], 100, 100)"/>
+                    </p>
+                </t>
+            </xpath>
+        </template>
+
+    </data>
+</odoo>

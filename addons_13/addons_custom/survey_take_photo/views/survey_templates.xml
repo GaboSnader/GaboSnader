@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="survey_photo_assets" inherit_id="web.assets_frontend">
+          <xpath expr="." position="inside"> 
+            <script type="text/javascript" src="/survey_take_photo/static/src/js/webcam.js" />
+            <script type="text/javascript" src="/survey_take_photo/static/src/js/webcam_custom.js" />
+          </xpath>
+        </template>
+        <template id="survey_user_input_inherit" inherit_id="survey.survey_init">
+            <xpath expr="//a" position="replace">
+                  <a role="button" class="btn btn-primary btn-lg" t-att-href="'/survey/%s/%s/%s' % (route,survey.access_token, answer.token)">
+                      Iniciar encuesta
+                  </a>
+            </xpath>
+        </template>
+        <!-- delete button retry -->
+        <template id="retake_survey_buttonr_custom" inherit_id="survey.retake_survey_button">
+            <xpath expr="//div" position="replace"></xpath>
+        </template>
+        <!-- template for photo -->
+        <template id="survey_photo" name="Survey">
+            <t t-call="survey.layout">
+                <style>
+                  .photo_new,.continue,.accept{
+                    display: none;
+                    color: white !important;
+                  }
+                  .camera{
+                    display: none;
+                  }
+                </style>
+                <div class="wrap">
+                    <div class="oe_structure" id="oe_structure_survey_photo_1"/>
+                    <div class="container mt-4">
+                        <form role="form" method="post" t-att-action="'/survey/photo/fill/%s/%s' % (survey.access_token, answer.token)" t-att-data-submit="'/survey/submit/%s/%s' % (survey.access_token, answer.token)">
+                        <h1 class="text-center mb-2">Antes de continuar...</h1>
+                        <h3 class="text-center mb-2">Esta encuesta requiere que te tomes una foto.</h3>
+                        <h4 class="text-danger text-center mt-4" id="msg-text"></h4>
+                        <div>
+                          <div class="row d-flex justify-content-center pt-4 pb-4">
+                            <div class="col-12 d-flex justify-content-center">
+                                <div id="my_camera" class="mb-4" style="width: 500px; height: 376px;"></div>
+                            </div>
+                          </div>
+                          <div class="text-center col-12 buttons clearfix">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="token" t-att-value="token" />
+                                <input type="button" id="take" class="btn btn-primary btn-lg mb-4" value="Tomar foto" name="photo" /> 
+                                <input type="button" id="take_new" class="btn btn-primary btn-lg mb-4 photo_new" value="Tomar de nuevo" name="photo_new"/> 
+                                <input type="hidden" id="picture" name="image" value=""/>
+                                <a type="button" id="accept" class="btn btn-primary btn-lg accept mb-4">Aceptar</a>
+                                <button type="submit" id="continue" class="btn btn-primary btn-lg continue mb-4">Continuar</button>
+                          </div>
+                        </div>
+                        </form>
+                    </div>
+                    <div class="oe_structure" id="oe_structure_survey_photo_2"/>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

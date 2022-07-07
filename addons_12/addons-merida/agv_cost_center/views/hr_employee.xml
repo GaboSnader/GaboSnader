@@ -1,0 +1,46 @@
+<odoo>
+  <data>
+    
+    <record id="hr_employee_view_form_inherit_cost_center" model="ir.ui.view">
+      <field name="name">hr.employee.view.form.inherit.cost_center</field>
+      <field name="model">hr.employee</field>
+      <field name="type">form</field>
+      <field name="inherit_id" ref="hr.view_employee_form"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//page[last()]" position="after">
+          <page string="Cost Center">
+            <group string="Cost Center" >
+              <group>
+		<field name="area_id" required="1" force_save="1"/>
+		<field name="warehouse_id" required="1" force_save="1"/>
+                <field name="business_id" required="1" force_save="1"/>
+                <field name="equipment_id" required="1" force_save="1"/>
+                <field name="type_of_operation_id" required="1" force_save="1"
+		       options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+              </group>
+            </group>
+          </page>
+        </xpath>
+
+      </field>
+    </record>
+    
+    <!-- <record model="ir.ui.view" id="costos_hr_employee_view"> -->
+    <!--   <field name="name">costos_hr_employee_search</field> -->
+    <!--   <field name="model">hr.employee</field> -->
+    <!--   <field name="inherit_id" ref="hr.view_employee_filter"/> -->
+    <!--   <field name="arch" type="xml"> -->
+    <!--     <xpath expr="//filter[@name='activities_upcoming_all']" position="after"> -->
+    <!--       <field name="sucursal"/> -->
+    <!--       <field name="negocio" /> -->
+    <!--       <field name="area" /> -->
+    <!--       <field name="department" /> -->
+    <!--       <field name="equipo"  /> -->
+    <!--       <field name="tipo_operacion" /> -->
+    <!--     </xpath> -->
+    <!--   </field> -->
+    <!-- </record> -->
+
+  </data>
+</odoo>

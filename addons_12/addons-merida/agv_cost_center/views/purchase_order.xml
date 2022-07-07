@@ -1,0 +1,67 @@
+<odoo>
+  <data>
+    <record id="purchase_order_view_form_inherit_cost_center" model="ir.ui.view">
+      <field name="name">purchase.order.view.form.inherit.cost_center</field>
+      <field name="model">purchase.order</field>
+      <field name="type">form</field>
+      <field name="inherit_id" ref="purchase.purchase_order_form"/>
+      <field name="arch" type="xml">
+	
+        <xpath expr="//page[@name='purchase_delivery_invoice']" position="after">
+          <page string="Cost Center">
+            <group>
+	      <field name="warehouse_id"/>	
+	      <field name="area_id" />
+              <field name="business_id"/>
+              <field name="preference_department_id"/>
+              <field name="equipment_id"/>
+              <field name="type_of_operation_id" />
+            </group>
+          </page>
+        </xpath>
+			    
+	<xpath expr="//field[@name='order_line']//tree//field[@name='account_analytic_id']"
+	       position="after">
+          <field name="warehouse_id" optional="hide"/> 
+	  <field name="area_id" optional="hide"/>
+          <field name="business_id" optional="hide"/>
+          <field name="preference_department_id" optional="hide"/>
+          <field name="equipment_id" optional="hide"/>
+          <field name="type_of_operation_id" optional="hide"/>
+        </xpath>
+
+        <xpath expr="//field[@name='order_line']//form//notebook//page[last()]"
+	       position="after">
+          <page string="Cost Center">
+            <group>
+              <field name="warehouse_id"/> 
+	      <field name="area_id"/>
+              <field name="business_id"/>
+              <field name="preference_department_id"/>
+              <field name="equipment_id"/>
+              <field name="type_of_operation_id"/>
+            </group>
+          </page>
+        </xpath>
+	
+      </field>
+    </record>
+
+    <!-- <record model="ir.ui.view" id="costos_purchase_order_view"> -->
+    <!--   <field name="name">costos_purchase_order_search</field> -->
+    <!--   <field name="model">purchase.order</field> -->
+    <!--   <field name="inherit_id" ref="purchase.view_purchase_order_filter"/> -->
+    <!--   <field name="arch" type="xml"> -->
+    <!--     <xpath expr="//filter[@name='my_purchases']" position="after"> -->
+    <!--       <field name="sucursal"/> -->
+    <!--       <field name="negocio" /> -->
+    <!--       <field name="area" /> -->
+    <!--       <field name="department" /> -->
+    <!--       <field name="equipo"  /> -->
+    <!--       <field name="tipo_operacion" /> -->
+    <!--     </xpath> -->
+    <!--   </field> -->
+    <!-- </record> -->
+
+  </data>
+</odoo>

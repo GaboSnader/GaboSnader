@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record model="ir.ui.view" id="purchase_order_form_inherit">
+        <field name="name">purchase.order</field>
+        <field name="model">purchase.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="before">              
+                <field name="sucursal" required="1" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+            </xpath>
+             <xpath expr="//page[@name='purchase_delivery_invoice']" position="after">
+                <page string="Costos">
+                    <group string="Costos" >
+                        <group>                 
+                          <field name="negocio" required="1" force_save="1" attrs="{'readonly':[('state','in',['done', 'cancel'])]}" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                          <field name="area" required="1" force_save="1" attrs="{'readonly':[('state','in',['done', 'cancel'])]}"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                          <field name="department" required="1" force_save="1" attrs="{'readonly':[('state','in',['done', 'cancel'])]}" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                          <field name="equipo" required="1" force_save="1" attrs="{'readonly':[('state','in',['done', 'cancel'])]}"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                          <field name="tipo_operacion" required="1" force_save="1" attrs="{'readonly':[('state','in',['done', 'cancel'])]}" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+            <xpath expr="//field[@name='account_analytic_id']" position="after">
+                <field name="sucursal" required="1"  force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                <field name="negocio" required="1"  force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                <field name="area" required="1"  force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                <field name="department" required="1"  force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                <field name="equipo" required="1"  force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+                <field name="tipo_operacion" required="1"  force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//form//notebook" position="inside">
+                <page string="Costos">
+                    <group>
+                        <group>
+                            <field name="sucursal"  force_save="1" required="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}"/>
+                            <field name="negocio"   force_save="1" required="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}"/>
+                            <field name="area"      force_save="1" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}"/>
+                            <field name="department" force_save="1" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}"/>
+                            <field name="equipo"    force_save="1" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}"/>
+                            <field name="tipo_operacion" force_save="1" required="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>    
+      </field>
+    </record>
+    <record model="ir.ui.view" id="costos_purchase_order_view">
+            <field name="name">costos_purchase_order_search</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+            <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_purchases']" position="after">
+                    <field name="sucursal"/>
+                    <field name="negocio" />
+                    <field name="area" />
+                    <field name="department" />
+                    <field name="equipo"  />
+                    <field name="tipo_operacion" />
+            </xpath>
+            </field>
+    </record>
+
+    </data>
+</odoo>

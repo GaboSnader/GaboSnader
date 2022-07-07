@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="view_wizard_accounting_assistant_id">
+            <field name="name">view.wizard.accounting.assistant_id.form</field>
+            <field name="model">wizard.accounting.assistant</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Asistente Contable">
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="account_id"/>
+                                <field name="journal_ids" widget="many2many_tags"/>
+                                <field name="date_inicio" required="1"/>
+                                <field name="date_fin" required="1"/>
+                                <field name="partner_id"/>
+                                <field name="product_id"/>
+                            </group>
+                            <group>
+                                <field name="branch_ids" widget="many2many_tags"/>
+                                <field name="negocio" widget="many2many_tags"/>
+                                <field name="area" widget="many2many_tags"/>
+                                <field name="department" widget="many2many_tags"/>
+                                <field name="equipo" widget="many2many_tags"/>
+                                <field name="tipo_operacion" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="agrupamiento"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <div>
+                            <button name="send" string="Generar" type="object" class="btn btn-primary" />
+                            <button special="cancel" string="Cancelar" type="object"/>
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+         <record id="action_wizard_accounting_assistant_id" model="ir.actions.act_window">
+            <field name="name">Auxiliar contable</field>
+            <field name="res_model">wizard.accounting.assistant</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem action="action_wizard_accounting_assistant_id" id="menu_action_wizard_accounting_assistant_id" parent="account.menu_finance_entries_accounting_miscellaneous" sequence="20" groups="account.group_account_manager" />
+
+
+
+    </data>
+</odoo>

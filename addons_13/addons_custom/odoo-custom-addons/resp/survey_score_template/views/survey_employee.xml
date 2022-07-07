@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    <record id='view_survey_employee_tree' model='ir.ui.view'>
+        <field name='name'>survey_score_template.survey_employee.tree</field>
+        <field name='model'>survey_score_template.survey_employee</field>
+        <field name='arch' type='xml'>
+            <tree string='Respuestas' duplicate="false">
+                <field name="user_id" string="Usuario"/>
+                <field name="survey_answer" string="Encuestas respondidas"/>
+                <field name="surveys_to_answer" string="Encuestas a responder"/>
+                <field name="token" string="Token" groups="base.group_no_one"/>
+                <field name="state" string="Estatus"/>
+            </tree>
+        </field>
+    </record>
+    <record id='view_survey_employee_form' model='ir.ui.view'>
+        <field name='name'>survey_score_template.survey_employee.form</field>
+        <field name='model'>survey_score_template.survey_employee</field>
+        <field name='arch' type='xml'>
+            <form duplicate="false">
+                <header>
+                    <field name="state" widget="statusbar" clickable="1"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="user_id" string="Usuario" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="survey_answer" string="Encuestas respondidas" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="surveys_to_answer" string="Encuestas a responder" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </group>
+                        <group>
+                            <field name="traumatic" string="Acontecimientos traumaticos" readonly="1"/>
+                            <field name="token" string="Token" groups="base.group_no_one" readonly="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='open_survey_employee_action' model='ir.actions.act_window'>
+        <field name='name'>Respuestas</field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name='res_model'>survey_score_template.survey_employee</field>
+        <field name='view_mode'>tree,form</field>
+        <field name='view_id' ref='view_survey_employee_tree'/>
+    </record>
+    <menuitem id="survey_survey_employee_submenu" name="Respuestas" action="open_survey_employee_action" parent="survey_score_template.menu_surveys_configuration" sequence="6"/>
+    </data>
+</odoo>

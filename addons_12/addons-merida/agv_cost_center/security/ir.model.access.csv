@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_cost_center_equipment,access_cost_center_equipment,model_cost_center_equipment,base.group_user,1,1,1,1
+access_cost_center_area,access_cost_center_area,model_cost_center_area,base.group_user,1,1,1,1
+access_cost_center_type_of_operation,access_cost_center_type_of_operation,model_cost_center_type_of_operation,base.group_user,1,1,1,1 
+access_cost_center_business,access_cost_center_business,model_cost_center_business,base.group_user,1,1,1,1
+access_wizard_accounting_assistant,access_wizard_accounting_assistant,model_wizard_accounting_assistant,base.group_user,1,1,1,1 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="custom_contact_solicitud_rescision_template">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="custom_contacts.custom_contact_solicitud_rescision_template_translate" t-lang="doc.partner_id.lang"/>
+        </t>
+      </t>
+    </template>
+
+    <template id="custom_contact_solicitud_rescision_template_translate">
+      <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+        <t t-call="web.report_layout">
+
+        <div align="right">
+        <span style="text-align:right;font-family:arial;font-size:90%;line-height: 150%">
+          <span>Mérida, Yucatán a ** de ** del ***</span><br/>
+          <span style="font-weight: bold;">Asunto: </span><span>Solicitud de rescisión de contrato.</span><br/><br/>
+        </span>
+        </div>
+
+        <span style="text-align:left;font-family:arial;font-size:90%;line-height: 150%">
+          <span style="font-weight: bold;">A LA SRA. ELSY LILY ACOSTA BAEZA</span><br/>
+          <span style="font-weight: bold;">PRESENTE. </span><br/><br/><br/>
+        </span>
+
+        <div align="justify">
+        <span style="text-align: justify;font-family:arial;font-size:90%;line-height: 150%">
+          <span>Por medio del presente escrito, tengo a bien solicitar la terminación de la relación contractual existente con usted. Lo anterior, en virtud de que en fecha ***** de **** del *****, celebré un contrato de promesa de compraventa de un bien inmueble descrito como se cita:</span><br/><br/>
+          <span>&quot;********DATOS PREDIO*******, con la extension de ***** de frente por ****** centimetros de fondo, de figura regular, con una superficie de ***** decímetros cuadrados, y los linderos siguientes: ******</span><br/><br/>
+          <span>Ahora bien, con respecto a lo anteriormente expuesto y en virtud de que me encuentro al corriente con mis pagos, solicito que la cantidad de </span><span style="font-weight: bold;">$***** M.N. </span><span>(SON: ******* MONEDA NACIONAL), me sea reembolsada de conformidad con la cláusula de penalización establecida en el contrato antes mencionado.  </span><br/><br/><br/>
+        </span>
+        </div>
+
+        <center> <span style="text-align:center;font-family:arial;font-size:90%;line-height: 150%">
+          <span>Atentamente</span><br/><br/><br/><br/><br/>
+          <span>_____________________________________________</span><br/>
+          <span style="font-weight: bold;"><t t-esc="doc.partner_id.display_name"/></span><br/>
+        </span></center>
+
+       </t>
+    </template>
+    <report id="custom_contacts_solicitud_rescision_report" 
+         string="Solicitud de rescisión" 
+         model="custom_contacts.get_contracts"
+         report_type="qweb-pdf" 
+         file="custom_contacts.custom_contact_solicitud_rescision_template" 
+         name="custom_contacts.custom_contact_solicitud_rescision_template"
+         paperformat="custom_contacts.paperformat_contracts"/>
+  </data>
+</odoo>
+
+
+
+

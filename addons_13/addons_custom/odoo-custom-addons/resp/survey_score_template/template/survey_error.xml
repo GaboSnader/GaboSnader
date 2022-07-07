@@ -1,0 +1,14 @@
+<odoo>
+    <template id="survey_error" name="Error">
+        <t t-call="survey.layout">
+            <div class="wrap">
+                <div class="container">
+                    <div class="jumbotron mt32">
+                        <h1>Ocurrrio un error</h1>
+                        <p t-esc="message"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

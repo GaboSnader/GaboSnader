@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="users_view_form" model="ir.ui.view">
+      <field name="name">costos.users.form</field>
+      <field name="model">res.users</field>
+      <field name="arch" type="xml">
+        <form string="Preferencias de Costos" create="false">
+          <header/>
+          <sheet string="Costos">
+            <group col="2" string="Preferencias">
+              <field name="sucursal"   options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+              <field name="area" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+              <field name="negocio" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+              <field name="department" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+              <field name="equipo" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+              <field name="tipo_operacion" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" domain="[('sucursal', '=', sucursal)]"/>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+<!--Action-->
+<record id="users_equipo_action" model="ir.actions.act_window">
+      <field name="name">Preferencias de Costos</field>
+      <field name="res_model">res.users</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+</record>
+
+<!-- Herencia de la vista preferencias para agregar el boton Costos-->
+
+<record model="ir.ui.view" id="users_form_view">
+    <field name="name">costos.users_form_view</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+    <field name="arch" type="xml">
+        <xpath expr="//button[@name='preference_change_password']" position="before">
+                <button name="searchcostosusers" type="object" string="Costos" class="btn-primary"/>
+        </xpath>
+    </field>
+</record>
+<record model="ir.ui.view" id="users_form_view2">
+    <field name="name">costos.users_form_view2</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_reset_password']" position="before">
+                <button name="searchcostosusers" type="object" string="Costos" class="btn-primary"/>
+        </xpath>
+    </field>
+</record>
+
+
+  </data>
+</odoo>

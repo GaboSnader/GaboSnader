@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="custom_contact_rescision_contrato_template">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="custom_contacts.custom_contact_rescision_contrato_template_translate" t-lang="doc.partner_id.lang"/>
+        </t>
+      </t>
+    </template>
+
+    <template id="custom_contact_rescision_contrato_template_translate">
+      <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+        <t t-call="web.report_layout">
+        <div align="justify">
+        <span style="text-align: justify;font-family:arial;font-size:90%;line-height: 150%">
+          <span style="font-weight: bold;">RESCISIÓN DE CONTRATO DE PROMESA DE COMPRAVENTA CELEBRADO EL <span t-esc="doc._num_to_text(doc._get_date(1,context_timestamp(datetime.datetime.now())))"/> DE <span t-esc="doc._get_date(2,context_timestamp(datetime.datetime.now())).upper()"/> DEL <span t-esc="doc._num_to_text(doc._get_date(3,context_timestamp(datetime.datetime.now())))"/></span> <span>, que celebran el/la </span>
+          <span style="font-weight: bold;">C. <t t-esc="doc.owner_id.display_name"/></span><span> a quien en lo sucesivo, y para los efectos del presente contrato, se le </span>
+          <span>denominará como</span> <span style="font-weight: bold;"> &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;;</span><span> y, por otra parte el/la </span>
+          <span style="font-weight: bold;">C. <t t-esc="doc.partner_id.display_name"/></span><span> a quien en lo sucesivo y tambien para los efectos del presente contrato se le denominara como &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;.</span>
+          <span>-------------------------------------------------</span><br/>
+          <span>Tanto</span><span style="font-weight: bold;"> &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span> como</span><span style="font-weight: bold;"> &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> 
+          <span>, están de acuerdo en realizar el presente rescisión de contrato, al tenor literal de las siguientes declaraciones y posteriores
+            cláusulas subsecuentes: ---------------------------</span><br/> 
+          <center><span>------------------------------------------</span><span style="font-weight: bold;">D E C L A R A C I O N E S</span><span>------------------------------------------</span></center><br/>
+          <span style="font-weight: bold;">PRIMERA.- </span><span>Las partes hacen constar que en fecha veintiséis de febrero del dos mil veintiuno, celebraron un contrato de promesa de compraventa sobre el inmueble que se describe de la siguiente manera: ------------------------------------------------------------------------------------------------------------</span><br/>
+          <span>
+            <t t-foreach="doc.sales_ids" t-as="sale">
+            <t t-foreach="sale.order_line" t-as="line">
+              <span><t t-esc="line.product_id.name"/>, ubicado en
+              <t t-if="line.product_id.street"> 
+                calle <t t-esc="line.product_id.street"/> <t t-esc="line.product_id.street_words"/>
+              </t>
+              <t t-if="line.product_id.number">
+                 número <t t-esc="line.product_id.number"/> <t t-esc="line.product_id.number_words"/>
+              </t>              
+              <t t-if="line.product_id.suburb"> en la colonia <t t-esc="line.product_id.suburb"/> </t>
+              <t t-if="line.product_id.city_id"> ciudad de <t t-esc="line.product_id.city_id.name"/>, </t>
+              <t t-if="line.product_id.state_id"><t t-esc="line.product_id.state_id.name"/></t>, con la extension de
+              <t t-if="line.product_id.property_front"> <t t-esc="line.product_id.property_front"/> <t t-esc="line.product_id.uom_id.name"/> de frente</t> por 
+              <t t-if="line.product_id.property_depth"> <t t-esc="line.product_id.property_depth"/> <t t-esc="line.product_id.uom_id.name"/> de fondo</t>, con una superficie de 
+              <t t-if="line.product_id.property_depth"> 
+                <t t-if="line.product_id.property_front">
+                  <t t-esc="doc._get_area(line.product_id.property_front, line.product_id.property_depth)"/> <t t-esc="line.product_id.uom_id.name"/>
+                </t>
+              </t>
+          </span>
+               </t></t></span>
+          <span>---------------------------</span><br/>
+          <t t-foreach="doc.sales_ids" t-as="sale">
+          <span>Que dicho predio lo adquirió por compraventa que hizo en su favor Bertha Elena López Gual, sobre el cincuenta por ciento de la propiedad que le correspondía, constituyéndose la propiedad plena, según consta en escritura pública número ciento treinta y nueve de fecha veintiocho de marzo de dos mil trece, otorgada en esta ciudad, ante la fe del Licenciado en Derecho Bernardo Martín Rivadeneyra Pérez, Titular de la Notaría Pública Número Veinticinco del municipio de Mérida, Yucatán, misma que quedó inscrita bajo el número 1992850 (un millón novecientos noventa y dos mil ochocientos cincuenta) a folio electrónico 1070353 (un millón setenta mil trescientos cincuenta y tres) del Registro Público de la Propiedad del Estado de Yucatán. ------------------------------------------</span><br/>
+          <span style="font-weight: bold;">SEGUNDA.- </span><span>Que dicho predio, se acordó entre las partes pagar la cantidad de </span><span style="font-weight: bold;">$<t t-esc="sale.amount_total"/> M.N. </span><span>(SON: <t t-esc="doc._num_to_text(sale.amount_total)"/> MONEDA NACIONAL), en un plazo de <t t-esc="sale.tipo_mesualidad"/> mensualidades consecutivas. ------- </span><br/>
+          <span style="font-weight: bold;">TERCERA.- </span><span>Que</span><span style="font-weight: bold;"> &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>
+          <span>, reconoce haber pagado a la fecha del día de hoy, la cantidad de </span><span style="font-weight: bold;">$<t t-esc="doc._get_paidnow()"/> M.N. </span><span>(SON: <t t-esc="doc._num_to_text(doc._get_paidnow())"/> MONEDA NACIONAL).---------------------------------------</span><br/>
+          <center><span>------------------------------------------</span><span style="font-weight: bold;">C L A U S U L A S</span><span>------------------------------------------</span><br/></center>
+          <span style="font-weight: bold;">PRIMERA.-</span><span> Ambas partes acuerdan por medio del presente escrito,</span><span style="font-weight: bold;"> RESCINDIR EL CONTRATO DE PROMESA DE COMPRAVENTA OTORGADO EL <t t-esc="doc._num_to_text(doc._get_date(1,sale.fecha_contrato))"/> DE <t t-esc="doc._get_date(2,sale.fecha_contrato).upper()"/> DEL <t t-esc="doc._num_to_text(doc._get_date(3,sale.fecha_contrato))"/></span>
+          <span>, respecto al predio descrito y deslindado en la declaración segunda del presente instrumento. -------------------------------------------------------------------------------------------------------------------</span><br/>
+          <span style="font-weight: bold;">SEGUNDA.- </span><span>Tanto </span><span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span>como</span><span style="font-weight: bold;"> &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>
+          <span>, convienen que la cantidad aportada a la fecha mencionada en la declaración tercera, la suma de</span><span style="font-weight: bold;"> $<t t-esc="doc._get_paidnow()"/> (SON: <t t-esc="doc._num_to_text(doc._get_paidnow())"/> MONEDA NACIONAL)</span><span>, sea reembolsada mediante ****------------------------------------------------------------------------------------------------------------------</span><br/>
+          <span>Se hace constar que el importe restante de </span><span style="font-weight: bold;">$***** (SON: ****** MONEDA NACIONAL)</span><span> será retenido por parte de </span><span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span>, a causa de los gastos generados y como pena convencional por la rescisión del contrato citado con anterioridad, misma que fue solicitado a petición personal de </span>
+          <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span><span>, autorizando está última a </span><span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span> a retenerla a su entera satisfacción, manifestando que no tiene otra cantidad o acción alguna que reclamar. --------------------------------------------------------------</span><br/>
+          <span style="font-weight: bold;">TERCERA.- </span><span>Las partes manifiestan estar de acuerdo con lo plasmado en el presente contrato y no tienen nada para reclamarse ni en lo presente ni en el futuro sobre este mismo asunto o cualquier otro factor conexo al mismo, dando por terminado cualquier vínculo jurídico producto del contrato firmado con anterioridad, dejándolo sin valor. ------------------------------------------------------------------------</span><br/>
+          <span>Y para constancia, se firma el presente documento en dos tantos a los <span t-esc="doc._num_to_text2(doc._get_date(1,context_timestamp(datetime.datetime.now())))"/> del mes de <span t-esc="doc._get_date(2,context_timestamp(datetime.datetime.now()))"/> del año <span t-esc="doc._num_to_text2(doc._get_date(3,context_timestamp(datetime.datetime.now())))"/>, en la ciudad de Mérida, Yucatán. ----------------------------------------------------------</span><br/><br/>
+          <center>
+          <span style="font-weight: bold;text-align:left;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><![CDATA[&emsp;&emsp;&emsp;]]><span style="font-weight: bold;text-align:right;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span><br/><br/><br/><br/><br/><br/>
+          <span style="font-weight: bold;">____________________________</span><![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;]]><span style="font-weight: bold;">____________________________</span><br/><br/>
+          <span style="font-weight: bold;"><t t-esc="doc.owner_id.display_name"/></span><![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;]]><span style="font-weight: bold;"><t t-esc="doc.partner_id.display_name"/></span>
+          </center>
+          </t>
+        </span>
+       </div>
+       </t>
+    </template>
+    <report id="custom_contacts_rescision_contrato_report" 
+         string="Rescisión de contrato" 
+         model="custom_contacts.get_contracts"
+         report_type="qweb-pdf" 
+         file="custom_contacts.custom_contact_rescision_contrato_template" 
+         name="custom_contacts.custom_contact_rescision_contrato_template"
+         paperformat="custom_contacts.paperformat_contracts"/>
+<!--    <report
+        id="custom_contacts_promesa_compraventa_report"
+        name="custom_contacts.promesa_compraventa_report"
+        string="Promesa de compraventa"
+        report_type="qweb-pdf"
+        paperformat="custom_contacts.paperformat_contracts"
+        multi="False" />-->
+  </data>
+</odoo>
+
+
+
+

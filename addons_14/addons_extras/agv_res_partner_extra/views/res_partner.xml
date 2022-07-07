@@ -1,0 +1,28 @@
+<odoo>
+  <data>
+
+    <record id="res_partner_form_view_inherit_res_partner_extra" model="ir.ui.view">
+      <field name="name">res.partner.form.view.inherit.res_partner_extra</field>
+      <field name="model">res.partner</field>
+      <field name="priority">0</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+
+	<xpath expr="//group[@name='sale']//field[@name='user_id']" position="before">
+          <field name="customer_code"/>
+        </xpath>
+	
+        <group name="purchase" position="inside">
+	  <field name="supplier_code"/>
+        </group>
+
+	<field name="vat" position="after">
+	  <field name="id_radical"/>
+	  <field name="id_openbravo"/>
+	</field>
+				
+      </field>      
+    </record>
+    
+  </data>
+</odoo>

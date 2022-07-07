@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id='view_qualification_tree' model='ir.ui.view'>
+        <field name='name'>survey_score_template.qualification.tree</field>
+        <field name='model'>survey_score_template.qualification</field>
+        <field name='arch' type='xml'>
+            <tree string='Calificación'>
+                <field name="name" />
+                <field name="nullo" />
+                <field name="low" />
+                <field name="medium" />
+                <field name="high" />
+                <field name="very_high" />
+            </tree>
+        </field>
+    </record>
+    <record id='view_qualification_form' model='ir.ui.view'>
+        <field name='name'>survey_score_template.qualification.form</field>
+        <field name='model'>survey_score_template.qualification</field>
+        <field name='arch' type='xml'>
+            <form string='Calificación' create="false">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="nullo" />
+                        <field name="low" />
+                        <field name="medium" />
+                        <field name="high" />
+                        <field name="very_high" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='open_qualification_action' model='ir.actions.act_window'>
+        <field name='name'>Calificación</field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name='res_model'>survey_score_template.qualification</field>
+        <field name='view_mode'>tree,form</field>
+        <field name='view_id' ref='view_qualification_tree'/>
+    </record>
+    <menuitem id="survey_qualification_submenu" name="Calificación" action="open_qualification_action" parent="survey_score_template.menu_surveys_configuration" sequence="4" groups="base.group_no_one"/>
+</odoo>

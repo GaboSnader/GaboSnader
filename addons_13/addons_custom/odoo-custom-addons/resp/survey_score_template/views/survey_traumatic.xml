@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+    <record id='view_survey_traumatic_form' model='ir.ui.view'>
+        <field name='name'>survey_score_template.survey_traumatic.form</field>
+        <field name='model'>survey_score_template.survey_traumatic</field>
+        <field name='arch' type='xml'>
+            <form create="false" edit="false" duplicate="false">
+                <style>
+                    .o_td_label{
+                        width: 100% !important;
+                    }
+                    h3{
+                        padding: 1em 0em 1em 0em;
+                    }
+                </style>
+                <sheet>
+                    <h2 class="text-center">Acontecimientos traumaticos</h2>
+                    <group>
+                        <h3>I.- Acontecimiento traumático severo
+                            ¿Ha presenciado o sufrido alguna vez, durante o con motivo del trabajo un acontecimiento como los siguientes:</h3>
+                        <field name="question_1"/>
+                        <field name="question_2"/>
+                        <field name="question_3"/>
+                        <field name="question_4"/>
+                        <field name="question_5"/>
+                        <field name="question_6"/>
+                        <h3>II.- Recuerdos persistentes sobre el acontecimiento (durante el último mes):</h3>
+                        <field name="question_7"/>
+                        <field name="question_8"/>
+                        <h3>III.- Esfuerzo por evitar circunstancias parecidas o asociadas al acontecimiento (durante el último mes):</h3>
+                        <field name="question_9"/>
+                        <field name="question_10"/>
+                        <field name="question_11"/>
+                        <field name="question_12"/>
+                        <field name="question_13"/>
+                        <field name="question_14"/>
+                        <field name="question_15"/>
+                        <field name="question_16"/>
+                        <h3>IV.- Afectación (durante el último mes):</h3>
+                        <field name="question_17"/>
+                        <field name="question_18"/>
+                        <field name="question_19"/>
+                        <field name="question_20"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    </data>
+</odoo>

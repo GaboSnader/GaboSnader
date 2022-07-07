@@ -1,0 +1,18 @@
+<odoo>
+  <record id="res_users_view_form_inherit_cost_center" model="ir.ui.view">
+    <field name="name">res.users.view.form.inherit.cost_center</field>
+    <field name="model">res.users</field>
+    <field name="inherit_id" ref="base.view_users_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//page[@name='references']//group[last()]" position="after">
+	<group name="cost_center" string="Cost Center">
+          <field name="area_id"/>
+          <field name="business_id"/>
+          <field name="preference_department_id"/>
+          <field name="equipment_id"/>
+          <field name="type_of_operation_id"/>
+	</group>
+      </xpath>
+    </field>
+  </record>
+</odoo>

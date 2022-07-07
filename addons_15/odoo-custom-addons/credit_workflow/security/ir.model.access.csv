@@ -1,0 +1,3 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_credit_worflow_credit_request_user,access_credit_worflow_credit_request_user,model_credit_workflow_credit_request,base.group_user,1,1,1,1
+access_credit_workflow_amortization_user,access_credit_workflow_amortization_user,model_credit_workflow_amortization,base.group_user,1,1,1,1

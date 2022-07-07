@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="SolMapView_Template" xml:space="preserve">
+    <div t-name="Empty" class="container-fluid">
+
+    </div>
+    <div t-name="SolMapView" class="container-fluid">
+        <h1>Solver Map OL</h1>
+        <div id="olmap" class="ol-map"></div>
+        <div class="searchControl">
+            <i>
+                Type a letter in the search bar to search for a key word
+            </i>
+	    </div>
+        <div id="olpopup" class="ol-popup">
+            <a role="button" id="popupcloser"  class="ol-popup-closer"></a>
+            <div id="popup-content">
+            </div>
+        </div>
+    </div>
+
+
+
+</templates>

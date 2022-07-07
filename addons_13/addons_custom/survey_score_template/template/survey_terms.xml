@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="survey_terms_assets" inherit_id="web.assets_frontend">
+          <xpath expr="." position="inside"> 
+            <script type="text/javascript" src="/survey_score_template/static/src/js/survey_terms.js"/>
+          </xpath>
+        </template>
+        <!-- template for terms -->
+        <template id="survey_terms" name="Terminos y condiciones">
+            <style>
+              .text{
+                height: 400px;
+                overflow: auto;
+              }
+              .politic{
+                display: none;
+              }
+              .continue{
+                display: none;
+                color: white !important;
+              }
+            </style>
+            <t t-call="survey.layout">
+                <div class="container pt-4 pb-4">
+                    <br/>
+                    <br/>
+                    <h2 class="text-center">Antes de continuar</h2>
+                    <div class="text pt-4 pb-4 mb-4">
+                      <div class="terms">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?</p>
+                      </div>
+                      <div class="politic">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo quae, repellendus modi, aliquid id minus sint. Obcaecati, rerum porro officia. Ullam cupiditate, nobis. Id quia officiis sunt aliquid maxime optio?</p>
+                      </div>
+                    </div>
+                    <h5 class="pull-right"><input id="check1" class="check" type="checkbox" /> Acepta <a href="javascript:;" id="terms">nuestros terminos y condiciones </a></h5>
+                    <div class="clearfix" />
+                    <h5 class="pull-right"><input id="check2" class="check" type="checkbox"/> Acepta <a href="javascript:;" id="politic">nuestra politica de privacidad </a></h5>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="col-md text-center continue">
+                      <a t-att-href="url" class="btn btn-primary">Continuar</a>
+                    </div>
+                    <br/>
+                    <br/>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

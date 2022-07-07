@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- template for nom -->
+        <template id="survey_nom" name="Norma 35">
+            <t t-call="survey.layout">
+                <div class="container pt-4 pb-4">
+                    <br/>
+                    <br/>
+                    <div class="text pt-4 pb-4 mb-4">
+                        <h2 class="text-center">Bienvenid@</h2>
+                        <br/>
+                        <br/>
+                        <h4>La NOM 035 tiene como objetivo establecer los elementos para identificar, analizar y prevenir los factores de riesgo psicosocial, así como para promover un entorno organizacional favorable en los centros de trabajo.</h4>
+                        <br/>
+                        <p class="text-right">Si estas listo, da click en continuar</p>
+                    </div>
+                    <br/>
+                    <div class="col-md text-center">
+                      <a t-att-href="'/survey/nom-35/start/'" class="btn btn-primary">Comenzar</a>
+                    </div>
+                    <br/>
+                    <br/>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

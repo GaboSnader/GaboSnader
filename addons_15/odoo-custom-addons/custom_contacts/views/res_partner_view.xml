@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+  <data>
+    <record id="custom_sale_inherit_res_partner" model="ir.ui.view">
+      <field name="name">custom_sale.inherit_res_partner</field>
+      <field name="model">res.partner</field>
+      <field name="inherit_id" ref="base.view_partner_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form/sheet/notebook" position="inside">
+          <page name="xtra_info" string="Información Extra">
+            <group>
+              <group>
+                <field name="birthday_date"/>
+                <field name="birthday_country"/>
+                <field name="job_occupation"/>
+                <field name="curp"/>
+              </group>
+              <group>
+                <field name="document_id"/>
+                <field name="document_response"/>
+                <field name="document_number"/>
+              </group>
+            </group>
+          </page>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record model="ir.ui.view" id="hr_employee_costos_form_inherit">
+        <field name="name">hr.employee.costos</field>
+        <field name="model">hr.employee</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='department_id']" position="before">              
+                <field name="sucursal" required="1" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+            </xpath>
+             <xpath expr="//page[last()]" position="after">
+                <page string="Costos">
+                    <group string="Costos" >
+                        <group>                 
+                          <field name="negocio" required="1" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                          <field name="area" required="1" force_save="1"  options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                          <field name="department" required="1" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                          <field name="equipo" required="1" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                          <field name="tipo_operacion" required="1" force_save="1" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+
+      </field>
+    </record>
+    <record model="ir.ui.view" id="costos_hr_employee_view">
+            <field name="name">costos_hr_employee_search</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_filter"/>
+            <field name="arch" type="xml">
+            <xpath expr="//filter[@name='activities_upcoming_all']" position="after">
+                    <field name="sucursal"/>
+                    <field name="negocio" />
+                    <field name="area" />
+                    <field name="department" />
+                    <field name="equipo"  />
+                    <field name="tipo_operacion" />
+            </xpath>
+            </field>
+    </record>
+
+    </data>
+</odoo>

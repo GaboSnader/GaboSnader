@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <template id="custom_contact_promesa_compraventa_template">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+            <t t-call="custom_contacts.custom_contact_promesa_compraventa_template_translate" t-lang="doc.partner_id.lang"/>
+        </t>
+      </t>
+    </template>
+
+    <template id="custom_contact_promesa_compraventa_template_translate">
+      <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)" />
+        <t t-call="web.report_layout">
+        <div align="justify">
+        <span style="text-align: justify;font-family:arial;font-size:90%;line-height: 150%">
+          <span style="font-weight: bold;">CONTRATO DE PROMESA DE COMPRAVENTA</span> <span>, que realiza por una parte </span>
+          <t t-esc="doc.owner_id.display_name"/><span> a quien en lo sucesivo, y para los efectos del presente contrato, se le </span>
+          <span>denominará como</span> <span style="font-weight: bold;"> &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;;</span><span> y, por otra parte </span>
+          <t t-esc="doc.partner_id.display_name"/><span> y, a quien en lo sucesivo y tambien para los efectos del presente contrato se le denominara como &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;.</span>
+          <span>-------------------------------------------------</span><br/>
+          <span>Tanto</span><span style="font-weight: bold;"> &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span> como</span><span style="font-weight: bold;"> &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> 
+          <span>, están de acuerdo en realizar el presente contrato de promesa de compraventa, al tenor literal de las siguientes declaraciones y posteriores
+            cláusulas:---------------------------</span><br/> 
+          <center><span>------------------------------------------</span><span style="font-weight: bold;">D E C L A R A C I O N E S</span><span>------------------------------------------</span></center><br/>
+          <span style="font-weight: bold;">PRIMERA.- &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span> declara, que es legítima propietaria, en pleno dominio y posesión, del predio urbano que se describe a continuación:</span>
+          <t t-foreach="doc.sales_ids" t-as="sale">
+          <t t-foreach="sale.order_line" t-as="line">
+            <span><t t-esc="line.product_id.name"/>, ubicado en
+              <t t-if="line.product_id.street"> 
+                calle <t t-esc="line.product_id.street"/> <t t-esc="line.product_id.street_words"/>
+              </t>
+              <t t-if="line.product_id.number">
+                 número <t t-esc="line.product_id.number"/> <t t-esc="line.product_id.number_words"/>
+              </t>              
+              <t t-if="line.product_id.suburb"> en la colonia <t t-esc="line.product_id.suburb"/> </t>
+              <t t-if="line.product_id.city_id"> ciudad de <t t-esc="line.product_id.city_id.name"/>, </t>
+              <t t-if="line.product_id.state_id"><t t-esc="line.product_id.state_id.name"/></t>, con la extension de
+              <t t-if="line.product_id.property_front"> <t t-esc="line.product_id.property_front"/> <t t-esc="line.product_id.uom_id.name"/> de frente</t> por 
+              <t t-if="line.product_id.property_depth"> <t t-esc="line.product_id.property_depth"/> <t t-esc="line.product_id.uom_id.name"/> de fondo</t>, con una superficie de 
+              <t t-if="line.product_id.property_depth"> 
+                <t t-if="line.product_id.property_front">
+                  <t t-esc="doc._get_area(line.product_id.property_front, line.product_id.property_depth)"/> <t t-esc="line.product_id.uom_id.name"/>
+                </t>
+              </t>
+
+            </span><br/>
+          </t>
+          </t>
+          <span>---------------------------</span><br/>
+          <span>Que dicho predio lo adquirió por compraventa que hizo en su favor Bertha Elena López Gual, sobre el cincuenta por ciento de la propiedad que le correspondía, constituyéndose la propiedad plena, según consta en escritura pública número ciento treinta y nueve de fecha veintiocho de marzo de dos mil trece, otorgada en esta ciudad, ante la fe del Licenciado en Derecho Bernardo Martín Rivadeneyra Pérez, Titular de la Notaría Pública Número Veinticinco del municipio de Mérida, Yucatán, misma que quedó inscrita bajo el número 1992850 (un millón novecientos noventa y dos mil ochocientos cincuenta) a folio electrónico 1070353 (un millón setenta mil trescientos cincuenta y tres) del Registro Público de la Propiedad del Estado de Yucatán. ------------------------------------------</span><br/>
+          <span>Expuesto lo anterior las partes proceden a acordar las siguientes: -------------------------------------------</span><br/>
+          <span>------------------------------------------</span><span style="font-weight: bold;">C L A U S U L A S</span><span>------------------------------------------</span><br/>
+        <t t-foreach="doc.sales_ids" t-as="sale">
+          <span style="font-weight: bold;">PRIMERA.-</span><span>En este acto </span><span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>
+          <span>, promete vender a </span><span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span><span> y está a su vez, promete comprar a aquella, el predio descrito y deslindado en la declaración primera del presente contrato, en los plazos y condiciones establecidos en las cláusulas siguientes: ----------------------------------------------------------------------------------------------</span><br/>
+          <span style="font-weight: bold;">SEGUNDA.-<span style="text-decoration: underline;">VENTA.- </span><span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot; </span></span>
+          <span> declara y otorga que, una vez cubiertos todos y cada uno de los pagos en los plazos que más adelante se describen, se obliga y compromete a otorgar el contrato definitivo de compraventa sobre predio objeto de la presente promesa, de una manera real, definitiva e irrevocable a favor de </span>
+          <span style="font-weight: bold;"> &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;,</span><span style="text-decoration: underline;"> en un plazo máximo de <t t-esc="sale.tipo_mesualidad"/> meses, </span>
+          <span>este plazo no comenzará a contarse hasta en tanto <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span> no exhiba las factibilidades de los servicios de agua y electricidad correspondientes, a <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;,</span> contra firma de recibido por dicha exhibición-------------------------------------------------------------------------------------------------------</span><br/>
+          <span style="font-weight: bold;">TERCERA.-<span style="text-decoration: underline;">PRECIO.- </span></span>
+          <span>El precio convenido para el contrato definitivo de compraventa se hará por la cantidad global de <span style="font-weight: bold;">$<t t-esc="sale.amount_total"/> M.N.</span> (SON: <t t-esc="doc._num_to_text(sale.amount_total)"/> MONEDA NACIONAL), misma que será pagada de la siguiente manera:-------------------------------------------------------------------------------------------------------------</span><br/>
+          <span>I.- La cantidad de <span style="font-weight: bold;">$<t t-esc="sale.enganche_parcial"/> M.N.</span> (SON: <t t-esc="doc._num_to_text(sale.enganche_parcial)"/> MONEDA NACIONAL) por concepto de enganche, cantidad de la cual se pagó <span style="font-weight: bold;">$<t t-esc="sale.apartado"/> M.N.</span> (SON <t t-esc="doc._num_to_text(sale.apartado)"/> MONEDA NACIONAL) el <t t-esc="doc._num_to_text2(doc._get_date_apartado(1))"/> de <t t-esc="doc._get_date_apartado(2)"/> del <t t-esc="doc._num_to_text2(doc._get_date_apartado(3))"/>; y la cantidad restante de <span style="font-weight: bold;">$<t t-esc="doc._get_restant(sale.enganche_parcial, sale.apartado)"/> M.N.</span> (SON: <t t-esc="doc._num_to_text(doc._get_restant(sale.enganche_parcial, sale.apartado))"/> MONEDA NACIONAL) pagado el dia <t t-esc="doc._get_date(1,sale.limit_pago_eng)"/> de <t t-esc="doc._get_date(2,sale.limit_pago_eng)"/> de <t t-esc="doc._get_date(3,sale.limit_pago_eng)"/>.----------------------------------------------------------------------------------------------</span><br/>
+          <span>II.- La cantidad restante de <span style="font-weight: bold;">$<t t-esc="doc._get_restant(sale.amount_total,doc._get_restant(sale.enganche_parcial, sale.apartado))"/> M.N.</span> (SON: <t t-esc="doc._num_to_text(doc._get_restant(sale.amount_total,doc._get_restant(sale.enganche_parcial, sale.apartado)))"/> MONEDA NACIONAL), deberán ser pagadas en su integridad dentro del plazo establecido en la cláusula segunda del presente contrato con el incremento que corresponda según se establece en el Anexo I, adjunto al presente contrato y previo al otorgamiento de la escritura pública definitiva de compraventa a favor de <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>.----------------------------------------------------------------------------------------------</span><br/>
+          <span>Asimismo, las partes acuerdan que en cualquier momento de la vigencia del presente contrato que <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> podrá saldar el importe restante con el incremento a que haya lugar acorde a la tabla del Anexo I. -------------------------------------------------------------------------------------</span><br/>
+          <span>Las partes acuerdan que, en cualquier momento y durante la vigencia del presente contrato, no existirá penalización alguna si <span style="font-weight: bold;"> &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;,</span> decidiera liquidar la cantidad pendiente por pagar hasta ese momento. ---------------------------------------------------------------------------- </span><br/>
+          <span style="font-weight: bold;">CUARTA.-<span style="text-decoration: underline;">DE LOS SERVICIOS DEL PREDIO.- </span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>
+          <span>, se obliga y compromete a proveer a los predios en referencia en este contrato, los servicios urbanos de calle asfaltada con banquetas, servicios hidráulicos y eléctricos subterráneos a pie de casa y estructura para la instalación del alumbrado público, a más tardar en *** del ****, término que podrá ser prorrogado noventa días hábiles por razones propias de la empresa, y, en casos fortuitos o de fuerza mayor, la prórroga quedará sujeta a los tiempos y condiciones que en ese momento afecten la realización de los diversos servicios anteriormente mencionados. ------------------</span><br/>
+          <span>De igual manera, cabe aclarar que, una vez iniciados los trabajos físicos de los servicios mencionados en esta cláusula, <span>&quot;EL/LA PROMITENTE COMPRADOR(A)&quot; </span> será responsable de no dañar, ni afectar las obras físicas realizadas, y en caso de hacerlo, quedará obligada a pagar a <span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot; </span> el total de la reparación de dichas obras afectadas. ---------------------</span><br/>
+          <span style="font-weight: bold;">QUINTA.- &quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><span>manifiesta que la posesión de los predios se entregará contra la firma de la escritura pública de compraventa ante Notario Público, en favor de <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>, y que dicha escritura se otorgará una vez realizado el pago total de la cantidad pactada en la cláusula segunda del presente contrato. Por otro lado <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span> autoriza el acceso a los inmuebles a <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> al igual que a sus trabajadores, con el único fin de realizar el mantenimiento del mismo, o bien, realizar construcción u obra alguna. ------------------------------------------------------------</span><br/>
+          <span style="font-weight: bold;">SEXTA.-<span style="text-decoration: underline;">DE LA RESCISION.- </span></span>
+          <span>Las partes convienen que el presente contrato de promesa de compraventa únicamente puede rescindirse por las causas que a continuación se mencionan: ------</span><br/>
+          <span>I. Que al momento de cubrir el importe restante, no se pague el interés que corresponda al mes de dicho pago, esto acorde al Anexo I, adjunto al presente contrato. ---------------------------------------------</span><br/>
+          <span>II.- Cuando vencido el plazo establecido en la cláusula segunda del presente contrato y no se haya cubierto el importe total establecido en la cláusula cuarta del presente instrumento, <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> perderá en favor <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span> todas las cantidades otorgadas en concepto de enganche, al igual que las construcciones y obras que sobre los predios haya edificado en dicho momento, los perderá íntegramente. -----------------------------------</span><br/>
+          <span>III.- Por mutuo consentimiento de las partes. ------------------------------------------------------------------------</span><br/>
+          <span>IV.- Cuando <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>, no reclame por más de un año, el cumplimiento de la promesa de compraventa una vez liquidada la deuda. ----------------------------------------------------</span><br/>
+          <span>V. Por el incumplimiento de cualquiera de las cláusulas que conforman el presente contrato. --------</span><br/>
+          <span style="font-weight: bold;">SÉPTIMA.-<span style="text-decoration: underline;">IMPUESTOS Y GASTOS.- </span></span>
+          <span>Todos los gastos, impuestos, derechos y honorarios, incluyendo el ISR por adquisición si los causase, que se originen con motivo de esta promesa de compraventa, los de la escritura de compraventa definitiva, y su inscripción en el Registro Público de la Propiedad del Estado de Yucatán, serán por cuenta única y exclusiva de <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>, salvo por el Impuesto Sobre la Renta, y el impuesto cedular, en caso de causarse, mismo que corre a cargo de <span style="font-weight: bold;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>. --------------------------------------------</span><br/>
+          <span style="font-weight: bold;">OCTAVA.-<span style="text-decoration: underline;">DOMICILIO JUDICIAL.- </span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span>
+          <span>señala como domicilio judicial para el cumplimiento de las obligaciones consignadas en el presente contrato, así como por las controversias que se susciten con motivo del mismo, el ubicado en 
+          <t t-esc="doc.owner_id.street_name"/> número <t t-esc="doc.owner_id.street_number"/><t t-if="doc.owner_id.street_number2">-<t t-esc="doc.owner_id.street_number2"/> </t> <t t-esc="doc.owner_id.l10n_mx_edi_colony"/>, <t t-esc="doc.owner_id.city"/>, <t t-esc="doc.owner_id.state_id.name"/> CP. <t t-esc="doc.owner_id.zip"/>, <t t-esc="doc.owner_id.country_id.name"/><br/>
+          <span>I. <span style="font-weight: bold;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span> señala como domicilio judicial para el cumplimiento de las obligaciones consignadas en el presente contrato, así como por las controversias que se susciten con motivo del mismo, el ubicado en
+        
+          <t t-esc="doc.partner_id.street_name"/> número <t t-esc="doc.partner_id.street_number"/><t t-if="doc.partner_id.street_number2">-<t t-esc="doc.partner_id.street_number2"/> </t> <t t-esc="doc.partner_id.l10n_mx_edi_colony"/>, <t t-esc="doc.partner_id.city"/>, <t t-esc="doc.partner_id.state_id.name"/> CP. <t t-esc="doc.partner_id.zip"/>, <t t-esc="doc.partner_id.country_id.name"/></span><br/>
+          -------------</span><br/>
+          <span style="font-weight: bold;">NOVENA.-<span style="text-decoration: underline;">CERTIFICACIÓN DE DOCUMENTO.- </span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot; y &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>
+          <span>, están de acuerdo y es su expresa voluntad que este contrato pueda ser certificado ante Notario Público del Estado de Yucatán, designado por las partes, para lo cual se autorizan y se dan mutuamente su consentimiento, para que cualquiera de las partes ocurra ante el fedatario designado a solicitar y obtener la certificación de este contrato en los términos de la Ley del Notariado del Estado de Yucatán en vigor. ----------------------------------------------------------------------</span><br/>
+          <span style="font-weight: bold;">DÉCIMO.-<span style="text-decoration: underline;">JURISDICCIÓN.- </span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot; y &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>
+          <span>se someten de una manera formal y expresa a la Jurisdicción de los Jueces y Tribunales competentes de esta ciudad de Mérida, Estado de Yucatán, Estados Unidos Mexicanos, para todo lo relativo al presente contrato y su cumplimiento, renunciando al fuero del domicilio o vecindad que tuvieren o pudieren llegar a tener. --------------------------------------------------------------------</span><br/>
+          <span style="font-weight: bold;">DÉCIMO PRIMERA.-<span style="text-decoration: underline;">DISPOSICIONES JURÍDICAS.- </span>&quot;EL/LA PROMITENTE VENDEDOR(A)&quot; y &quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span>
+          <span>, declaran, que han celebrado el contrato, con el cual manifiestan estar conformes, basados en la libertad de contratación que garantiza la Constitución Política de los Estados Unidos Mexicanos, que reconocen que rige sobre cualesquiera disposiciones legales. ------</span><br/>
+          <span>---------------------------</span><span style="font-weight: bold;"> G E N E R A L E S</span><span>---------------------------</span><br/>
+          <span style="font-weight: bold;">PRIMERA. -</span><span>El/La C. <span style="font-weight: bold;"><t t-esc="doc.owner_id.display_name"/></span>, nacida en 
+          <t t-esc="doc.owner_id.birthday_country.name"/> el dia <t t-esc="doc._num_to_text2(doc._get_date(1,doc.owner_id.birthday_date))"/> de <t t-esc="doc._get_date(2,doc.owner_id.birthday_date)"/> del año <t t-esc="doc._num_to_text2(doc._get_date(3,doc.owner_id.birthday_date))"/>, de <t t-esc="doc._num_to_text2(doc._get_old(doc.owner_id.birthday_date))"/> años de edad, <t t-esc="doc.owner_id.job_occupation"/>, con registro federal de Contribuyentes: <t t-esc="doc.owner_id.vat"/> y con domicilio en <t t-esc="doc.owner_id.street_name"/> número <t t-esc="doc.owner_id.street_number"/><t t-if="doc.owner_id.street_number2">-<t t-esc="doc.owner_id.street_number2"/> </t> <t t-esc="doc.owner_id.l10n_mx_edi_colony"/>, <t t-esc="doc.owner_id.city"/>, <t t-esc="doc.owner_id.state_id.name"/> CP. <t t-esc="doc.owner_id.zip"/>, <t t-esc="doc.owner_id.country_id.name"/></span><br/>
+          <span style="font-weight: bold;">SEGUNDA. -</span><span>El/La C. <span style="font-weight: bold;"><t t-esc="doc.partner_id.display_name"/></span>, nacida en 
+          <t t-esc="doc.partner_id.birthday_country.name"/> el dia <t t-esc="doc._num_to_text2(doc._get_date(1,doc.partner_id.birthday_date))"/> de <t t-esc="doc._get_date(2,doc.partner_id.birthday_date)"/> del año <t t-esc="doc._num_to_text2(doc._get_date(3,doc.partner_id.birthday_date))"/>, de <t t-esc="doc._num_to_text2(doc._get_old(doc.partner_id.birthday_date))"/> años de edad, <t t-esc="doc.partner_id.job_occupation"/>, con registro federal de Contribuyentes: <t t-esc="doc.partner_id.vat"/> y con domicilio en <t t-esc="doc.partner_id.street_name"/> número <t t-esc="doc.partner_id.street_number"/><t t-if="doc.partner_id.street_number2">-<t t-esc="doc.partner_id.street_number2"/> </t> <t t-esc="doc.partner_id.l10n_mx_edi_colony"/>, <t t-esc="doc.partner_id.city"/>, <t t-esc="doc.partner_id.state_id.name"/> CP. <t t-esc="doc.partner_id.zip"/>, <t t-esc="doc.partner_id.country_id.name"/></span><br/>
+          <span style="font-weight: bold;">TERCERA. -</span><span> Y para constancia, se firma el presente documento en dos tantos en la ciudad de Mérida, Estado de Yucatán, Estados Unidos Mexicanos, a los <span t-esc="doc._num_to_text2(doc._get_date(1,context_timestamp(datetime.datetime.now())))"/> dias del mes de <span t-esc="doc._get_date(2,context_timestamp(datetime.datetime.now()))"/> del año <span t-esc="doc._num_to_text2(doc._get_date(3,context_timestamp(datetime.datetime.now())))"/> </span><br/><br/><br/>
+          </t>
+          <center>
+          <span style="font-weight: bold;text-align:left;">&quot;EL/LA PROMITENTE VENDEDOR(A)&quot;</span><![CDATA[&emsp;&emsp;&emsp;]]><span style="font-weight: bold;text-align:right;">&quot;EL/LA PROMITENTE COMPRADOR(A)&quot;</span><br/><br/><br/><br/><br/><br/>
+          <span style="font-weight: bold;">____________________________</span><![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;]]><span style="font-weight: bold;">____________________________</span><br/><br/>
+          <span style="font-weight: bold;"><t t-esc="doc.owner_id.display_name"/></span><![CDATA[&emsp;&emsp;&emsp;&emsp;&emsp;]]><span style="font-weight: bold;"><t t-esc="doc.partner_id.display_name"/></span>
+          </center>
+        </span>
+        </div>
+       </t>
+    </template>
+    <report id="custom_contacts_promesa_compraventa_report" 
+         string="Promesa de compraventa" 
+         model="custom_contacts.get_contracts"
+         report_type="qweb-pdf" 
+         file="custom_contacts.custom_contact_promesa_compraventa_template" 
+         name="custom_contacts.custom_contact_promesa_compraventa_template"
+         paperformat="custom_contacts.paperformat_contracts"/>
+<!--    <report
+        id="custom_contacts_promesa_compraventa_report"
+        name="custom_contacts.promesa_compraventa_report"
+        string="Promesa de compraventa"
+        report_type="qweb-pdf"
+        paperformat="custom_contacts.paperformat_contracts"
+        multi="False" />-->
+  </data>
+</odoo>
+
+
+
+

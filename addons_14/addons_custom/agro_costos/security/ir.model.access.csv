@@ -1,0 +1,7 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_costos_equipo,costos.equipo,model_costos_equipo,base.group_user,1,1,1,1
+access_costos_tipo_operacion,costos.tipo_operacion,model_costos_tipo_operacion,base.group_user,1,1,1,1
+access_costos_area,costos.area,model_costos_area,base.group_user,1,1,1,1
+access_costos_departamento,costos.departamento,model_costos_departamento,base.group_user,1,1,1,1
+access_costos_negocio,costos.negocio,model_costos_negocio,base.group_user,1,1,1,1
+access_wizard_accounting_assistant,wizard_accounting_assistant,model_wizard_accounting_assistant,base.group_user,1,1,1,1

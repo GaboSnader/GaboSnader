@@ -1,0 +1,24 @@
+<odoo>
+    <record id='survey_question_inherit' model='ir.ui.view'>
+        <field name='name'>survey.question.form</field>
+        <field name='model'>survey.question</field>
+        <field name="inherit_id" ref="survey.survey_question_form"/>
+        <field name='arch' type="xml">
+            <xpath expr="//field[@name='constr_mandatory']" position="after">
+                <field name="optional"/>
+            </xpath>
+            <xpath expr="//field[@name='labels_ids']/tree" position="inside">
+                <field name="answer_score"/>
+            </xpath>
+            <xpath expr="//field[@name='labels_ids_2']/tree" position="replace">
+                <tree editable="bottom">
+                    <field name="sequence" widget="handle"/>
+                    <field name="value" string="Valor"/>
+                    <field name="category_id"/>
+                    <field name="domain_id" attrs="{'readonly': [('category_id', '==', False)]}"/>
+                    <field name="dimension_id" attrs="{'readonly': [('domain_id', '==', False)]}"/>
+                </tree>
+            </xpath>
+        </field>
+    </record>
+</odoo>

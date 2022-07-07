@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id='view_domain_tree' model='ir.ui.view'>
+        <field name='name'>survey_score_template.domain.tree</field>
+        <field name='model'>survey_score_template.domain</field>
+        <field name='arch' type='xml'>
+            <tree string='Dominio'>
+                <field name="name" />
+                <field name="null" />
+                <field name="low" />
+                <field name="medium" />
+                <field name="high" />
+                <field name="very_high" />
+                <field name="category_id" />
+                <field name="dimension_id" />
+            </tree>
+        </field>
+    </record>
+    <record id='view_domain_form' model='ir.ui.view'>
+        <field name='name'>survey_score_template.domain.form</field>
+        <field name='model'>survey_score_template.domain</field>
+        <field name='arch' type='xml'>
+            <form string='Dominio' duplicate="true">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="survey_id" />
+                        <field name="null" />
+                        <field name="low" />
+                        <field name="medium" />
+                        <field name="high" />
+                        <field name="very_high" />
+                        <field name="category_id" />
+                        <field name="dimension_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='open_domain_action' model='ir.actions.act_window'>
+        <field name='name'>Dominio</field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name='res_model'>survey_score_template.domain</field>
+        <field name="context">{'group_by':'survey_id'}</field>
+        <field name='view_mode'>tree,form</field>
+        <field name='view_id' ref='view_domain_tree'/>
+    </record>
+    <menuitem id="survey_domain_submenu" name="Dominio" action="open_domain_action" parent="survey_score_template.menu_surveys_configuration" sequence="2" groups="base.group_no_one"/>
+</odoo>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+<!--        <record model="sol.map.manage.overlay" id="overlay_1">
+            <field name="name">popup-content-card2</field>
+            <field name="model_name">res.partner</field>
+            <field name="overlay_template"></field>
+            <field name="is_default">true</field>
+        </record>
+        <record model="sol.map.manage.overlay" id="overlay_2">
+            <field name="name">SolMapView2</field>
+            <field name="model_name">sol.map.manage.overlay</field>
+            <field name="overlay_template">""
+            </field>
+            <field name="is_default">true</field>
+        </record>
+
+		<record id="group_ol_map_use_overlay" model="res.groups">
+            <field name="name">use Overlay template</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">use Overlay template</field>
+        </record>
+    -->
+        <record id="group_ol_map_manage_overlay" model="res.groups">
+            <field name="name">Manage Overlay template</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="comment">Manage Overlay template</field>
+        </record>
+    </data>
+</odoo>

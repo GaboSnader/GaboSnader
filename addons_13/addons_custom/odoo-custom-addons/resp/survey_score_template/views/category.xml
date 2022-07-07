@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id='view_category_tree' model='ir.ui.view'>
+        <field name='name'>survey_score_template.category.tree</field>
+        <field name='model'>survey_score_template.category</field>
+        <field name='arch' type='xml'>
+            <tree string='Categoría'>
+                <field name="name" />
+                <field name="null" />
+                <field name="low" />
+                <field name="medium" />
+                <field name="high" />
+                <field name="very_high" />
+                <field name="domain_id" />
+            </tree>
+        </field>
+    </record>
+    <record id='view_category_form' model='ir.ui.view'>
+        <field name='name'>survey_score_template.category.form</field>
+        <field name='model'>survey_score_template.category</field>
+        <field name='arch' type='xml'>
+            <form string='Categoría' duplicate="true">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="survey_id" />
+                        <field name="null" />
+                        <field name="low" />
+                        <field name="medium" />
+                        <field name="high" />
+                        <field name="very_high" />
+                        <field name="domain_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='open_category_action' model='ir.actions.act_window'>
+        <field name='name'>Categoría</field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name='res_model'>survey_score_template.category</field>
+        <field name="context">{'group_by':'survey_id'}</field>
+        <field name='view_mode'>tree,form</field>
+        <field name='view_id' ref='view_category_tree'/>
+    </record>
+    <menuitem name="NOM-35"
+        id="menu_surveys_configuration"
+        parent="survey.menu_surveys"
+        sequence="100"/>
+    <menuitem id="survey_category_submenu" name="Categoría" action="open_category_action" parent="survey_score_template.menu_surveys_configuration" sequence="1" groups="base.group_no_one"/>
+</odoo>

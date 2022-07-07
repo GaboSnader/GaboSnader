@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="survey_result_score_inherit" inherit_id="survey.result">
+            <xpath expr="//div[@id='oe_structure_survey_result_2']" position="before">
+              <t t-call="survey_score_template.survey_score" />
+            </xpath>
+        </template>
+        <template id="survey_score_print" inherit_id="survey.survey_print">
+            <xpath expr="//div[@class='js_surveyform']" position="after">
+              <t t-call="survey_score_template.survey_score" />
+            </xpath>
+        </template>
+        <template id="survey_survey_question_inherit" inherit_id="survey.question">
+            <xpath expr="//div[@class='js_question-wrapper']" position="inside">
+                <span t-esc="question.optional" class="optional" style="display: none;" />
+            </xpath>
+            <!-- <xpath expr="//form" position="after"> -->
+<!--                 <script>
+                    $('form').on('submit', function(e) {
+                        // div to error
+                        var error = '<div class="js_errzone alert alert-danger" style="" role="alert"><p>Esta pregunta requiere una respuesta.</p></div>'
+                        var stop = 0;
+                        $(".optional").each(function() {
+                            // the actual div closest "js_question" and find the prev 
+                            actual_section = $(this).closest(".js_question-wrapper");
+                            prev_section = $(actual_section).prev(".js_question-wrapper");
+                            radio = $(actual_section).find("input[type='radio']:checked").length;
+                            total = $(actual_section).find("tbody tr").length;
+                            // buttons inside secction
+                            buttons = $(prev_section).find("input[type='radio']")
+                            $(buttons).each(function() {
+                                // if the button is checked and value is "yes"
+                                checked = $(this).is(":checked");
+                                if (checked == true) {
+                                    // value to input
+                                    res = $(this).attr("colval").toLowerCase();
+                                    if (res == "si") {
+                                        // remove error
+                                        $(actual_section).find('.js_errzone').remove();
+                                        // add error
+                                        $(actual_section).append(error);
+                                        // to stop the submit
+                                        if (radio != total) {
+                                            stop = 1;
+                                        }
+                                        // delete the msj
+                                        else{
+                                            $(actual_section).find('.js_errzone').remove();
+                                        }
+                                    }
+                                    else{
+                                        // clean section if the input is "not"
+                                        clean(actual_section)
+                                        // remove error
+                                        $(actual_section).find('.js_errzone').remove();
+                                    }
+                                }
+                            });
+                        });
+                        // stop the original submit
+                        if (stop == 1) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    });
+                    // clean section
+                    function clean(section){
+                        $(section).each(function(i) {
+                            $(this).find("input[type='radio']").prop("checked",false);
+                        });
+                    }
+                    // hidde title "{{hidden}}"
+                    $(".js_question-wrapper span").each(function() {
+                      question = $(this).text();
+                      if (question == "{{hidden}}") {
+                        $(this).closest("h2").hide();
+                            actual = $(this).closest(".js_question-wrapper");
+                            tbody = $(actual).find("table tbody").html();
+                            prev = $(this).closest(".js_question-wrapper").prev(".js_question-wrapper");
+                            $(prev).find("tbody").append(tbody)
+                            $(actual).remove();
+                      }
+                    });
+                </script> -->
+            <!-- </xpath> -->
+        </template>
+        <template id="survey_page_assets" inherit_id="web.assets_frontend">
+          <xpath expr="." position="inside"> 
+                <script type="text/javascript" src="/survey_score_template/static/src/js/survey_pages.js"/>
+          </xpath>
+        </template>
+        <template id="survey_matrix_inherit" inherit_id="survey.matrix">
+            <xpath expr="//tbody" position="replace">
+                <tbody>
+                    <tr t-foreach="question.labels_ids_2" t-as="row_label">
+                        <th><span t-field="row_label.value" /></th>
+                        <td t-foreach="question.labels_ids" t-as="col_label">
+                            <input t-if="question.matrix_subtype == 'simple'" type="radio" t-att-name="'%s_%s' % (prefix, row_label.id)" t-att-value='col_label.id' t-att-colval='col_label.value'/>
+                            <input t-if="question.matrix_subtype == 'multiple'" type="checkbox" t-att-name="'%s_%s_%s' % (prefix, row_label.id, col_label.id)" t-att-value='col_label.id' t-att-colval='col_label.value'/>
+                        </td>
+                    </tr>
+                </tbody>
+            </xpath>
+        </template>
+    </data>
+</odoo>

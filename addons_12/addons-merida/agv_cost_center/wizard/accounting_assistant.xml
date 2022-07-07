@@ -1,0 +1,61 @@
+<odoo>
+  <data>
+    
+    <record model="ir.ui.view" id="view_wizard_accounting_assistant_id">
+      <field name="name">view.wizard.accounting.assistant_id.form</field>
+      <field name="model">wizard.accounting.assistant</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form>
+          <sheet>
+	    <field name="group_by" invisible="1"/>
+            <group>
+              <group>
+                <field name="account_id" attrs="{'required':[('group_by', '=', 'account')]}"/>
+                <field name="journal_ids" widget="many2many_tags"/>
+                <field name="date_begin"/>
+                <field name="date_end"/>
+                <field name="partner_id" attrs="{'required':[('group_by', '=', 'partner')]}"/>
+                <field name="product_id"/>
+              </group>
+              <group>
+                <field name="warehouse_ids" widget="many2many_tags"/>
+                <field name="business_ids" widget="many2many_tags"/>
+                <field name="area_ids" widget="many2many_tags"/>
+                <field name="department_ids" widget="many2many_tags"/>
+                <field name="equipment_ids" widget="many2many_tags"/>
+                <field name="type_of_operation_ids" widget="many2many_tags"/>
+              </group>
+            </group>
+            <group>
+              <group>
+                <field name="group_by"/>
+              </group>
+            </group>
+          </sheet>
+          <footer>
+            <div>
+              <button name="send" string="Generar" type="object" class="btn btn-primary" />
+              <button special="cancel" string="Cancelar" type="object"/>
+            </div>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <!-- <record id="action_wizard_accounting_assistant_id" model="ir.actions.act_window"> -->
+    <!--   <field name="name">Auxiliar contable</field> -->
+    <!--   <field name="res_model">wizard.accounting.assistant</field> -->
+    <!--   <field name="view_mode">form</field> -->
+    <!--   <field name="target">new</field> -->
+    <!-- </record> -->
+
+    <!-- <menuitem action="action_wizard_accounting_assistant_id" -->
+    <!-- 	      id="menu_action_wizard_accounting_assistant_id" -->
+    <!-- 	      parent="account.menu_finance_entries_accounting_miscellaneous" sequence="20" -->
+    <!-- 	      groups="account.group_account_manager" /> -->
+
+
+
+  </data>
+</odoo>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="print_report_xls_survey_id" model="ir.actions.server">
+        <field name="name">Evaluado Empleados</field>
+        <field name="model_id" ref="model_survey_survey" />
+        <field name="binding_model_id" ref="model_survey_survey" />
+        <field name="binding_type">report</field>
+        <field name="state">code</field>
+        <field name="code">
+        if records:
+            action = records.open_print_report_xls()
+    </field>
+    </record>
+
+    <record id="print_report_department_xls_survey_id" model="ir.actions.server">
+        <field name="name">Evaluado Departamento</field>
+        <field name="model_id" ref="model_survey_survey" />
+        <field name="binding_model_id" ref="model_survey_survey" />
+        <field name="binding_type">report</field>
+        <field name="state">code</field>
+        <field name="code">
+        if records:
+            action = records.open_print_report_department_xls()
+    </field>
+    </record>
+
+    <record id="print_report_demographic_xls_survey_id" model="ir.actions.server">
+        <field name="name">Demograficos</field>
+        <field name="model_id" ref="model_survey_survey" />
+        <field name="binding_model_id" ref="model_survey_survey" />
+        <field name="binding_type">report</field>
+        <field name="state">code</field>
+        <field name="code">
+        if records:
+            action = records.open_print_report_demographic_xls()
+    </field>
+    </record>
+
+    <record id="print_report_traumatic_xls_survey_id" model="ir.actions.server">
+        <field name="name">Acontecimientos traumaticos</field>
+        <field name="model_id" ref="model_survey_survey" />
+        <field name="binding_model_id" ref="model_survey_survey" />
+        <field name="binding_type">report</field>
+        <field name="state">code</field>
+        <field name="code">
+        if records:
+            action = records.open_print_report_traumatic_xls()
+    </field>
+    </record>
+
+    <record id="print_report_workplace_xls_survey_id" model="ir.actions.server">
+        <field name="name">Resultados Categoría / Dominio</field>
+        <field name="model_id" ref="model_survey_survey" />
+        <field name="binding_model_id" ref="model_survey_survey" />
+        <field name="binding_type">report</field>
+        <field name="state">code</field>
+        <field name="code">
+        if records:
+            action = records.open_print_report_workplace_xls()
+    </field>
+    </record>
+</odoo>

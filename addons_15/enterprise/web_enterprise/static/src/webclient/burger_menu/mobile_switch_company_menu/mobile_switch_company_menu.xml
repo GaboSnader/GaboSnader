@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+<t t-name="web_enterprise.MobileSwitchCompanyMenu" owl="1">
+    <div class="o_burger_menu_companies dropdown-item pt-4 pb-3 bg-100">
+        <div class="o_burger_menu_user_title text-muted mb-3">Companies</div>
+        <t t-foreach="Object.values(companyService.availableCompanies)" t-as="company">
+            <t t-set="id" t-value="company.id"/>
+            <t t-set="displayName" t-value="company.name"/>
+            <t t-set="isCompanySelected" t-value="selectedCompanies.includes(id)"/>
+            <t t-set="checkIcon" t-value="isCompanySelected ? 'fa-check-square text-primary' : 'fa-square-o'"/>
+            <t t-set="isCompanyCurrent" t-value="companyService.currentCompany.id === id"/>
+            <t t-set="companyStatusClasses" t-value="isCompanyCurrent ? 'font-weight-bold' : 'text-muted'"/>
+            <div class="d-flex menu_companies_item mb-2" t-att-data-company-id="id">
+                <div class="border-right toggle_company o_py" t-att-class="{'border-primary' : isCompanyCurrent}" t-on-click="toggleCompany(id)">
+                    <span class="btn border-0 p-2">
+                        <i t-attf-class="fa fa-fw h2 m-0 {{checkIcon}}"/>
+                    </span>
+                </div>
+                <div t-attf-class="d-flex flex-grow-1 align-items-center py-0 pl-2 log_into o_py {{companyStatusClasses}}" t-att-class="isCompanyCurrent ? 'alert-primary ml-1 mr-2' : 'btn font-weight-normal border-0'" t-on-click="logIntoCompany(id)" style="min-width:0">
+                    <span t-esc="displayName" class="company_label" t-att-class="isCompanyCurrent ? 'text-900 font-weight-bold' : 'ml-1'"/>
+                    <small t-if="isCompanyCurrent" class="ml-2 text-muted">(current)</small>
+                </div>
+            </div>
+        </t>
+    </div>
+</t>
+
+</templates>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id='view_survey_workplace_tree' model='ir.ui.view'>
+        <field name='name'>survey_workplace_tree</field>
+        <field name='model'>survey.workplace</field>
+        <field name='arch' type='xml'>
+            <tree string='Centros de trabajo' editable="bottom">
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id='open_survey_workplace_action' model='ir.actions.act_window'>
+        <field name='name'>Centros de trabajo</field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name='res_model'>survey.workplace</field>
+        <field name='view_mode'>tree</field>
+        <field name='view_id' ref='view_survey_workplace_tree'/>
+    </record>
+
+    <menuitem id="survey_survey_workplace_menu" name="Centros de trabajo" action="open_survey_workplace_action" parent="hr.menu_human_resources_configuration" sequence="1"/>
+</odoo>

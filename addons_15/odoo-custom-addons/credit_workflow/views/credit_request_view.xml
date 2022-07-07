@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="credit_request_tree" model="ir.ui.view">
+      <field name="name">credit_workflow.credit_request.tree</field>
+      <field name="model">credit_workflow.credit_request</field>
+      <field name="arch" type="xml">
+        <tree string="Solicitud de crédito">
+          <field name="name" />
+          <field name="partner_id" />
+          <field name="term" />
+          <field name="months" />
+          <field name="state" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="credit_request_form" model="ir.ui.view">
+      <field name="name">credit_workflow.credit_request.form</field>
+      <field name="model">credit_workflow.credit_request</field>
+      <field name="arch" type="xml">
+        <form string="Solicitud de crédito">
+        <header>
+          <field name="state" widget="statusbar" statusbar_visible="draft,sent"/>
+        </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name" />
+                <field name="partner_id" />
+              </group>
+              <group>
+                <field name="term" />
+                <field name="months" />
+              </group>
+            </group>
+
+            <notebook>
+              <page name="amortization_table" string="Tabla de Amortización">
+                <field name="amortization">
+                  <tree>
+                    <field name="name" />
+                    <field name="month" />
+                    <field name="total" />
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <record id="credit_workflow_credit_request_act_win" model="ir.actions.act_window">
+      <field name="name">Solicitudes de Credito</field>
+      <field name="res_model">credit_workflow.credit_request</field>
+      <field name="view_mode">tree,form</field>
+      <field name="view_id" ref="credit_request_tree"/>
+    </record>
+    <menuitem id="credit_workflow_menu" name="Crédito" web_icon="credit_workflow,static/src/img/logo.png" sequence="0"/>
+    <menuitem id="credit_workflow_credit_request_menu" name="Solicitudes de Credito" parent="credit_workflow_menu" sequence="1"/>
+  </data>
+</odoo>

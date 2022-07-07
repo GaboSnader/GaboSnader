@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+  <!--Form-->
+    <record id="costos_tipo_operacion_view_form" model="ir.ui.view">
+      <field name="name">costos.tipo_operacion.form</field>
+      <field name="model">costos.tipo_operacion</field>
+      <field name="arch" type="xml">
+        <form string="Listado de Tipos de Operaciones">
+          <header/>
+          <sheet string="Tipos de Operación">
+          <div class="oe_button_box" name="button_box">
+              <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                  <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+              </button>
+          </div>
+            <group col="4" string="Tipo de Operacion">
+              <field name="sucursal" widget="many2many_tags" options="{'no_create_edit': True, 'no_quick_create' : True, 'no_create' : True, 'no_open' : True}"/>
+              <field name="list_sucursal" invisible="1"/>
+              <field name="clave"/>
+              <field name="tipo_operacion"/>
+              <field name="company_id"/>
+              <field name="description"/>
+            </group>
+          </sheet>
+          <div class="oe_chatter">
+            <field name="message_follower_ids" widget="mail_followers"/>
+            <field name="message_ids" widget="mail_thread"/>
+          </div>
+        </form>
+      </field>
+    </record>
+      <!--View Tree-->
+    <record id="costos_tipo_operacion_view_tree" model="ir.ui.view">
+      <field name="name">costos.tipo_operacion.tree</field>
+      <field name="model">costos.tipo_operacion</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="clave"/>
+          <field name="tipo_operacion"/>
+          <field name="sucursal" widget="many2many_tags"/>
+          <field name="company_id"/>
+          <field name="description"/>
+          <field name="active"/>
+        </tree>
+      </field>
+    </record>
+
+    <!--Action-->
+    <record id="costos_tipo_operacion_action" model="ir.actions.act_window">
+      <field name="name">Tipos de Operación</field>
+      <field name="res_model">costos.tipo_operacion</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,44 @@
+<odoo>
+  <data>
+
+    <record id="account_payment_view_form_inherit_cost_center" model="ir.ui.view">
+      <field name="name">account.payment.view.form.inherit.cost_center</field>
+      <field name="model">account.payment</field>
+      <field name="inherit_id" ref="account.view_account_payment_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//form//sheet" position="inside">
+          <notebook>
+            <page name="cost_center" string="Cost Center">
+              <group>
+		<field name="warehouse_id"/>
+		<field name="area_id" />
+		<field name="business_id"/>
+		<field name="preference_department_id"/>
+		<field name="equipment_id"/>
+		<field name="type_of_operation_id" />
+              </group>
+            </page>
+          </notebook>
+        </xpath>
+      </field>
+    </record>
+    
+    <!-- <record model="ir.ui.view" id="costos_pagos_searchview"> -->
+    <!--   <field name="name">costos_account_payment_search</field> -->
+    <!--   <field name="model">account.payment</field> -->
+    <!--   <field name="inherit_id" ref="account.view_account_payment_search"/> -->
+    <!--   <field name="arch" type="xml"> -->
+    <!--     <xpath expr="//filter[@name='outbound_filter']" position="before"> -->
+    <!--       <field name="sucursal"/> -->
+    <!--       <field name="negocio" /> -->
+    <!--       <field name="area" /> -->
+    <!--       <field name="department" /> -->
+    <!--       <field name="equipo"  /> -->
+    <!--       <field name="tipo_operacion" /> -->
+    <!--       <separator/> -->
+    <!--     </xpath> -->
+    <!--   </field> -->
+    <!-- </record> -->
+
+  </data>
+</odoo>

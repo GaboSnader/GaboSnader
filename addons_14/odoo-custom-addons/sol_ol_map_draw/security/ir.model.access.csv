@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sol_map_manage_overlay_use,access_sol_map_manage_overlay_use,model_sol_map_manage_overlay,,1,0,0,0
+access_sol_map_manage_overlay,access_sol_map_manage_overlay,model_sol_map_manage_overlay,group_ol_map_manage_overlay,1,1,1,1

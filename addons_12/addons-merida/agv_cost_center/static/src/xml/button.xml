@@ -1,0 +1,13 @@
+<template id="template" xml:space="preserve">
+  <t t-extend="ListView.buttons">
+    <t t-jquery="button.o_list_button_discard" t-operation="after">
+      <t t-if="widget.modelName == 'account.move.line'">
+
+	<button id="custom_aux_btn"
+		class="btn btn-primary o_list_button_custom_aux"
+		type="button">Auxiliar Contable</button> 
+
+      </t>
+    </t>
+  </t>
+</template>

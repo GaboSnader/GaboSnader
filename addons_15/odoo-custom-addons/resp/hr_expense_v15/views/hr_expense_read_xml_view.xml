@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+    <act_window binding_model="hr.expense" id="launch_hr_expense_read_xml_wizard" name="Documents" res_model="hr_expense_v15.hr_expense_read_xml" target="new" view_mode="form"/>
+    <record id="launch_hr_expense_read_xml_wizard_act_window" model="ir.actions.act_window">
+        <field name="name">Documents</field>
+        <field name="res_model">hr_expense_v15.hr_expense_read_xml</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'manual' : True}</field>
+        <field name="target">new</field>
+    </record>
+    <record id="hr_expense_read_xml_wizard_form" model="ir.ui.view">
+        <field name="name">hr_expense_read_xml_wizard_form</field>
+        <field name="model">hr_expense_v15.hr_expense_read_xml</field>
+        <field name="arch" type="xml">
+            <form string="Documents">
+                <group>
+                    <p>Por favor ingrese su factura para comprobar</p>
+                </group>
+                <group>
+                    <field filename="filename_xml" name="xml"/>
+                    <field invisible="1" name="filename_xml"/>
+                    <field filename="filename_pdf" name="pdf"/>
+                    <field invisible="1" name="filename_pdf"/>
+                </group>
+                <footer>
+                    <button class="btn-primary" name="do_validate" string="Adjuntar" type="object"/>
+                    <button class="btn-default" special="cancel" string="Cancelar"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

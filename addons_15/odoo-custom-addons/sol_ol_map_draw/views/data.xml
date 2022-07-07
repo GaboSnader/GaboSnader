@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="SolMapOverlayTemplateTree">
+        <field name="model">sol.map.manage.overlay</field>
+        <field name="name">sol.map.manage.overlay.tree</field>
+        <field name="arch" type="xml">
+            <tree string="Overlay">
+                <field name="name"/>
+                <field name="model_name"/>
+                <!--<field name="overlay_template" widget="ace" options="{'mode': 'xml'}"/>-->
+                <field name="is_default"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="SolMapOverlayTemplateForm">
+        <field name="model">sol.map.manage.overlay</field>
+        <field name="name">sol.map.manage.overlay.Form</field>
+        <field name="arch" type="xml">
+             <form string="Overlay Template">
+                 <group>
+                     <field name="name"/>
+                     <field name="model_name"/>
+                     <field name="overlay_template" widget="ace" options="{'mode': 'xml'}"/>
+                     <field name="is_default"/>
+                 </group>
+             </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="SolMapOverlayTemplateTreeAction">
+        <field name="name">Sol Map Overlay</field>
+        <field name="res_model">sol.map.manage.overlay</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="SolMapOverlayTemplateTree"/>
+    </record>
+
+
+    <menuitem id="main_SolMapOverlay_menu" name="Sol Map Overlay"
+        web_icon="sol_ol_map_draw,static/description/icon.png"/>
+
+    <menuitem id="SolMapOverlay_submenu" name="Sol Map Overlay View"
+              parent="main_SolMapOverlay_menu"/>
+
+    <menuitem id="open_view" name="Sol Map Overlay View" parent="SolMapOverlay_submenu"
+              action="SolMapOverlayTemplateTreeAction"/>
+</odoo>

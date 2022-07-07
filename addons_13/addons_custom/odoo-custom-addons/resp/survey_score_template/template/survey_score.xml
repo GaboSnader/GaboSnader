@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="survey_score">
+            <style>
+              .table .thead-primary th{
+                color: #FFFFFF;
+                background-color: #7C7BAD;
+                border-bottom: 1px solid #5f5e97;
+              }
+            </style>
+            <t t-if="score['category']">
+            <div class="container mt-3 mb-4 card">
+            <h2 class="text-center mt-4 mb-2">Factores de riesgo psicosocial</h2>
+            <br/>
+            <br/>
+            <t t-if="score['total_score']">
+            <h3 class="text-center">Calificación final</h3>
+            <br/>
+              <table class="table">
+                <thead class="thead-primary text-center">
+                  <tr>
+                    <th scope="col">Resultado del cuestionario</th>
+                    <th scope="col">Valor *</th>
+                    <th scope="col">Nivel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                      <th><span t-esc="score['total_score']['name']"/></th>
+                      <td class="text-center"><span t-esc="score['total_score']['total']"/></td>
+                      <td class="text-center">
+                        <div class="progress">
+                          <div t-attf-class="progress-bar {{score['total_score']['level']}}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                        </div>
+                      </td>
+                    </tr>
+                </tbody>
+              </table>
+              <span class="text-right">* Promedio entre encuestas contestadas</span>
+            </t>
+            <t t-if="score['category']">
+            <h3 class="text-center">Categoría(s)</h3>
+            <br/>
+              <table class="table">
+                <thead class="thead-primary text-center">
+                  <tr>
+                    <th scope="col">Calificación de la categoría</th>
+                    <th scope="col">Valor *</th>
+                    <th scope="col">Nivel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-foreach="score['category']" t-as="c">
+                    <tr>
+                      <th><span t-esc="c['name']"/></th>
+                      <td class="text-center"><span t-esc="c['total']"/></td>
+                      <td class="text-center">
+                        <div class="progress">
+                          <div t-attf-class="progress-bar {{c['level']}}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                        </div>
+                      </td>
+                    </tr>
+                  </t>
+                </tbody>
+              </table>
+              <span class="text-right">* Promedio entre encuestas contestadas</span>
+            </t>
+            <br/>
+            <t t-if="score['domain']">
+            <h3 class="text-center">Dominio(s)</h3>
+            <br/>
+              <table class="table">
+                <thead class="thead-primary text-center">
+                  <tr>
+                    <th scope="col">Calificación del dominio</th>
+                    <th scope="col">Valor *</th>
+                    <th scope="col">Nivel</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <t t-foreach="score['domain']" t-as="d">
+                    <tr>
+                      <th><span t-esc="d['name']"/></th>
+                      <td class="text-center"><span t-esc="d['total']"/></td>
+                      <td class="text-center">
+                        <div class="progress">
+                          <div t-attf-class="progress-bar {{d['level']}}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                        </div>
+                      </td>
+                    </tr>
+                  </t>
+                </tbody>
+              </table>
+              <span class="text-right">* Promedio entre encuestas contestadas</span>
+            </t>
+            <br/>
+            <hr/>
+            <br/>
+            <div class="simbology">
+              <h3 class="text-center mb-4">Simbologia</h3>
+              <div class="row d-flex align-items-center">
+                <div class="col-3">
+                  <div class="progress">
+                    <div class="progress-bar bg-dark" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;" />
+                  </div>
+                </div>
+                <div class="col-9">
+                  <p>El riesgo resulta despreciable por lo que no se requiere medidas adicionales.</p>
+                </div>
+              </div>
+              <div class="row d-flex align-items-center">
+                <div class="col-3">
+                    <div class="progress">
+                      <div class="progress-bar bg-success" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;" />
+                    </div>
+                </div>
+                <div class="col-9">
+                    <p>Es necesario una mayor difusión de la política de prevención de riesgos psicosociales y programas para: la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral.</p>
+                </div>
+              </div>
+              <div class="row d-flex align-items-center">
+                <div class="col-3">
+                    <div class="progress">
+                      <div class="progress-bar bg-info" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;" />
+                    </div>
+                </div>
+                <div class="col-9">
+                    <p>Se requiere revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión, mediante un Programa de intervención.</p>
+                </div>
+              </div>
+              <div class="row d-flex align-items-center">
+                <div class="col-3">
+                    <div class="progress">
+                      <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;" />
+                    </div>
+                </div>
+                <div class="col-9">
+                    <p>Se requiere realizar un análisis de cada categoría y dominio, de manera que se puedan determinar las acciones de intervención apropiadas a través de un Programa de intervención, que podrá incluir una evaluación específica1 y deberá incluir una campaña de sensibilización, revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión.</p>
+                </div>
+              </div>
+              <div class="row d-flex align-items-center">
+                <div class="col-3">
+                    <div class="progress">
+                      <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 100%;" />
+                    </div>
+                </div>
+                <div class="col-9">
+                    <p>Se requiere realizar el análisis de cada categoría y dominio para establecer las acciones de intervención apropiadas, mediante un Programa de intervención que deberá incluir evaluaciones específicas1, y contemplar campañas de sensibilización, revisar la política de prevención de riesgos psicosociales y programas para la prevención de los factores de riesgo psicosocial, la promoción de un entorno organizacional favorable y la prevención de la violencia laboral, así como reforzar su aplicación y difusión.</p>
+                </div>
+              </div>
+            </div>
+            <br/>
+            <br/>
+            </div>
+            </t>
+        </template>
+    </data>
+</odoo>

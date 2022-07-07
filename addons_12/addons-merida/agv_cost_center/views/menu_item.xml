@@ -1,0 +1,11 @@
+<odoo>
+  <data>
+    
+    <menuitem id="cost_center_menu" name="Cost Center"/>
+        
+    <menuitem  id="cost_center_data"
+               name="Catálogos"
+               parent="cost_center_menu"/>
+    
+  </data>
+</odoo>

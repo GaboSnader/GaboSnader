@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id='view_dimension_tree' model='ir.ui.view'>
+        <field name='name'>survey_score_template.dimension.tree</field>
+        <field name='model'>survey_score_template.dimension</field>
+        <field name='arch' type='xml'>
+            <tree string='Dimensión'>
+                <field name="name" />
+                <field name="domain_id" />
+            </tree>
+        </field>
+    </record>
+    <record id='view_dimension_form' model='ir.ui.view'>
+        <field name='name'>survey_score_template.dimension.form</field>
+        <field name='model'>survey_score_template.dimension</field>
+        <field name='arch' type='xml'>
+            <form string='Dimensión' duplicate="true">
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="survey_id" />
+                        <field name="domain_id" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id='open_dimension_action' model='ir.actions.act_window'>
+        <field name='name'>Dimensión</field>
+        <field name='type'>ir.actions.act_window</field>
+        <field name='res_model'>survey_score_template.dimension</field>
+        <field name="context">{'group_by':'survey_id'}</field>
+        <field name='view_mode'>tree,form</field>
+        <field name='view_id' ref='view_dimension_tree'/>
+    </record>
+    <menuitem id="survey_dimension_submenu" name="Dimensión" action="open_dimension_action" parent="survey_score_template.menu_surveys_configuration" sequence="3" groups="base.group_no_one"/>
+</odoo>
