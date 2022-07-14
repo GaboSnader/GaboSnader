@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="sale_report_pivot_inherit_id" model="ir.ui.view">
+        <field name="name">sale_report_pivot_inherit</field>
+        <field name="model">sale.report</field>
+        <field name="arch" type="xml">
+            <pivot string="Informe de ventas">
+                <field name="product_id" type="row" />
+                <field name="order_id" type="measure"/>
+                <field name="price_subtotal" type="measure"/>
+                <field name="price_total" type="measure"/>
+                <field name="warehouse_id" string="Sucursal" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record id="sale_report_action_dashboard" model="ir.actions.act_window">
+            <field name="name">Informe de ventas</field>
+            <field name="res_model">sale.report</field>
+            <field name="view_mode">pivot</field>
+            <field name="search_view_id" ref="sale.view_order_product_search"/>
+            <field name="context" eval="{
+                'search_default_Sales': 1,
+                'search_default_filter_date': 1}"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No data yet!
+                </p><p>
+                    Create a new sales order
+                </p>
+            </field>
+        </record>
+
+    <record id="sale_report_action_dashboard_pivot_inherit_id" model="ir.actions.act_window.view">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">pivot</field>
+        <field name="view_id" ref="module_1.sale_report_pivot_inherit_id"/>
+        <field name="act_window_id" ref="module_1.sale_report_action_dashboard"/>
+    </record>
+
+    <menuitem
+            id="menu_sale_report_dashboard_inherit_id"
+            name="Informe de ventas"
+            action="module_1.sale_report_action_dashboard"
+            parent="sale.menu_sale_report"
+            sequence="1"/>
+
+</odoo>

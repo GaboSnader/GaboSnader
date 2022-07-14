@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+    <record id="us_letter_portrait" model="report.paperformat">
+        <field name="name">US Letter Portrait</field>
+        <field name="default" eval="True" />
+        <field name="format">Letter</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">5</field>
+        <field name="dpi">10</field>
+    </record>
+
+    <report
+        id="action_report_print_account_move_id"
+        model="account.move"
+        string="Reporte factura"
+        report_type="qweb-pdf"
+        name="module_1.report_print_account_move_id"
+        file="module_1.report_print_account_move_id"
+        paperformat="module_1.us_letter_portrait"/>
+
+
+
+
+    <template id="report_print_account_move_id">
+        <t t-call="web.html_container">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+            <div class="page">
+                <style>
+                            .logo{
+                            max-height: 100px;
+                            padding: 0.5em;
+                            }
+                        </style>
+        <table style="align: left">
+            <tr>
+                <td>
+                    <img t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)" class="logo"/>
+                    <strong>
+                        <h4><span t-field="o.company_id.partner_id.name" /></h4>
+                    </strong>
+                    <br><strong>DOMICILIO FISCAL: </strong>
+                        <span t-if="o.company_id.street"> <span t-field="o.company_id.street"/></span> 
+                        <span t-if="o.company_id.street2">, <span t-field="o.company_id.street2"/></span>
+                        <span t-field="o.company_id.city"/>, 
+                        <span t-field="o.company_id.country_id.name"/>
+                        <span t-if="o.company_id.zip">
+                            CP: <span t-field="o.company_id.zip"/>
+                        </span></br>
+                    <br><strong>TEL: </strong> <span t-field="o.company_id.phone"/></br>
+                </td>
+                <td colspan="3" width="50%" align="left">
+                    <br><strong>EFECTO DE COMPROBANTE: </strong></br>
+                    <br><strong>SERIES-FOLIO: </strong><span t-field="o.name"/></br>
+                    <br><strong>FECHA FACTURA: </strong><span t-field="o.invoice_date"/></br>
+                    <br><strong>FOLIO FISCAL: </strong><span t-field="o.l10n_mx_edi_cfdi_uuid"/></br>
+                    <br><strong>CERTIFICADO DEL SELLO DIGITAL DEL EMISOR: </strong></br>
+                </td>
+            </tr>
+        </table>
+        <table class="table table-condensed" style="border: 1px solid #ddd">
+            <tr>
+                <td>
+                    <br><strong>CLIENTE: </strong><span t-field="o.partner_id"/></br>
+                    <br><strong>DOMICILIO: </strong><span t-field="o.partner_id.street_name"/> <span t-field="o.partner_id.street_number"/>
+                        <span t-if="o.company_id.street_number2"> <span t-field="o.company_id.street_number2"/></span>,
+                        <span t-if="o.company_id.l10n_mx_edi_colony"> <span t-field="o.company_id.l10n_mx_edi_colony"/></span>
+                        <span t-if="o.company_id.city"> <span t-field="o.company_id.city"/></span>
+                        <span t-if="o.company_id.state_id">, <span t-field="o.company_id.state_id"/></span>
+                        <span t-if="o.company_id.zip">, <span t-field="o.company_id.zip"/></span>
+                        <span t-if="o.company_id.country_id">, <span t-field="o.company_id.country_id"/></span></br>
+                    <br><strong>RFC: </strong><span t-field="o.partner_id.vat"/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                    <strong>USO CFDI: </strong><span t-field="o.l10n_mx_edi_usage"/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                    <strong>CONDICIÓN: </strong></br>
+                    <br><strong>AGENTE: </strong><span t-field="o.invoice_user_id"/>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;
+                    <strong>RUTA: </strong></br>
+                    <br><strong>TIPO DE ENVIO: </strong></br>
+                    <br><strong>DIRECCIÓN DE ENTREGA: </strong></br>
+                </td>
+            </tr>
+        </table>
+        <t t-set="qty" t-value="0.0"/>
+        <table class="table table-sm o_main_table">
+            <thead>
+                <tr>
+                    <th class="text-left"><span>ClaveProdServ</span></th>
+                    <th class="text-right"><span>Cantidad</span></th>
+                    <th class="text-left"><span>Código</span></th>
+                    <th class="text-left"><span>Descripción</span></th>
+                    <th class="text-left"><span>Cve/Unidad</span></th>
+                    <th class="text-right"><span>P. Unitario</span></th>
+                    <th class="text-right"><span>Descuento</span></th>
+                    <th class="text-right"><span>Importe</span></th>
+                </tr>
+            </thead>
+            <tbody class="invoice_tbody">
+                <t t-set="current_subtotal" t-value="0"/>
+                <t t-set="lines" t-value="o.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
+                <tr t-foreach="lines" t-as="line">
+                    <th class="text-left"><span t-field="line.product_id.default_code"/></th>
+                    <th class="text-right"><span t-field="line.quantity"/></th>
+                    <t t-set="qty" t-value="qty+line.quantity"/>
+                    <th class="text-left"><span t-field="line.product_id.hs_code"/></th>
+                    <th class="text-left"><span t-field="line.product_id.name"/></th>
+                    <th class="text-left"></th>
+                    <th class="text-right"><span t-field="line.price_unit"/></th>
+                    <th class="text-right"></th>
+                    <th class="text-right"><span t-field="line.price_total"/></th>
+                </tr>
+            </tbody>
+        </table>
+        <table style="align: center" width="100%">
+            <tr>
+                <td align="center">
+                    <br><strong>SUMA: </strong></br>
+                    <br><span t-field="o.amount_untaxed"/></br>
+                </td>
+                <td align="center">
+                    <br><strong>CANTIDAD: </strong></br>
+                    <br><span t-esc="qty"/></br>
+                </td>
+                <td align="center">
+                    <br><strong>DESCUENTO: </strong></br>
+                    <br></br>
+                </td>
+                <td align="center">
+                    <br><strong>SUBTOTAL: </strong></br>
+                    <br><span t-field="o.amount_untaxed"/></br>
+                </td>
+                <td align="center">
+                    <br><strong>IVA TRASLADADO: </strong></br>
+                    <br><span t-field="o.amount_tax"/></br>
+                </td>
+                <td align="center">
+                    <br><strong>TOTAL: </strong></br>
+                    <br><span t-field="o.amount_total"/></br>
+                </td>
+            </tr>
+        </table>
+        <table style="align: center" width="100%">
+            <tr>
+                <td align="left">
+                    <br><strong>METODO DE PAGO: PAGO EN UNA SOLA EXIBICIÓN</strong></br>
+                </td>
+                <td align="left">
+                    <br><strong>FORMA DE PAGO: </strong></br>
+                </td>
+            </tr>
+        </table>
+        <div align="center">
+            <br>NO. SERIE DEL DERTIFICADO DEL SAT: </br>
+            <br>Este documento es un representación impresa de un CFDI</br>
+            <br>FECHA Y HORA DE CERTIFICACIÓN: </br>
+            <br>CUALQUIER CAMBIO A ESTE CFDI DEBERÁ SOLICITARSE DENTRO DEL MES DE SU EMISIÓN</br>
+        </div><BR/><BR/>
+        <t t-set="cfdi_vals" t-value="o._l10n_mx_edi_decode_cfdi()"/>
+        <t t-set="is_cfdi_signed" t-value="bool(o._get_l10n_mx_edi_signed_edi_document())"/>
+        <t t-if="is_cfdi_signed">
+                <div class="row" id='complement'>
+                    <div t-if="cfdi_vals.get('sello')" class="barcode col-3">
+                        <img alt="Barcode" t-att-src="'/report/barcode/?type=QR&amp;value=%s&amp;width=180&amp;height=180' % quote_plus(
+                            'https://verificacfdi.facturaelectronica.sat.gob.mx/default.aspx?' + keep_query(
+                                re=o.l10n_mx_edi_cfdi_supplier_rfc, rr=o.l10n_mx_edi_cfdi_customer_rfc,
+                                tt='%.*f' % (o.currency_id.decimal_places, o.l10n_mx_edi_cfdi_amount), id=o.l10n_mx_edi_cfdi_uuid)
+                                + '&amp;fe=%s' % quote_plus(
+                                    cfdi_vals['sello'][-8:], 'utf-8', 'strict', '=/').replace('%2B', '+'))"/>
+                    </div>
+                    <div class="complement-details col-9">
+                        <div class="digital-stamp">
+                            <span>Sello digital del emisor</span>
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span t-esc="cfdi_vals.get('sello')"/>
+                        </div>
+                        <div class="digital-stamp">
+                            <span>Sello digital de SAT</span>
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span t-esc="cfdi_vals.get('sello_sat')"/>
+                        </div>
+                        <div class="digital-stamp">
+                            <span>Cadena original del complemento del certificado digital del SAT</span>
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span class="nowrap" t-esc="cfdi_vals.get('cadena')"/>
+                        </div>
+                        <div class="digital-stamp">
+                            <span>Información Extra</span>
+                        </div>
+                        <div class="digital-stamp-content">
+                            <span>Certificado del emisor:</span> <span t-esc="cfdi_vals.get('certificate_number')"/>
+                            <span> | Certificado SAT:</span> <span t-esc="cfdi_vals.get('certificate_sat_number')"/>
+                            <span> | Lugar de expedición:</span> <span t-esc="cfdi_vals.get('expedition')"/>
+                            <span> | Régimen Fiscal:</span><span t-esc="cfdi_vals.get('fiscal_regime')"/>
+                            <span> | Fecha de Emisión:</span> <span t-esc="cfdi_vals.get('emission_date_str')"/>
+                            <span> | Fecha de Certificación:</span> <span t-esc="cfdi_vals.get('stamp_date')"/>
+                            <span> | Folio Fiscal:</span> <span t-esc="cfdi_vals.get('uuid')"/>
+                        </div>
+                        <div class="digital-stamp-content text-center">
+                            <strong>Este documento es una representación impresa de un CFDI</strong>
+                        </div>
+                    </div>
+                </div>
+            </t>
+                </div>
+                </t>
+            </t></t>
+        </template>
+    </data>
+</odoo>
